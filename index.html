@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Examin | Professional Vehicle History Reports</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.0.7/countUp.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+ 
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <div class="mobile-menu" style="margin-left: 12px;">
+                <i class="fa-regular fa-bars"></i>
+            </div>
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fa-regular fa-car"></i>
+                </div>
+                <div class="logo-text">Car <span>Examin</span></div>
+            </div>
+         
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="#sample-report">Sample Report</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="service.html">Service</a></li>
+                    <li><a href="about-us.html">About US</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </nav>
+            <div>
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fa-regular fa-moon"></i>
+                </button>
+                <button class="cta-button">Get Report</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1><span>Uncover Your Vehicle's Complete History</h1>
+                <p> Empowering buyers with<span id="typing-text"></span></p>
+                <div class="hero-buttons">
+                    <a href="#vin-search" class="btn-primary">Check VIN Now</a>
+                    <a href="#sample-report" class="btn-secondary">View Sample Report</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card animate-on-scroll">
+                    <div class="stat-icon">
+                        <i class="fa-regular fa-car"></i>
+                    </div>
+                    <div class="stat-number" data-count="250000">0</div>
+                    <div class="stat-text">Vehicles Checked</div>
+                </div>
+                <div class="stat-card animate-on-scroll">
+                    <div class="stat-icon">
+                        <i class="fa-regular fa-user-shield"></i>
+                    </div>
+                    <div class="stat-number" data-count="98000">0</div>
+                    <div class="stat-text">Accidents Prevented</div>
+                </div>
+                <div class="stat-card animate-on-scroll">
+                    <div class="stat-icon">
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <div class="stat-number" data-count="4.9">0</div>
+                    <div class="stat-text">Customer Rating</div>
+                </div>
+                <div class="stat-card animate-on-scroll">
+                    <div class="stat-icon">
+                        <i class="fa-regular fa-clock"></i>
+                    </div>
+                    <div class="stat-number" data-count="5">0</div>
+                    <div class="stat-text">Minute Reports</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VIN Search Section -->
+    <section class="vin-search" id="vin-search">
+        <div class="container">
+            <div class="search-container">
+                <h2 class="search-title">Check Your Vehicle History</h2>
+                <p class="search-subtitle">Enter your VIN number to get a comprehensive vehicle history report</p>
+                <form class="search-form" id="vinForm">
+                    <div class="form-group">
+                        <label for="country">Country</label>
+                        <select id="country" class="form-control" required>
+                            <option value="">Select Country</option>
+                            <option value="us">United States</option>
+                            <option value="ca">Canada</option>
+                            <option value="uk">United Kingdom</option>
+                            <option value="au">Australia</option>
+                            <option value="de">Germany</option>
+                            <option value="fr">France</option>
+                            <option value="jp">Japan</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="vin">17-Digit VIN Number</label>
+                        <input type="text" id="vin" class="form-control" placeholder="e.g. 1HGCM82633A123456" maxlength="17" required>
+                        <div class="vin-validation" id="vinValidation"></div>
+                    </div>
+                    <button type="submit" class="search-btn" id="searchBtn">Get Vehicle Report <i class="fa-regular fa-arrow-right"></i></button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <div id="backToTop" style="display: flex;">
+        <svg class="progress-ring" viewBox="0 0 50 50">
+            <circle class="progress-ring-circle" cx="25" cy="25" r="24" style="stroke-dasharray: 150.796; stroke-dashoffset: 127.482;"></circle>
+        </svg>
+    </div>
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="animate-on-scroll">Our Comprehensive Reports</h2>
+                <p class="animate-on-scroll">We provide detailed vehicle history reports with information from reliable sources worldwide</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">
+                        <i class="fa-regular fa-car-crash"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Accident History</h3>
+                        <p>Detailed records of any accidents, damage reports, and insurance claims associated with the vehicle.</p>
+                        <a href="#" class="service-link">Learn More <i class="fa-regular fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">
+                        <i class="fa-regular fa-list-alt"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Ownership History</h3>
+                        <p>Complete record of previous owners, registration details, and usage history of the vehicle.</p>
+                        <a href="#" class="service-link">Learn More <i class="fa-regular fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">
+                        <i class="fa-regular fa-tools"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Service Records</h3>
+                        <p>Maintenance history, recalls, and service records to assess the vehicle's condition.</p>
+                        <a href="#" class="service-link">Learn More <i class="fa-regular fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">
+                        <i class="fa-regular fa-file-contract"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Title Information</h3>
+                        <p>Verify title status, check for salvage or rebuilt titles, and identify any title brands.</p>
+                        <a href="#" class="service-link">Learn More <i class="fa-regular fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">
+                        <i class="fa-regular fa-chart-line"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Market Value</h3>
+                        <p>Current market value analysis based on vehicle condition, mileage, and market trends.</p>
+                        <a href="#" class="service-link">Learn More <i class="fa-regular fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">
+                        <i class="fa-regular fa-shield-alt"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Theft Records</h3>
+                        <p>Check if the vehicle has been reported stolen or has any active theft records.</p>
+                        <a href="#" class="service-link">Learn More <i class="fa-regular fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sample Report Section -->
+    <section class="sample-report" id="sample-report">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="animate-on-scroll">Sample Vehicle History Report</h2>
+                <p class="animate-on-scroll">See what you'll get with our Premium Report - a comprehensive analysis of any vehicle's history</p>
+            </div>
+            
+            <div class="report-container animate-on-scroll">
+                <div class="report-header">
+                    <div class="report-title">Vehicle History Report</div>
+                    <div class="report-badge">SAMPLE REPORT</div>
+                </div>
+                
+                <div class="report-body">
+                    <div class="report-tabs">
+                        <div class="report-tab active" data-tab="summary">Summary</div>
+                        <div class="report-tab" data-tab="sales">Sales History</div>
+                        <div class="report-tab" data-tab="details">Vehicle Details</div>
+                        <div class="report-tab" data-tab="title">Title & Condition</div>
+                    </div>
+                    
+                    <!-- Summary Tab -->
+                    <div class="tab-content active" id="summary-tab">
+                        <div class="report-section">
+                            <h3 class="report-section-title"><i class="fa-regular fa-car"></i> Vehicle Overview</h3>
+                            <div class="stats-grid-small">
+                                <div class="stat-card-small">
+                                    <div class="stat-value">2</div>
+                                    <div class="stat-label">Sales Records</div>
+                                </div>
+                                <div class="stat-card-small">
+                                    <div class="stat-value">Clean</div>
+                                    <div class="stat-label">Title Status</div>
+                                </div>
+                                <div class="stat-card-small">
+                                    <div class="stat-value">No Accidents</div>
+                                    <div class="stat-label">Accident History</div>
+                                </div>
+                                <div class="stat-card-small">
+                                    <div class="stat-value">Good</div>
+                                    <div class="stat-label">Overall Condition</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="report-section">
+                            <h3 class="report-section-title"><i class="fa-regular fa-exclamation-triangle"></i> Key Findings</h3>
+                            <ul style="padding-left: 20px;">
+                                <li style="margin-bottom: 10px;">Vehicle has a clean title with no salvage records</li>
+                                <li style="margin-bottom: 10px;">No reported accidents or damage incidents</li>
+                                <li style="margin-bottom: 10px;">Regular service history with no major repairs</li>
+                                <li style="margin-bottom: 10px;">Two previous owners with average ownership duration</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Sales History Tab -->
+                    <div class="tab-content" id="sales-tab">
+                        <div class="report-section">
+                            <h3 class="report-section-title"><i class="fa-regular fa-chart-line"></i> Sales History</h3>
+                            <p style="margin-bottom: 15px; font-weight: 600;">2 Sales records found!</p>
+                            
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Status</th>
+                                        <th>Date</th>
+                                        <th>Retail Value</th>
+                                        <th>Location</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><span class="status-badge status-good">Pure Sale</span></td>
+                                        <td>11/09/2021</td>
+                                        <td>$16,964</td>
+                                        <td>WA</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="status-badge status-good">Pure Sale</span></td>
+                                        <td>05/15/2019</td>
+                                        <td>$14,250</td>
+                                        <td>OR</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- Vehicle Details Tab -->
+                    <div class="tab-content" id="details-tab">
+                        <div class="report-section">
+                            <h3 class="report-section-title"><i class="fa-regular fa-info-circle"></i> Vehicle Information</h3>
+                            <table class="data-table">
+                                <tbody>
+                                    <tr>
+                                        <td style="font-weight: 600; width: 30%;">VIN</td>
+                                        <td>1HGCM82633A123456</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight: 600;">Year/Make/Model</td>
+                                        <td>2020 Honda Civic LX</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight: 600;">Engine</td>
+                                        <td>2.0L 4-Cylinder</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight: 600;">Transmission</td>
+                                        <td>Automatic</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight: 600;">Drivetrain</td>
+                                        <td>Front-Wheel Drive</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight: 600;">Fuel Type</td>
+                                        <td>Gasoline</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight: 600;">Mileage</td>
+                                        <td>24,580 miles</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- Title & Condition Tab -->
+                    <div class="tab-content" id="title-tab">
+                        <div class="report-section">
+                            <h3 class="report-section-title"><i class="fa-regular fa-file-alt"></i> Title & Condition</h3>
+                            <table class="data-table">
+                                <tbody>
+                                    <tr>
+                                        <td style="font-weight: 600; width: 30%;">Title Status</td>
+                                        <td><span class="status-badge status-good">Clean</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight: 600;">Title State</td>
+                                        <td>Washington</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight: 600;">Accident History</td>
+                                        <td><span class="status-badge status-good">No Accidents Reported</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight: 600;">Damage History</td>
+                                        <td><span class="status-badge status-good">No Damage Reported</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight: 600;">Odometer Check</td>
+                                        <td><span class="status-badge status-good">No Rollback Detected</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight: 600;">Recall Status</td>
+                                        <td><span class="status-badge status-warning">1 Open Recall</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="report-footer">
+                    <p>This is a sample report. Get your complete vehicle history report by entering your VIN above.</p>
+                    <div class="report-actions">
+                        <a href="#vin-search" class="report-btn btn-primary"><i class="fa-regular fa-search"></i> Check Your VIN</a>
+                        <a href="#pricing" class="report-btn btn-outline"><i class="fa-regular fa-tag"></i> View Pricing</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="animate-on-scroll">Affordable Pricing Plans</h2>
+                <p class="animate-on-scroll">Choose the plan that fits your needs. All plans include our comprehensive vehicle history report.</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card animate-on-scroll">
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">Basic Report</h3>
+                        <div class="pricing-price">$9.99</div>
+                        <div class="pricing-period">One-Time</div>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fa-regular fa-check"></i> Accident History</li>
+                            <li><i class="fa-regular fa-check"></i> Title Information</li>
+                            <li><i class="fa-regular fa-check"></i> Basic Specifications</li>
+                            <li class="disabled"><i class="fa-regular fa-times"></i> Service Records</li>
+                            <li class="disabled"><i class="fa-regular fa-times"></i> Ownership History</li>
+                            <li class="disabled"><i class="fa-regular fa-times"></i> Theft Records</li>
+                        </ul>
+                        <button class="pricing-button">Get Basic Report</button>
+                    </div>
+                </div>
+                <div class="pricing-card featured animate-on-scroll">
+                    <div class="pricing-badge">Most Popular</div>
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">Standard Report</h3>
+                        <div class="pricing-price">$19.99</div>
+                        <div class="pricing-period">One-Time</div>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fa-regular fa-check"></i> Everything in Basic</li>
+                            <li><i class="fa-regular fa-check"></i> Service Records</li>
+                            <li><i class="fa-regular fa-check"></i> Ownership History</li>
+                            <li><i class="fa-regular fa-check"></i> Theft Records</li>
+                            <li><i class="fa-regular fa-check"></i> Recall Information</li>
+                            <li class="disabled"><i class="fa-regular fa-times"></i> Market Value</li>
+                        </ul>
+                        <button class="pricing-button">Get Standard Report</button>
+                    </div>
+                </div>
+                <div class="pricing-card animate-on-scroll">
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">Premium Report</h3>
+                        <div class="pricing-price">$29.99</div>
+                        <div class="pricing-period">One-Time</div>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fa-regular fa-check"></i> Everything in Standard</li>
+                            <li><i class="fa-regular fa-check"></i> Market Value Analysis</li>
+                            <li><i class="fa-regular fa-check"></i> Detailed Vehicle Specs</li>
+                            <li><i class="fa-regular fa-check"></i> Sales History</li>
+                            <li><i class="fa-regular fa-check"></i> Lemon Check</li>
+                            <li><i class="fa-regular fa-check"></i> Flood Damage Check</li>
+                        </ul>
+                        <button class="pricing-button">Get Premium Report</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Indicators -->
+    <section class="trust-indicators">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="animate-on-scroll">Trusted By Industry Leaders</h2>
+                <p class="animate-on-scroll">We partner with the most reputable organizations in the automotive industry</p>
+            </div>
+            <div class="trust-logos">
+                <div class="trust-logo">
+                    <i class="fa-regular fa-shield-check fa-3x"></i>
+                    <p>DMV Verified</p>
+                </div>
+                <div class="trust-logo">
+                    <i class="fa-regular fa-user-lock fa-3x"></i>
+                    <p>Data Security</p>
+                </div>
+                <div class="trust-logo">
+                    <i class="fa-regular fa-award fa-3x"></i>
+                    <p>Industry Certified</p>
+                </div>
+                <div class="trust-logo">
+                    <i class="fa-regular fa-badge-check fa-3x"></i>
+                    <p>Accurate Data</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="animate-on-scroll">What Our Customers Say</h2>
+                <p class="animate-on-scroll">Don't just take our word for it - hear from our satisfied customers</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="testimonial-content">
+                        <p>"The vehicle history report from Car Examin saved me from buying a car with hidden frame damage. The detailed report was exactly what I needed to negotiate a better price."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MJ</div>
+                        <div class="author-info">
+                            <h4>Michael Johnson</h4>
+                            <p>Car Buyer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="testimonial-content">
+                        <p>"As a used car dealer, I rely on Car Examin for all my vehicle certifications. Their thorough reports give my customers confidence in their purchases."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SW</div>
+                        <div class="author-info">
+                            <h4>Sarah Williams</h4>
+                            <p>Auto Dealer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="testimonial-content">
+                        <p>"I was about to purchase a used SUV when the Car Examin report revealed it had been in a major accident. You just saved me $15,000! Thank you!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">DC</div>
+                        <div class="author-info">
+                            <h4>David Chen</h4>
+                            <p>Vehicle Owner</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="testimonial-content">
+                        <p>"The comprehensive report gave me peace of mind before purchasing my first car. I knew exactly what I was getting into."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AR</div>
+                        <div class="author-info">
+                            <h4>Amanda Roberts</h4>
+                            <p>First-time Buyer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section class="faq-container" id="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="animate-on-scroll">Frequently Asked Questions</h2>
+                <p class="animate-on-scroll">Find answers to common questions about our vehicle history reports</p>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">How reliable is a Car Examin report compared to others in the market?</div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Car Examin reports are highly reliable, compiled from multiple trusted data sources including DMV records, insurance companies, and auto auctions. Our comprehensive reports cover all critical vehicle components, providing you with accurate and unbiased assessments you can trust.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">How long does it take to get a vehicle history report?</div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Our reports are generated instantly after you enter a valid VIN and complete your purchase. You'll receive a comprehensive digital report within minutes, accessible through your account dashboard.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">What information do I need to get a vehicle history report?</div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        You only need the vehicle's 17-character VIN (Vehicle Identification Number). This can typically be found on the driver's side dashboard, door jamb, or vehicle registration documents.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Do you provide reports for vehicles outside the United States?</div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Yes, we provide vehicle history reports for cars from multiple countries including Canada, United Kingdom, Australia, Germany, France, and Japan. Select your country during the VIN check process.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Will I get a written vehicle inspection report?</div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Yes, you'll receive a comprehensive digital report with detailed findings, which can be downloaded, printed, or shared with sellers or mechanics. The report is accessible through our portal for future reference.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">What if the report doesn't match the vehicle's actual condition?</div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        While our reports are highly accurate based on available records, we recommend a physical inspection for complete assurance. If you find significant discrepancies in our report, contact our support team for review and potential refund.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Can I get a refund if I'm not satisfied with the report?</div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        We offer a satisfaction guarantee. If you're not satisfied with your report, contact us within 7 days of purchase for a full refund, provided you haven't used the report to complete a vehicle transaction.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Car Examin</h3>
+                    <p>Professional vehicle history reports to ensure your safety and peace of mind on the road.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html"><i class="fa-regular fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#sample-report"><i class="fa-regular fa-chevron-right"></i> Sample Report</a></li>
+                        <li><a href="#pricing"><i class="fa-regular fa-chevron-right"></i> Pricing</a></li>
+                        <li><a href="service.html"><i class="fa-regular fa-chevron-right"></i> Services</a></li>
+                        <li><a href="#faq"><i class="fa-regular fa-chevron-right"></i> FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#"><i class="fa-regular fa-chevron-right"></i> Vehicle History Report</a></li>
+                        <li><a href="#"><i class="fa-regular fa-chevron-right"></i> VIN Check</a></li>
+                        <li><a href="#"><i class="fa-regular fa-chevron-right"></i> Accident History</a></li>
+                        <li><a href="#"><i class="fa-regular fa-chevron-right"></i> Ownership History</a></li>
+                        <li><a href="#"><i class="fa-regular fa-chevron-right"></i> Service Records</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><a href="#"><i class="fa-regular fa-map-marker-alt"></i> 123 Auto Lane, Detroit, MI</a></li>
+                        <li><a href="#"><i class="fa-regular fa-phone"></i> (555) 123-4567</a></li>
+                        <li><a href="#"><i class="fa-regular fa-envelope"></i> info@carexamin.com</a></li>
+                    </ul>
+                    <h3 style="margin-top: 25px;">Working Hours</h3>
+                    <table class="working-hours">
+                        <tr>
+                            <td>MONDAY</td>
+                            <td>9:00am - 5:00pm</td>
+                        </tr>
+                        <tr>
+                            <td>TUESDAY</td>
+                            <td>9:00am - 5:00pm</td>
+                        </tr>
+                        <tr>
+                            <td>WEDNESDAY</td>
+                            <td>9:00am - 5:00pm</td>
+                        </tr>
+                        <tr>
+                            <td>THURSDAY</td>
+                            <td>9:00am - 5:00pm</td>
+                        </tr>
+                        <tr>
+                            <td>FRIDAY</td>
+                            <td>9:00am - 5:00pm</td>
+                        </tr>
+                        <tr>
+                            <td>SATURDAY</td>
+                            <td>9:00am - 5:00pm</td>
+                        </tr>
+                        <tr>
+                            <td>SUNDAY</td>
+                            <td>C L O S E D</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Car Examin. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+<script src="script.js"></script>
+</body>
+</html>

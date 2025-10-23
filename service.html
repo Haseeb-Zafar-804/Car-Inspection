@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | Car Examin - Professional Vehicle History Reports</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.0.7/countUp.min.js"></script>
+</head>
+<body>
+    <style>
+        :root {
+            --primary: #6a0dad;
+            --primary-dark: #4b0082;
+            --primary-light: #8a2be2;
+            --white: #ffffff;
+            --light-gray: #f8f9fa;
+            --gray: #e0e0e0;
+            --dark-gray: #2d3748;
+            --text: #4a5568;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --gradient: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            --bg-color: #ffffff;
+            --text-color: #4a5568;
+            --card-bg: #ffffff;
+        }
+
+        .dark-mode {
+            --bg-color: #1a202c;
+            --text-color: #e2e8f0;
+            --card-bg: #2d3748;
+            --light-gray: #2d3748;
+            --dark-gray: #f7fafc;
+            --text: #efeff0;
+            --gray: #4a5568;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--bg-color);
+            font-family: 'Open Sans', sans-serif;
+            overflow-x: hidden;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark-gray);
+            font-weight: 700;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1300px;
+            margin: 1px auto;
+            padding: 0 6px;
+            box-sizing: border-box;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: var(--shadow);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-icon {
+            background: var(--gradient);
+            color: var(--white);
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-size: 20px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .logo-text span {
+            color: var(--dark-gray);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 600;
+            font-size: 16px;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover:after,
+        nav ul li a.active:after {
+            width: 100%;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: var(--primary);
+        }
+
+        .cta-button {
+            background: var(--gradient);
+            color: var(--white);
+            border: none;
+            padding: 12px 28px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            box-shadow: 0 4px 12px rgba(106, 13, 173, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(106, 13, 173, 0.4);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--dark-gray);
+            font-size: 20px;
+            cursor: pointer;
+            margin: 0 20px;
+            padding: 8px;
+            margin-left: 15px;
+            transition: all 0.3s;
+            border: 1.7px solid var(--primary);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+        }
+
+        .theme-toggle:hover {
+            color: var(--primary);
+            transform: rotate(30deg);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--dark-gray);
+        }
+
+        /* Services Page Styles */
+        .services-hero {
+            padding: 160px 0 80px;
+            background: var(--gradient);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .services-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" fill="%23ffffff" opacity="0.1"/></svg>');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .services-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .services-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: white;
+            font-size: 30px;
+        }
+
+        .service-content {
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .service-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .service-content p {
+            margin-bottom: 20px;
+        }
+
+        .service-features {
+            list-style: none;
+            text-align: left;
+            margin: 25px 0;
+        }
+
+        .service-features li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .service-features li i {
+            color: var(--primary);
+            margin-right: 10px;
+            margin-top: 5px;
+            font-size: 14px;
+        }
+
+        .service-button {
+            display: inline-block;
+            background: var(--gradient);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .service-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(106, 13, 173, 0.4);
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            background-color: var(--light-gray);
+        }
+
+        .steps-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .step-card {
+            flex: 1;
+            min-width: 250px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 40px 30px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .step-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--light-gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: var(--primary);
+            font-size: 28px;
+        }
+
+        .step-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        /* Benefits Section */
+        .benefits-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .benefit-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 40px 30px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .benefit-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: white;
+            font-size: 28px;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: var(--gradient);
+            color: white;
+            padding: 80px 0;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background-color: var(--light-gray);
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(rgba(9, 26, 56, 0.9), rgba(22, 27, 36, 0.9)), url('https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 80px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 25px;
+            color: var(--white);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        .footer-column p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column ul li a {
+            color: var(--gray);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-column ul li a i {
+            margin-right: 8px;
+            width: 20px;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--white);
+        }
+
+        .working-hours {
+            width: 100%;
+        }
+
+        .working-hours tr {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .working-hours td {
+            padding: 8px 0;
+            color: var(--gray);
+        }
+
+        .working-hours td:first-child {
+            font-weight: 600;
+        }
+
+        .working-hours tr:last-child td {
+            color: #707070;
+            font-weight: 700;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 15px 20px;
+            }
+
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--card-bg);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+            }
+
+            nav.active {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li {
+                margin: 0 0 15px 0;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .services-hero {
+                padding: 140px 20px 60px;
+            }
+
+            .services-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section {
+                padding: 60px 20px;
+            }
+
+            .cta-button {
+                display: none;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 450px) {
+            .services-grid,
+            .benefits-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .service-card,
+            .benefit-card {
+                padding: 15px;
+            }
+
+            .service-icon,
+            .benefit-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+
+            .service-content h3,
+            .benefit-card h3 {
+                font-size: 1.2rem;
+            }
+
+            .steps-container {
+                flex-direction: column;
+            }
+
+            .step-card {
+                min-width: 100%;
+            }
+
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <div class="mobile-menu" style="margin-left: 12px;">
+                <i class="fa-regular fa-bars"></i>
+            </div>
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fa-regular fa-car"></i>
+                </div>
+                <div class="logo-text">Car <span>Examin</span></div>
+            </div>
+         
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#sample-report">Sample Report</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="service.html" class="active">Service</a></li>
+                    <li><a href="about-us.html">About US</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </nav>
+            <div>
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fa-regular fa-moon"></i>
+                </button>
+                <button class="cta-button">Get Report</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Services Hero Section -->
+    <section class="services-hero">
+        <div class="container">
+            <h1>Our Services</h1>
+            <p>Comprehensive vehicle history reports and data services to help you make informed decisions with confidence.</p>
+        </div>
+    </section>
+
+    <!-- Main Services Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Core Services</h2>
+                <p>We offer a range of vehicle history services designed to meet your specific needs</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fa-regular fa-file-lines"></i>
+                        </div>
+                        <h3>Vehicle History Report</h3>
+                        <p>Get a comprehensive report detailing the complete history of any vehicle using its VIN.</p>
+                        <ul class="service-features">
+                            <li><i class="fa-solid fa-check"></i> Accident & Damage History</li>
+                            <li><i class="fa-solid fa-check"></i> Ownership Records</li>
+                            <li><i class="fa-solid fa-check"></i> Title Information</li>
+                            <li><i class="fa-solid fa-check"></i> Odometer Readings</li>
+                            <li><i class="fa-solid fa-check"></i> Recall Information</li>
+                        </ul>
+                        <a href="#" class="service-button">Get Report</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fa-regular fa-car-burst"></i>
+                        </div>
+                        <h3>Accident History Check</h3>
+                        <p>Detailed information about any accidents, damage, or insurance claims associated with the vehicle.</p>
+                        <ul class="service-features">
+                            <li><i class="fa-solid fa-check"></i> Accident Severity Assessment</li>
+                            <li><i class="fa-solid fa-check"></i> Damage Location & Type</li>
+                            <li><i class="fa-solid fa-check"></i> Airbag Deployment Records</li>
+                            <li><i class="fa-solid fa-check"></i> Structural Damage Reports</li>
+                            <li><i class="fa-solid fa-check"></i> Insurance Claim History</li>
+                        </ul>
+                        <a href="#" class="service-button">Check Now</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fa-regular fa-users"></i>
+                        </div>
+                        <h3>Ownership History</h3>
+                        <p>Track the complete ownership timeline including number of owners and registration details.</p>
+                        <ul class="service-features">
+                            <li><i class="fa-solid fa-check"></i> Number of Previous Owners</li>
+                            <li><i class="fa-solid fa-check"></i> Registration History</li>
+                            <li><i class="fa-solid fa-check"></i> Usage Type (Personal/Rental)</li>
+                            <li><i class="fa-solid fa-check"></i> Title Transfers</li>
+                            <li><i class="fa-solid fa-check"></i> Registration State Changes</li>
+                        </ul>
+                        <a href="#" class="service-button">View History</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fa-regular fa-screwdriver-wrench"></i>
+                        </div>
+                        <h3>Service & Maintenance Records</h3>
+                        <p>Access detailed service history including maintenance schedules and repair records.</p>
+                        <ul class="service-features">
+                            <li><i class="fa-solid fa-check"></i> Maintenance Schedule Adherence</li>
+                            <li><i class="fa-solid fa-check"></i> Repair & Service Records</li>
+                            <li><i class="fa-solid fa-check"></i> Warranty Information</li>
+                            <li><i class="fa-solid fa-check"></i> Recall & Service Campaigns</li>
+                            <li><i class="fa-solid fa-check"></i> Dealer Service History</li>
+                        </ul>
+                        <a href="#" class="service-button">Check Records</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fa-regular fa-gauge-high"></i>
+                        </div>
+                        <h3>Odometer Verification</h3>
+                        <p>Verify the accuracy of odometer readings and detect potential rollback or tampering.</p>
+                        <ul class="service-features">
+                            <li><i class="fa-solid fa-check"></i> Odometer Rollback Detection</li>
+                            <li><i class="fa-solid fa-check"></i> Reading History Timeline</li>
+                            <li><i class="fa-solid fa-check"></i> Inconsistency Alerts</li>
+                            <li><i class="fa-solid fa-check"></i> State Inspection Records</li>
+                            <li><i class="fa-solid fa-check"></i> Service Entry Verification</li>
+                        </ul>
+                        <a href="#" class="service-button">Verify Now</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fa-regular fa-flag"></i>
+                        </div>
+                        <h3>Title & Brand History</h3>
+                        <p>Check for title issues including salvage, rebuilt, flood, or lemon law buyback titles.</p>
+                        <ul class="service-features">
+                            <li><i class="fa-solid fa-check"></i> Title Brand History</li>
+                            <li><i class="fa-solid fa-check"></i> Salvage & Rebuilt Records</li>
+                            <li><i class="fa-solid fa-check"></i> Flood Damage History</li>
+                            <li><i class="fa-solid fa-check"></i> Lemon Law Buybacks</li>
+                            <li><i class="fa-solid fa-check"></i> Theft Recovery Records</li>
+                        </ul>
+                        <a href="#" class="service-button">Check Title</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="section how-it-works">
+        <div class="container">
+            <div class="section-title">
+                <h2>How It Works</h2>
+                <p>Getting your vehicle history report is quick and easy with our simple process</p>
+            </div>
+            <div class="steps-container">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">
+                        <i class="fa-regular fa-keyboard"></i>
+                    </div>
+                    <h3>Enter VIN</h3>
+                    <p>Provide the 17-character Vehicle Identification Number of the car you want to check.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">
+                        <i class="fa-regular fa-credit-card"></i>
+                    </div>
+                    <h3>Choose Service</h3>
+                    <p>Select the type of report or service you need from our comprehensive options.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">
+                        <i class="fa-regular fa-file-invoice"></i>
+                    </div>
+                    <h3>Get Report</h3>
+                    <p>Receive your detailed vehicle history report instantly via email or download.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Our Services</h2>
+                <p>We provide the most reliable and comprehensive vehicle history information available</p>
+            </div>
+            <div class="benefits-container">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fa-regular fa-database"></i>
+                    </div>
+                    <h3>Comprehensive Data</h3>
+                    <p>We aggregate data from over 50 reliable sources including DMVs, insurance companies, and auto auctions.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fa-regular fa-bolt"></i>
+                    </div>
+                    <h3>Instant Results</h3>
+                    <p>Get your vehicle history report within minutes, not days. No waiting for manual research.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fa-regular fa-shield-check"></i>
+                    </div>
+                    <h3>Accuracy Guarantee</h3>
+                    <p>Our data is verified and updated regularly to ensure you get the most accurate information available.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fa-regular fa-headset"></i>
+                    </div>
+                    <h3>Expert Support</h3>
+                    <p>Our team of automotive experts is available to help you understand and interpret your report.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-number" data-count="500000">0</div>
+                    <div class="stat-label">Reports Generated</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-count="98.5">0</div>
+                    <div class="stat-label">Customer Satisfaction</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-count="50">0</div>
+                    <div class="stat-label">Data Sources</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-count="6">0</div>
+                    <div class="stat-label">Years of Service</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Check a Vehicle?</h2>
+                <p>Get instant access to comprehensive vehicle history reports and make informed decisions with confidence.</p>
+                <button class="cta-button">Get Your Report Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Car Examin</h3>
+                    <p>Professional vehicle history reports to ensure your safety and peace of mind on the road.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html"><i class="fa-regular fa-chevron-right"></i> Home</a></li>
+                        <li><a href="about.html"><i class="fa-regular fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="sample-report.html"><i class="fa-regular fa-chevron-right"></i> Sample Report</a></li>
+                        <li><a href="pricing.html"><i class="fa-regular fa-chevron-right"></i> Pricing</a></li>
+                        <li><a href="faq.html"><i class="fa-regular fa-chevron-right"></i> FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#"><i class="fa-regular fa-chevron-right"></i> Vehicle History Report</a></li>
+                        <li><a href="#"><i class="fa-regular fa-chevron-right"></i> VIN Check</a></li>
+                        <li><a href="#"><i class="fa-regular fa-chevron-right"></i> Accident History</a></li>
+                        <li><a href="#"><i class="fa-regular fa-chevron-right"></i> Ownership History</a></li>
+                        <li><a href="#"><i class="fa-regular fa-chevron-right"></i> Service Records</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><a href="#"><i class="fa-regular fa-map-marker-alt"></i> 123 Auto Lane, Detroit, MI</a></li>
+                        <li><a href="#"><i class="fa-regular fa-phone"></i> (555) 123-4567</a></li>
+                        <li><a href="#"><i class="fa-regular fa-envelope"></i> info@carexamin.com</a></li>
+                    </ul>
+                    <h3 style="margin-top: 25px;">Working Hours</h3>
+                    <table class="working-hours">
+                        <tr>
+                            <td>MONDAY</td>
+                            <td>9:00am - 5:00pm</td>
+                        </tr>
+                        <tr>
+                            <td>TUESDAY</td>
+                            <td>9:00am - 5:00pm</td>
+                        </tr>
+                        <tr>
+                            <td>WEDNESDAY</td>
+                            <td>9:00am - 5:00pm</td>
+                        </tr>
+                        <tr>
+                            <td>THURSDAY</td>
+                            <td>9:00am - 5:00pm</td>
+                        </tr>
+                        <tr>
+                            <td>FRIDAY</td>
+                            <td>9:00am - 5:00pm</td>
+                        </tr>
+                        <tr>
+                            <td>SATURDAY</td>
+                            <td>9:00am - 5:00pm</td>
+                        </tr>
+                        <tr>
+                            <td>SUNDAY</td>
+                            <td>C L O S E D</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Car Examin. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            document.querySelector('.mobile-menu').addEventListener('click', function() {
+                document.querySelector('nav').classList.toggle('active');
+            });
+
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('nav a').forEach(link => {
+                link.addEventListener('click', () => {
+                    document.querySelector('nav').classList.remove('active');
+                });
+            });
+
+            // Header scroll effect
+            window.addEventListener('scroll', function() {
+                const header = document.getElementById('header');
+                if (window.scrollY > 100) {
+                    header.style.padding = '5px 0';
+                    header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+                } else {
+                    header.style.padding = '0';
+                    header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+                }
+            });
+
+            // Stats Counter Animation
+            function animateStats() {
+                const statNumbers = document.querySelectorAll('.stat-number');
+
+                statNumbers.forEach(stat => {
+                    const target = parseFloat(stat.getAttribute('data-count'));
+                    const duration = 2000;
+                    const step = target / (duration / 16);
+                    let current = 0;
+
+                    const timer = setInterval(() => {
+                        current += step;
+                        if (current >= target) {
+                            current = target;
+                            clearInterval(timer);
+                        }
+                        
+                        if (stat.getAttribute('data-count').includes('.')) {
+                            stat.textContent = current.toFixed(1);
+                        } else {
+                            stat.textContent = Math.floor(current);
+                        }
+                    }, 16);
+                });
+            }
+
+            // Start counter animation when stats section is in view
+            const statsSection = document.querySelector('.stats-section');
+            let hasAnimated = false;
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !hasAnimated) {
+                        animateStats();
+                        hasAnimated = true;
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            observer.observe(statsSection);
+
+            // Dark Mode Toggle
+            const themeToggle = document.getElementById('themeToggle');
+            const themeIcon = themeToggle.querySelector('i');
+            
+            // Check for saved theme preference or default to light
+            const currentTheme = localStorage.getItem('theme') || 'light';
+            if (currentTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                themeIcon.className = 'fa-regular fa-sun';
+            }
+            
+            themeToggle.addEventListener('click', function() {
+                document.body.classList.toggle('dark-mode');
+                const isDarkMode = document.body.classList.contains('dark-mode');
+                
+                if (isDarkMode) {
+                    themeIcon.className = 'fa-regular fa-sun';
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    themeIcon.className = 'fa-regular fa-moon';
+                    localStorage.setItem('theme', 'light');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

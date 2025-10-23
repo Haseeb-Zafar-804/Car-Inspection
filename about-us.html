@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Car Examin - Professional Vehicle History Reports</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.0.7/countUp.min.js"></script>
+</head>
+<body>
+    <style>
+    :root {
+    --primary: #6a0dad;
+    --primary-dark: #4b0082;
+    --primary-light: #8a2be2;
+    --white: #ffffff;
+    --light-gray: #f8f9fa;
+    --gray: #e0e0e0;
+    --dark-gray: #2d3748;
+    --text: #4a5568;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    --gradient: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    --bg-color: #ffffff;
+    --text-color: #4a5568;
+    --card-bg: #ffffff;
+}
+
+.dark-mode {
+    --bg-color: #1a202c;
+    --text-color: #e2e8f0;
+    --card-bg: #2d3748;
+    --light-gray: #2d3748;
+    --dark-gray: #f7fafc;
+    --text: #efeff0;
+    --gray: #4a5568;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    color: var(--text-color);
+    line-height: 1.6;
+    background-color: var(--bg-color);
+    font-family: 'Open Sans', sans-serif;
+    overflow-x: hidden;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--dark-gray);
+    font-weight: 700;
+}
+
+.container {
+    width: 100%;
+    max-width: 1300px;
+    margin: 1px auto;
+    padding: 0 6px;
+    box-sizing: border-box;
+}
+
+/* Header Styles */
+header {
+    background-color: var(--card-bg);
+    box-shadow: var(--shadow);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    transition: all 0.3s ease;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-icon {
+    background: var(--gradient);
+    color: var(--white);
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.logo-text {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.logo-text span {
+    color: var(--dark-gray);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--dark-gray);
+    font-weight: 600;
+    font-size: 16px;
+    transition: color 0.3s;
+    position: relative;
+}
+
+nav ul li a:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--primary);
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover:after,
+nav ul li a.active:after {
+    width: 100%;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    color: var(--primary);
+}
+
+.cta-button {
+    background: var(--gradient);
+    color: var(--white);
+    border: none;
+    padding: 12px 28px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    box-shadow: 0 4px 12px rgba(106, 13, 173, 0.3);
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(106, 13, 173, 0.4);
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    color: var(--dark-gray);
+    font-size: 20px;
+    cursor: pointer;
+    margin: 0 20px;
+    padding: 8px;
+    margin-left: 15px;
+    transition: all 0.3s;
+    border: 1.7px solid var(--primary);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.theme-toggle:hover {
+    color: var(--primary);
+    transform: rotate(30deg);
+}
+
+.mobile-menu {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--dark-gray);
+}
+
+        /* About Us Page Styles */
+        .about-hero {
+            padding: 160px 0 80px;
+            background: var(--gradient);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" fill="%23ffffff" opacity="0.1"/></svg>');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .about-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .about-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        /* Mission and Vision */
+        .mission-vision {
+            background-color: var(--light-gray);
+        }
+
+        .mission-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+        }
+
+        .mission-card {
+            flex: 1;
+            min-width: 300px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 40px 30px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .mission-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .mission-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: white;
+            font-size: 30px;
+        }
+
+        .mission-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        /* Team Section */
+        .team-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .team-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-img {
+            height: 250px;
+            background-color: var(--gray);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .team-info {
+            padding: 25px;
+        }
+
+        .team-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+        }
+
+        .team-info .position {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .team-info p {
+            margin-bottom: 15px;
+        }
+
+        .team-social {
+            display: flex;
+            gap: 10px;
+        }
+
+        .team-social a {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-gray);
+            transition: all 0.3s ease;
+        }
+
+        .team-social a:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Values Section */
+        .values-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .value-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .value-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 28px;
+        }
+
+        .value-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: var(--gradient);
+            color: white;
+            padding: 80px 0;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+       /* Footer */
+footer {
+    background: linear-gradient(rgba(9, 26, 56, 0.9), rgba(22, 27, 36, 0.9)), url('https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+    background-size: cover;
+    background-position: center;
+    color: var(--white);
+    padding: 80px 0 20px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-column h3 {
+    font-size: 20px;
+    margin-bottom: 25px;
+    color: var(--white);
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-column h3:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background: var(--primary);
+}
+
+.footer-column p {
+    color: var(--gray);
+    margin-bottom: 20px;
+}
+
+.footer-column ul {
+    list-style: none;
+}
+
+.footer-column ul li {
+    margin-bottom: 12px;
+}
+
+.footer-column ul li a {
+    color: var(--gray);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.footer-column ul li a i {
+    margin-right: 8px;
+    width: 20px;
+}
+
+.footer-column ul li a:hover {
+    color: var(--white);
+}
+
+.working-hours {
+    width: 100%;
+}
+
+.working-hours tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.working-hours td {
+    padding: 8px 0;
+    color: var(--gray);
+}
+
+.working-hours td:first-child {
+    font-weight: 600;
+}
+
+.working-hours tr:last-child td {
+    color: #707070;
+    font-weight: 700;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: var(--white);
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.social-links a:hover {
+    background-color: var(--primary);
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--gray);
+    font-size: 14px;
+}
+
+/* Animations */
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes countUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 15px 20px;
+            }
+
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--card-bg);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+            }
+
+            nav.active {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li {
+                margin: 0 0 15px 0;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .about-hero {
+                padding: 140px 20px 60px;
+            }
+
+            .about-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section {
+                padding: 60px 20px;
+            }
+            .cta-button {
+        display: none;
+    }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .team-container,
+            .values-container {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 450px) {
+            .team-container,
+            .values-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .team-card,
+            .value-card {
+                padding: 6px;
+            }
+
+            .team-img {
+                height: 150px;
+            }
+
+            .team-info h3 {
+                font-size: 1.2rem;
+            }
+
+            .value-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+
+            .value-card h3 {
+                font-size: 1.1rem;
+            }
+
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <div class="mobile-menu" style="margin-left: 12px;">
+                <i class="fa-regular fa-bars"></i>
+            </div>
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fa-regular fa-car"></i>
+                </div>
+                <div class="logo-text">Car <span>Examin</span></div>
+            </div>
+         
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#sample-report">Sample Report</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="service.html">Service</a></li>
+                    <li><a href="about-us.html" class="active">About US</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </nav>
+            <div>
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fa-regular fa-moon"></i>
+                </button>
+                <button class="cta-button">Get Report</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Hero Section -->
+    <section class="about-hero">
+        <div class="container">
+            <h1>About Car Examin</h1>
+            <p>Your trusted partner in vehicle history reporting. We empower car buyers and sellers with comprehensive, accurate, and transparent vehicle data.</p>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Story</h2>
+                <p>Founded in 2015, Car Examin has revolutionized the way people access vehicle history information.</p>
+            </div>
+            <div style="max-width: 900px; margin: 0 auto;">
+                <p style="font-size: 1.1rem; margin-bottom: 25px;">
+                    Car Examin was born from a simple observation: buying a used car shouldn't feel like a gamble. Our founder, after a disappointing experience with a used vehicle that had hidden issues, recognized the need for transparent, accessible vehicle history information.
+                </p>
+                <p style="font-size: 1.1rem; margin-bottom: 25px;">
+                    What started as a small startup with a mission to provide honest vehicle reports has grown into a trusted platform serving thousands of customers across North America. We've partnered with major data providers, insurance companies, and government agencies to compile the most comprehensive vehicle history database available.
+                </p>
+                <p style="font-size: 1.1rem;">
+                    Today, we continue to innovate, developing new tools and features to make car buying and selling safer, smarter, and more transparent for everyone.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission and Vision Section -->
+    <section class="section mission-vision">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Mission & Vision</h2>
+                <p>Driving transparency in the automotive industry through innovative technology and reliable data.</p>
+            </div>
+            <div class="mission-container">
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fa-regular fa-bullseye"></i>
+                    </div>
+                    <h3>Our Mission</h3>
+                    <p>To empower consumers with accurate, comprehensive vehicle history information, enabling informed decisions and fostering trust in the automotive marketplace.</p>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fa-regular fa-eye"></i>
+                    </div>
+                    <h3>Our Vision</h3>
+                    <p>To create a world where every vehicle transaction is transparent, fair, and based on complete information, eliminating uncertainty for buyers and sellers alike.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Values</h2>
+                <p>The principles that guide everything we do at Car Examin</p>
+            </div>
+            <div class="values-container">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fa-regular fa-shield-check"></i>
+                    </div>
+                    <h3>Integrity</h3>
+                    <p>We are committed to providing accurate, unbiased information you can trust.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fa-regular fa-users"></i>
+                    </div>
+                    <h3>Customer Focus</h3>
+                    <p>Our customers are at the heart of every decision we make and feature we develop.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fa-regular fa-lightbulb"></i>
+                    </div>
+                    <h3>Innovation</h3>
+                    <p>We continuously improve our technology and services to better serve your needs.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fa-regular fa-handshake"></i>
+                    </div>
+                    <h3>Transparency</h3>
+                    <p>We believe in open communication and clear, understandable reporting.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+  
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-number" data-count="500000">0</div>
+                    <div class="stat-label">Reports Generated</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-count="98.5">0</div>
+                    <div class="stat-label">Customer Satisfaction</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-count="50">0</div>
+                    <div class="stat-label">Data Sources</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-count="6">0</div>
+                    <div class="stat-label">Years of Service</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Car Examin</h3>
+                    <p>Professional vehicle history reports to ensure your safety and peace of mind on the road.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html"><i class="fa-regular fa-chevron-right"></i> Home</a></li>
+                        <li><a href="about.html"><i class="fa-regular fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="sample-report.html"><i class="fa-regular fa-chevron-right"></i> Sample Report</a></li>
+                        <li><a href="pricing.html"><i class="fa-regular fa-chevron-right"></i> Pricing</a></li>
+                        <li><a href="faq.html"><i class="fa-regular fa-chevron-right"></i> FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#"><i class="fa-regular fa-chevron-right"></i> Vehicle History Report</a></li>
+                        <li><a href="#"><i class="fa-regular fa-chevron-right"></i> VIN Check</a></li>
+                        <li><a href="#"><i class="fa-regular fa-chevron-right"></i> Accident History</a></li>
+                        <li><a href="#"><i class="fa-regular fa-chevron-right"></i> Ownership History</a></li>
+                        <li><a href="#"><i class="fa-regular fa-chevron-right"></i> Service Records</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><a href="#"><i class="fa-regular fa-map-marker-alt"></i> 123 Auto Lane, Detroit, MI</a></li>
+                        <li><a href="#"><i class="fa-regular fa-phone"></i> (555) 123-4567</a></li>
+                        <li><a href="#"><i class="fa-regular fa-envelope"></i> info@carexamin.com</a></li>
+                    </ul>
+                    <h3 style="margin-top: 25px;">Working Hours</h3>
+                    <table class="working-hours">
+                        <tr>
+                            <td>MONDAY</td>
+                            <td>9:00am - 5:00pm</td>
+                        </tr>
+                        <tr>
+                            <td>TUESDAY</td>
+                            <td>9:00am - 5:00pm</td>
+                        </tr>
+                        <tr>
+                            <td>WEDNESDAY</td>
+                            <td>9:00am - 5:00pm</td>
+                        </tr>
+                        <tr>
+                            <td>THURSDAY</td>
+                            <td>9:00am - 5:00pm</td>
+                        </tr>
+                        <tr>
+                            <td>FRIDAY</td>
+                            <td>9:00am - 5:00pm</td>
+                        </tr>
+                        <tr>
+                            <td>SATURDAY</td>
+                            <td>9:00am - 5:00pm</td>
+                        </tr>
+                        <tr>
+                            <td>SUNDAY</td>
+                            <td>C L O S E D</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Car Examin. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            document.querySelector('.mobile-menu').addEventListener('click', function() {
+                document.querySelector('nav').classList.toggle('active');
+            });
+
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('nav a').forEach(link => {
+                link.addEventListener('click', () => {
+                    document.querySelector('nav').classList.remove('active');
+                });
+            });
+
+            // Header scroll effect
+            window.addEventListener('scroll', function() {
+                const header = document.getElementById('header');
+                if (window.scrollY > 100) {
+                    header.style.padding = '5px 0';
+                    header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+                } else {
+                    header.style.padding = '0';
+                    header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+                }
+            });
+
+            // Stats Counter Animation
+            function animateStats() {
+                const statNumbers = document.querySelectorAll('.stat-number');
+
+                statNumbers.forEach(stat => {
+                    const target = parseFloat(stat.getAttribute('data-count'));
+                    const duration = 2000;
+                    const step = target / (duration / 16);
+                    let current = 0;
+
+                    const timer = setInterval(() => {
+                        current += step;
+                        if (current >= target) {
+                            current = target;
+                            clearInterval(timer);
+                        }
+                        
+                        if (stat.getAttribute('data-count').includes('.')) {
+                            stat.textContent = current.toFixed(1);
+                        } else {
+                            stat.textContent = Math.floor(current);
+                        }
+                    }, 16);
+                });
+            }
+
+            // Start counter animation when stats section is in view
+            const statsSection = document.querySelector('.stats-section');
+            let hasAnimated = false;
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !hasAnimated) {
+                        animateStats();
+                        hasAnimated = true;
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            observer.observe(statsSection);
+
+            // Dark Mode Toggle
+            const themeToggle = document.getElementById('themeToggle');
+            const themeIcon = themeToggle.querySelector('i');
+            
+            // Check for saved theme preference or default to light
+            const currentTheme = localStorage.getItem('theme') || 'light';
+            if (currentTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                themeIcon.className = 'fa-regular fa-sun';
+            }
+            
+            themeToggle.addEventListener('click', function() {
+                document.body.classList.toggle('dark-mode');
+                const isDarkMode = document.body.classList.contains('dark-mode');
+                
+                if (isDarkMode) {
+                    themeIcon.className = 'fa-regular fa-sun';
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    themeIcon.className = 'fa-regular fa-moon';
+                    localStorage.setItem('theme', 'light');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
