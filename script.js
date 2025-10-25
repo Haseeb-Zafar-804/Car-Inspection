@@ -292,3 +292,80 @@ setTimeout(typeWriter, typingSpeed);
 window.addEventListener('DOMContentLoaded', () => {
 setTimeout(typeWriter, 500); // Shorter initial delay (was 1000)
 });
+ // Form Submission
+ const contactForm = document.getElementById('contactForm');
+ const commentForm = document.getElementById('commentForm');
+ 
+ if (contactForm) {
+     contactForm.addEventListener('submit', async (e) => {
+         e.preventDefault();
+         
+         const submitBtn = document.getElementById('submitBtn');
+         const formMessage = document.getElementById('formMessage');
+         
+         submitBtn.disabled = true;
+         submitBtn.textContent = 'Sending...';
+         
+         try {
+             const formData = new FormData(contactForm);
+             const response = await fetch(contactForm.action, {
+                 method: 'POST',
+                 body: formData,
+                 headers: {
+                     'Accept': 'application/json'
+                 }
+             });
+             
+             if (response.ok) {
+                 formMessage.textContent = 'Thank you! Your message has been sent successfully.';
+                 formMessage.className = 'form-message success';
+                 contactForm.reset();
+             } else {
+                 throw new Error('Form submission failed');
+             }
+         } catch (error) {
+             formMessage.textContent = 'Sorry, there was an error sending your message. Please try again later.';
+             formMessage.className = 'form-message error';
+         } finally {
+             submitBtn.disabled = false;
+             submitBtn.textContent = 'Send Message';
+         }
+     });
+ }
+ 
+ if (commentForm) {
+     commentForm.addEventListener('submit', async (e) => {
+         e.preventDefault();
+         
+         const submitBtn = document.getElementById('commentSubmitBtn');
+         const formMessage = document.getElementById('commentMessage');
+         
+         submitBtn.disabled = true;
+         submitBtn.textContent = 'Submitting...';
+         
+         try {
+             const formData = new FormData(commentForm);
+             const response = await fetch(commentForm.action, {
+                 method: 'POST',
+                 body: formData,
+                 headers: {
+                     'Accept': 'application/json'
+                 }
+             });
+             
+             if (response.ok) {
+                 formMessage.textContent = 'Thank you! Your comment has been submitted.';
+                 formMessage.className = 'form-message success';
+                 commentForm.reset();
+             } else {
+                 throw new Error('Form submission failed');
+             }
+         } catch (error) {
+             formMessage.textContent = 'Sorry, there was an error submitting your comment. Please try again later.';
+             formMessage.className = 'form-message error';
+         } finally {
+             submitBtn.disabled = false;
+             submitBtn.textContent = 'Submit Comment';
+         }
+     });
+ }
