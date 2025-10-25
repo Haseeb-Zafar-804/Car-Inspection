@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ | Car Examin - Professional Vehicle History Reports</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.0.7/countUp.min.js"></script>
+</head>
+<body>
+    <style>
+:root {
+    --primary: #cf0a0a;
+    --primary-dark: #820007;
+    --primary-light: #c90d0d;
+    --white: #ffffff;
+    --light-gray: #f8f9fa;
+    --gray: #e0e0e0;
+    --dark-gray: #2d3748;
+    --text: #4a5568;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    --gradient: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    --bg-color: #ffffff;
+    --text-color: #4a5568;
+    --card-bg: #ffffff;
+}
+.dark-mode {
+    --bg-color: #1a202c;
+    --text-color: #e2e8f0;
+    --card-bg: #2d3748;
+    --light-gray: #2d3748;
+    --dark-gray: #f7fafc;
+    --text: #efeff0;
+    --gray: #4a5568;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    color: var(--text-color);
+    line-height: 1.6;
+    background-color: var(--bg-color);
+    font-family: 'Open Sans', sans-serif;
+    overflow-x: hidden;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--dark-gray);
+    font-weight: 700;
+}
+
+.container {
+    width: 100%;
+    max-width: 1300px;
+    margin: 1px auto;
+    padding: 0 6px;
+    box-sizing: border-box;
+}
+
+/* Header Styles */
+header {
+    background-color: var(--card-bg);
+    box-shadow: var(--shadow);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    height: 100px;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    transition: all 0.3s ease;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+
+.logo-img {
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.logo-text {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.logo-text span {
+    color: var(--dark-gray);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--dark-gray);
+    font-weight: 600;
+    font-size: 16px;
+    transition: color 0.3s;
+    position: relative;
+}
+
+nav ul li a:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--primary);
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover:after,
+nav ul li a.active:after {
+    width: 100%;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    color: var(--primary);
+}
+
+.cta-button {
+    background: var(--gradient);
+    color: var(--white);
+    border: none;
+    padding: 12px 28px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    box-shadow: 0 4px 12px rgba(106, 13, 173, 0.3);
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(106, 13, 173, 0.4);
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    color: var(--dark-gray);
+    font-size: 20px;
+    cursor: pointer;
+    margin: 0 20px;
+    padding: 8px;
+    margin-left: 15px;
+    transition: all 0.3s;
+    border: 1.7px solid var(--primary);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.theme-toggle:hover {
+    color: var(--primary);
+    transform: rotate(30deg);
+}
+
+.mobile-menu {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--dark-gray);
+}
+        /* FAQ Page Styles */
+        .faq-hero {
+            padding: 160px 0 80px;
+            background: var(--gradient);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .faq-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" fill="%23ffffff" opacity="0.1"/></svg>');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .faq-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .faq-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-category {
+            margin-bottom: 50px;
+        }
+
+        .faq-category h3 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 10px;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-question {
+            padding: 20px 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background-color: rgba(106, 13, 173, 0.05);
+        }
+
+        .faq-question i {
+            transition: transform 0.3s ease;
+            color: var(--primary);
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 25px 25px;
+            max-height: 1000px;
+        }
+
+        .faq-search {
+            max-width: 600px;
+            margin: 0 auto 50px;
+            position: relative;
+        }
+
+        .faq-search input {
+            width: 100%;
+            padding: 15px 20px;
+            border-radius: 50px;
+            border: 2px solid var(--gray);
+            background: var(--card-bg);
+            color: var(--text-color);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .faq-search input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(106, 13, 173, 0.1);
+        }
+
+        .faq-search i {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary);
+        }
+
+        .contact-promo {
+            background: var(--gradient);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            border-radius: 15px;
+            margin-top: 50px;
+        }
+
+        .contact-promo h3 {
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .contact-promo p {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-promo .cta-button {
+            background: white;
+            color: var(--primary);
+        }
+
+        .contact-promo .cta-button:hover {
+            background: var(--light-gray);
+            transform: translateY(-2px);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: var(--gradient);
+            color: white;
+            padding: 80px 0;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+       /* Footer */
+footer {
+    background: linear-gradient(rgba(9, 26, 56, 0.9), rgba(22, 27, 36, 0.9)), url('https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+    background-size: cover;
+    background-position: center;
+    color: var(--white);
+    padding: 80px 0 20px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-column h3 {
+    font-size: 20px;
+    margin-bottom: 25px;
+    color: var(--white);
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-column h3:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background: var(--primary);
+}
+
+.footer-column p {
+    color: var(--gray);
+    margin-bottom: 20px;
+}
+
+.footer-column ul {
+    list-style: none;
+}
+
+.footer-column ul li {
+    margin-bottom: 12px;
+}
+
+.footer-column ul li a {
+    color: var(--gray);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.footer-column ul li a i {
+    margin-right: 8px;
+    width: 20px;
+}
+
+.footer-column ul li a:hover {
+    color: var(--white);
+}
+
+.working-hours {
+    width: 100%;
+}
+
+.working-hours tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.working-hours td {
+    padding: 8px 0;
+    color: var(--gray);
+}
+
+.working-hours td:first-child {
+    font-weight: 600;
+}
+
+.working-hours tr:last-child td {
+    color: #707070;
+    font-weight: 700;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: var(--white);
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.social-links a:hover {
+    background-color: var(--primary);
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--gray);
+    font-size: 14px;
+}
+
+/* Animations */
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes countUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 15px 20px;
+            }
+
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--card-bg);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+            }
+
+            nav.active {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li {
+                margin: 0 0 15px 0;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .faq-hero {
+                padding: 140px 20px 60px;
+            }
+
+            .faq-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section {
+                padding: 60px 20px;
+            }
+            .cta-button {
+        display: none;
+    }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .faq-question {
+                padding: 15px 20px;
+                font-size: 1rem;
+            }
+
+            .faq-answer {
+                padding: 0 20px;
+            }
+
+            .faq-item.active .faq-answer {
+                padding: 0 20px 20px;
+            }
+        }
+
+        @media (max-width: 450px) {
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+<header id="header">
+    <div class="container header-container">
+        <div class="mobile-menu" style="margin-left: 12px;">
+            <i class="fa-regular fa-bars"></i>
+        </div>
+        <div class="logo">
+            <div class="logo-img">
+                <img src="logo.png" alt="Logo" id="logo">
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="#sample-report">Sample Report</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="service.html">Service</a></li>
+                <li><a href="about-us.html">About US</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fa-regular fa-moon"></i>
+            </button>
+            <button class="cta-button">Get Report</button>
+        </div>
+    </div>
+</header>
+
+
+    <!-- FAQ Hero Section -->
+    <section class="faq-hero">
+        <div class="container">
+            <h1>Frequently Asked Questions</h1>
+            <p>Find answers to common questions about Car Examin vehicle history reports and services.</p>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Common Questions</h2>
+                <p>Browse through our frequently asked questions to find the information you need.</p>
+            </div>
+
+            <div class="faq-search">
+                <input type="text" placeholder="Search for questions..." id="faqSearch">
+                <i class="fa-regular fa-search"></i>
+            </div>
+
+            <div class="faq-container">
+                <!-- General Questions -->
+                <div class="faq-category">
+                    <h3>General Questions</h3>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            What is a vehicle history report?
+                            <i class="fa-regular fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>A vehicle history report is a comprehensive document that provides detailed information about a vehicle's past. This includes accident history, title information, ownership records, service history, mileage records, and more. Our reports help you make an informed decision when buying or selling a used vehicle.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Why should I get a vehicle history report?
+                            <i class="fa-regular fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>A vehicle history report can reveal hidden problems that aren't visible during a visual inspection. It helps you:</p>
+                            <ul>
+                                <li>Avoid vehicles with serious accident damage</li>
+                                <li>Identify odometer fraud</li>
+                                <li>Check for title issues like salvage or flood damage</li>
+                                <li>Verify service and maintenance records</li>
+                                <li>Confirm the number of previous owners</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            How accurate are your reports?
+                            <i class="fa-regular fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Our reports are compiled from over 50 reliable data sources including government agencies, insurance companies, auto auctions, and service centers. While we strive for 100% accuracy, we cannot guarantee that all information is complete as some incidents may go unreported. We recommend using our report in conjunction with a professional vehicle inspection.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Report Content -->
+                <div class="faq-category">
+                    <h3>Report Content</h3>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            What information is included in a Car Examin report?
+                            <i class="fa-regular fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Our comprehensive reports include:</p>
+                            <ul>
+                                <li>Accident history and damage reports</li>
+                                <li>Title information (clean, salvage, rebuilt, etc.)</li>
+                                <li>Ownership history and number of previous owners</li>
+                                <li>Service and maintenance records</li>
+                                <li>Odometer readings and potential rollback alerts</li>
+                                <li>Recall information</li>
+                                <li>Lemon history</li>
+                                <li>Vehicle specifications</li>
+                                <li>Theft records</li>
+                                <li>Flood damage history</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            How far back does your data go?
+                            <i class="fa-regular fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Our data sources vary, but we typically have records going back to the early 1990s for most vehicles. For newer vehicles, we often have complete histories from the date of first registration. The availability of specific records depends on when various reporting systems were implemented and the reporting practices in different states.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Do you provide information about service records?
+                            <i class="fa-regular fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, when available, we include service and maintenance records in our reports. These records come from various sources including dealerships, repair shops, and service centers that report to our data partners. However, not all service providers report their records, so there may be gaps in the service history.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Purchasing & Payment -->
+                <div class="faq-category">
+                    <h3>Purchasing & Payment</h3>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            How much does a vehicle history report cost?
+                            <i class="fa-regular fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We offer several pricing options:</p>
+                            <ul>
+                                <li>Single Report: $39.99</li>
+                                <li>3-Reports Bundle: $99.99 (save $20)</li>
+                                <li>5-Reports Bundle: $149.99 (save $50)</li>
+                                <li>Unlimited Reports (Monthly Subscription): $79.99/month</li>
+                            </ul>
+                            <p>All reports come with our 30-day money-back guarantee if you're not satisfied.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            What payment methods do you accept?
+                            <i class="fa-regular fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We accept all major credit cards (Visa, MasterCard, American Express, Discover), PayPal, and Apple Pay. All transactions are secured with SSL encryption to protect your financial information.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Can I get a refund if I'm not satisfied?
+                            <i class="fa-regular fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, we offer a 30-day money-back guarantee. If you're not satisfied with your report for any reason, simply contact our customer support team within 30 days of purchase for a full refund. Please note that refunds are not available if you've purchased multiple reports and used more than one.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Technical Questions -->
+                <div class="faq-category">
+                    <h3>Technical Questions</h3>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            What is a VIN and where can I find it?
+                            <i class="fa-regular fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>A VIN (Vehicle Identification Number) is a unique 17-character code assigned to every vehicle. You can typically find it:</p>
+                            <ul>
+                                <li>On the dashboard near the windshield (driver's side)</li>
+                                <li>On the driver's side door jamb</li>
+                                <li>On vehicle registration documents</li>
+                                <li>On insurance cards</li>
+                                <li>On the vehicle title</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            How long does it take to generate a report?
+                            <i class="fa-regular fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Our reports are generated instantly in most cases. After you provide the VIN and complete your payment, the report is typically available within seconds. In rare cases where we need to gather additional information from multiple sources, it might take up to 24 hours. You'll receive an email notification when your report is ready.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Can I access my reports later?
+                            <i class="fa-regular fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, all purchased reports are saved to your account and can be accessed at any time. You can view, download, or print them as needed. We recommend saving important reports as vehicle histories can be updated with new information over time.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-promo">
+                <h3>Still Have Questions?</h3>
+                <p>Our customer support team is here to help you with any additional questions or concerns.</p>
+                <button class="cta-button">Contact Support</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-number" data-count="500000">0</div>
+                    <div class="stat-label">Reports Generated</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-count="98.5">0</div>
+                    <div class="stat-label">Customer Satisfaction</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-count="50">0</div>
+                    <div class="stat-label">Data Sources</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-count="6">0</div>
+                    <div class="stat-label">Years of Service</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Car Examin</h3>
+                    <p>Professional vehicle history reports to ensure your safety and peace of mind on the road.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html"><i class="fa-regular fa-chevron-right"></i> Home</a></li>
+                        <li><a href="about.html"><i class="fa-regular fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="sample-report.html"><i class="fa-regular fa-chevron-right"></i> Sample Report</a></li>
+                        <li><a href="pricing.html"><i class="fa-regular fa-chevron-right"></i> Pricing</a></li>
+                        <li><a href="faq.html"><i class="fa-regular fa-chevron-right"></i> FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#"><i class="fa-regular fa-chevron-right"></i> Vehicle History Report</a></li>
+                        <li><a href="#"><i class="fa-regular fa-chevron-right"></i> VIN Check</a></li>
+                        <li><a href="#"><i class="fa-regular fa-chevron-right"></i> Accident History</a></li>
+                        <li><a href="#"><i class="fa-regular fa-chevron-right"></i> Ownership History</a></li>
+                        <li><a href="#"><i class="fa-regular fa-chevron-right"></i> Service Records</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><a href="#"><i class="fa-regular fa-map-marker-alt"></i> 123 Auto Lane, Detroit, MI</a></li>
+                        <li><a href="#"><i class="fa-regular fa-phone"></i> (555) 123-4567</a></li>
+                        <li><a href="#"><i class="fa-regular fa-envelope"></i> info@carexamin.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Car Examin. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            document.querySelector('.mobile-menu').addEventListener('click', function() {
+                document.querySelector('nav').classList.toggle('active');
+            });
+
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('nav a').forEach(link => {
+                link.addEventListener('click', () => {
+                    document.querySelector('nav').classList.remove('active');
+                });
+            });
+
+            // Header scroll effect
+            window.addEventListener('scroll', function() {
+                const header = document.getElementById('header');
+                if (window.scrollY > 100) {
+                    header.style.padding = '5px 0';
+                    header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+                } else {
+                    header.style.padding = '0';
+                    header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+                }
+            });
+
+            // FAQ Accordion Functionality
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    // Close all other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+
+            // FAQ Search Functionality
+            const faqSearch = document.getElementById('faqSearch');
+            
+            faqSearch.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                
+                faqItems.forEach(item => {
+                    const question = item.querySelector('.faq-question').textContent.toLowerCase();
+                    const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+                    
+                    if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                        item.style.display = 'block';
+                        
+                        // If search term is in answer, expand the item
+                        if (answer.includes(searchTerm) && searchTerm.length > 0) {
+                            item.classList.add('active');
+                        }
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+                
+                // Show/hide category headers based on visible items
+                document.querySelectorAll('.faq-category').forEach(category => {
+                    const visibleItems = category.querySelectorAll('.faq-item[style="display: block"]');
+                    if (visibleItems.length === 0) {
+                        category.style.display = 'none';
+                    } else {
+                        category.style.display = 'block';
+                    }
+                });
+            });
+
+            // Stats Counter Animation
+            function animateStats() {
+                const statNumbers = document.querySelectorAll('.stat-number');
+
+                statNumbers.forEach(stat => {
+                    const target = parseFloat(stat.getAttribute('data-count'));
+                    const duration = 2000;
+                    const step = target / (duration / 16);
+                    let current = 0;
+
+                    const timer = setInterval(() => {
+                        current += step;
+                        if (current >= target) {
+                            current = target;
+                            clearInterval(timer);
+                        }
+                        
+                        if (stat.getAttribute('data-count').includes('.')) {
+                            stat.textContent = current.toFixed(1);
+                        } else {
+                            stat.textContent = Math.floor(current);
+                        }
+                    }, 16);
+                });
+            }
+
+            // Start counter animation when stats section is in view
+            const statsSection = document.querySelector('.stats-section');
+            let hasAnimated = false;
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !hasAnimated) {
+                        animateStats();
+                        hasAnimated = true;
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            observer.observe(statsSection);
+
+            // Dark Mode Toggle
+            const themeToggle = document.getElementById('themeToggle');
+            const themeIcon = themeToggle.querySelector('i');
+            
+            // Check for saved theme preference or default to light
+            const currentTheme = localStorage.getItem('theme') || 'light';
+            if (currentTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                themeIcon.className = 'fa-regular fa-sun';
+            }
+            
+            themeToggle.addEventListener('click', function() {
+                document.body.classList.toggle('dark-mode');
+                const isDarkMode = document.body.classList.contains('dark-mode');
+                
+                if (isDarkMode) {
+                    themeIcon.className = 'fa-regular fa-sun';
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    themeIcon.className = 'fa-regular fa-moon';
+                    localStorage.setItem('theme', 'light');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
