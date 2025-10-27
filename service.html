@@ -67,7 +67,7 @@
             width: 100%;
             max-width: 1300px;
             margin: 1px auto;
-            padding: 0 6px;
+            padding: 0 15px;
             box-sizing: border-box;
         }
 
@@ -81,7 +81,7 @@ header {
     width: 100%;
     z-index: 1000;
     transition: all 0.3s ease;
-    height: 100px;
+    height: 80px;
 }
 
 .header-container {
@@ -99,8 +99,8 @@ header {
 
 
 .logo-img {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -139,6 +139,7 @@ nav ul li a {
     font-size: 16px;
     transition: color 0.3s;
     position: relative;
+    white-space: nowrap;
 }
 
 nav ul li a:after {
@@ -166,13 +167,14 @@ nav ul li a.active {
     background: var(--gradient);
     color: var(--white);
     border: none;
-    padding: 12px 28px;
+    padding: 10px 20px;
     border-radius: 6px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-size: 16px;
+    font-size: 14px;
     box-shadow: 0 4px 12px rgba(106, 13, 173, 0.3);
+    white-space: nowrap;
 }
 
 .cta-button:hover {
@@ -184,16 +186,19 @@ nav ul li a.active {
     background: none;
     border: none;
     color: var(--dark-gray);
-    font-size: 20px;
+    font-size: 18px;
     cursor: pointer;
-    margin: 0 20px;
+    margin: 0 10px;
     padding: 8px;
     margin-left: 15px;
     transition: all 0.3s;
     border: 1.7px solid var(--primary);
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .theme-toggle:hover {
@@ -209,7 +214,7 @@ nav ul li a.active {
 }
         /* Services Page Styles */
         .services-hero {
-            padding: 160px 0 80px;
+            padding: 140px 0 60px;
             background: var(--gradient);
             color: white;
             text-align: center;
@@ -230,32 +235,37 @@ nav ul li a.active {
         }
 
         .services-hero h1 {
-            font-size: 3.5rem;
+            font-size: 2.5rem;
             margin-bottom: 20px;
             color: white;
+            word-wrap: break-word;
         }
 
         .services-hero p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             max-width: 700px;
             margin: 0 auto;
             opacity: 0.9;
+            padding: 0 10px;
+            word-wrap: break-word;
         }
 
         .section {
-            padding: 80px 0;
+            padding: 60px 0;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 40px;
+            padding: 0 10px;
         }
 
         .section-title h2 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             margin-bottom: 15px;
             position: relative;
             display: inline-block;
+            word-wrap: break-word;
         }
 
         .section-title h2::after {
@@ -273,14 +283,15 @@ nav ul li a.active {
         .section-title p {
             max-width: 700px;
             margin: 0 auto;
-            font-size: 1.1rem;
+            font-size: 1rem;
+            word-wrap: break-word;
         }
 
         /* Services Grid */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
         }
 
         .service-card {
@@ -296,42 +307,46 @@ nav ul li a.active {
         }
 
         .service-icon {
-            width: 80px;
-            height: 80px;
+            width: 70px;
+            height: 70px;
             background: var(--gradient);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 25px;
+            margin: 0 auto 20px;
             color: white;
-            font-size: 30px;
+            font-size: 28px;
         }
 
         .service-content {
-            padding: 40px 30px;
+            padding: 30px 20px;
             text-align: center;
         }
 
         .service-content h3 {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             margin-bottom: 15px;
+            word-wrap: break-word;
         }
 
         .service-content p {
             margin-bottom: 20px;
+            word-wrap: break-word;
         }
 
         .service-features {
             list-style: none;
             text-align: left;
-            margin: 25px 0;
+            margin: 20px 0;
+            padding: 0 5px;
         }
 
         .service-features li {
             margin-bottom: 10px;
             display: flex;
             align-items: flex-start;
+            word-wrap: break-word;
         }
 
         .service-features li i {
@@ -339,17 +354,19 @@ nav ul li a.active {
             margin-right: 10px;
             margin-top: 5px;
             font-size: 14px;
+            flex-shrink: 0;
         }
 
         .service-button {
             display: inline-block;
             background: var(--gradient);
             color: white;
-            padding: 12px 25px;
+            padding: 10px 20px;
             border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
+            font-size: 14px;
         }
 
         .service-button:hover {
@@ -366,7 +383,7 @@ nav ul li a.active {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 30px;
+            gap: 20px;
             max-width: 1000px;
             margin: 0 auto;
         }
@@ -376,7 +393,7 @@ nav ul li a.active {
             min-width: 250px;
             background: var(--card-bg);
             border-radius: 12px;
-            padding: 40px 30px;
+            padding: 30px 20px;
             box-shadow: var(--shadow);
             text-align: center;
             position: relative;
@@ -400,34 +417,39 @@ nav ul li a.active {
         }
 
         .step-icon {
-            width: 70px;
-            height: 70px;
+            width: 60px;
+            height: 60px;
             background: var(--light-gray);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 25px;
+            margin: 0 auto 20px;
             color: var(--primary);
-            font-size: 28px;
+            font-size: 24px;
         }
 
         .step-card h3 {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             margin-bottom: 15px;
+            word-wrap: break-word;
+        }
+
+        .step-card p {
+            word-wrap: break-word;
         }
 
         /* Benefits Section */
         .benefits-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
         }
 
         .benefit-card {
             background: var(--card-bg);
             border-radius: 12px;
-            padding: 40px 30px;
+            padding: 30px 20px;
             box-shadow: var(--shadow);
             text-align: center;
             transition: transform 0.3s ease;
@@ -438,72 +460,82 @@ nav ul li a.active {
         }
 
         .benefit-icon {
-            width: 70px;
-            height: 70px;
+            width: 60px;
+            height: 60px;
             background: var(--gradient);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 25px;
+            margin: 0 auto 20px;
             color: white;
-            font-size: 28px;
+            font-size: 24px;
         }
 
         .benefit-card h3 {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             margin-bottom: 15px;
+            word-wrap: break-word;
+        }
+
+        .benefit-card p {
+            word-wrap: break-word;
         }
 
         /* Stats Section */
         .stats-section {
             background: var(--gradient);
             color: white;
-            padding: 80px 0;
+            padding: 60px 0;
         }
 
         .stats-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
         }
 
         .stat-card {
             text-align: center;
-            padding: 20px;
+            padding: 15px;
         }
 
         .stat-number {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 10px;
+            word-wrap: break-word;
         }
 
         .stat-label {
-            font-size: 1.2rem;
+            font-size: 1rem;
             opacity: 0.9;
+            word-wrap: break-word;
         }
 
         /* CTA Section */
         .cta-section {
             background-color: var(--light-gray);
             text-align: center;
-            padding: 80px 0;
+            padding: 60px 0;
         }
 
         .cta-content {
             max-width: 700px;
             margin: 0 auto;
+            padding: 0 15px;
         }
 
         .cta-content h2 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             margin-bottom: 20px;
+            word-wrap: break-word;
         }
 
         .cta-content p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             margin-bottom: 30px;
+            word-wrap: break-word;
         }
 
         /* Footer */
@@ -512,22 +544,23 @@ nav ul li a.active {
             background-size: cover;
             background-position: center;
             color: var(--white);
-            padding: 80px 0 20px;
+            padding: 60px 0 20px;
         }
 
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
+            gap: 30px;
+            margin-bottom: 30px;
         }
 
         .footer-column h3 {
-            font-size: 20px;
-            margin-bottom: 25px;
+            font-size: 18px;
+            margin-bottom: 20px;
             color: var(--white);
             position: relative;
             padding-bottom: 10px;
+            word-wrap: break-word;
         }
 
         .footer-column h3:after {
@@ -543,6 +576,7 @@ nav ul li a.active {
         .footer-column p {
             color: var(--gray);
             margin-bottom: 20px;
+            word-wrap: break-word;
         }
 
         .footer-column ul {
@@ -550,7 +584,7 @@ nav ul li a.active {
         }
 
         .footer-column ul li {
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .footer-column ul li a {
@@ -558,11 +592,13 @@ nav ul li a.active {
             text-decoration: none;
             display: flex;
             align-items: center;
+            word-wrap: break-word;
         }
 
         .footer-column ul li a i {
             margin-right: 8px;
             width: 20px;
+            flex-shrink: 0;
         }
 
         .footer-column ul li a:hover {
@@ -580,6 +616,7 @@ nav ul li a.active {
         .working-hours td {
             padding: 8px 0;
             color: var(--gray);
+            word-wrap: break-word;
         }
 
         .working-hours td:first-child {
@@ -593,7 +630,7 @@ nav ul li a.active {
 
         .social-links {
             display: flex;
-            gap: 15px;
+            gap: 10px;
             margin-top: 20px;
         }
 
@@ -601,8 +638,8 @@ nav ul li a.active {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             color: var(--white);
@@ -617,16 +654,35 @@ nav ul li a.active {
 
         .footer-bottom {
             text-align: center;
-            padding-top: 30px;
+            padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: var(--gray);
             font-size: 14px;
+            word-wrap: break-word;
         }
 
         /* Mobile Responsiveness */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            nav ul li {
+                margin-left: 20px;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+
         @media (max-width: 768px) {
             .header-container {
-                padding: 15px 20px;
+                padding: 10px 0;
+            }
+            
+            header {
+                height: 70px;
             }
 
             nav {
@@ -638,6 +694,7 @@ nav ul li a.active {
                 background: var(--card-bg);
                 box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
                 padding: 20px;
+                z-index: 999;
             }
 
             nav.active {
@@ -657,15 +714,15 @@ nav ul li a.active {
             }
 
             .services-hero {
-                padding: 140px 20px 60px;
+                padding: 120px 0 40px;
             }
 
             .services-hero h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
             }
 
             .section {
-                padding: 60px 20px;
+                padding: 40px 0;
             }
 
             .cta-button {
@@ -673,24 +730,40 @@ nav ul li a.active {
             }
 
             .section-title h2 {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
 
             .services-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .logo-img {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .theme-toggle {
+                margin: 0 5px;
+                width: 32px;
+                height: 32px;
+                font-size: 16px;
+            }
         }
 
-        @media (max-width: 450px) {
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            
             .services-grid,
             .benefits-container {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: 1fr;
                 gap: 15px;
             }
 
             .service-card,
             .benefit-card {
-                padding: 15px;
+                padding: 20px 15px;
             }
 
             .service-icon,
@@ -704,6 +777,10 @@ nav ul li a.active {
             .benefit-card h3 {
                 font-size: 1.2rem;
             }
+            
+            .service-content {
+                padding: 20px 15px;
+            }
 
             .steps-container {
                 flex-direction: column;
@@ -711,6 +788,7 @@ nav ul li a.active {
 
             .step-card {
                 min-width: 100%;
+                padding: 25px 15px;
             }
 
             .stats-container {
@@ -718,13 +796,69 @@ nav ul li a.active {
             }
 
             .stat-number {
-                font-size: 2rem;
+                font-size: 1.8rem;
+            }
+            
+            .stat-card {
+                padding: 10px;
             }
 
             .footer-content {
                 grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .services-hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .services-hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.6rem;
+            }
+            
+            .cta-content h2 {
+                font-size: 1.6rem;
+            }
+            
+            .cta-content p {
+                font-size: 1rem;
             }
         }
+        
+/* 1fr Grid for Service Features on Mobile under 450px */
+@media (max-width: 449px) {
+    .container {
+        padding: 0 10px;
+    }
+    
+    .service-features {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+    
+    .service-features li {
+        font-size: 0.85rem;
+        margin-bottom: 8px;
+    }
+    
+    .service-button, .cta-button {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+    
+    .stat-number {
+        font-size: 1.5rem;
+    }
+    
+    .stat-label {
+        font-size: 0.9rem;
+    }
+}
         .footer-logo img {
             width: 120px;
             margin-bottom: 10px;
@@ -736,7 +870,7 @@ nav ul li a.active {
 
 <header id="header">
     <div class="container header-container">
-        <div class="mobile-menu" style="margin-left: 12px;">
+        <div class="mobile-menu">
             <i class="fa-regular fa-bars"></i>
         </div>
         <div class="logo">
@@ -756,7 +890,7 @@ nav ul li a.active {
                 <li><a href="index.html#contact">Contact</a></li>
             </ul>
         </nav>
-        <div>
+        <div style="display: flex; align-items: center;">
             <button class="theme-toggle" id="themeToggle">
                 <i class="fa-regular fa-moon"></i>
             </button>
