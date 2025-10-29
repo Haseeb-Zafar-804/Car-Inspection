@@ -8,6 +8,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.0.7/countUp.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
  
 </head>
@@ -378,72 +381,77 @@
         </div>
     </section>
 
-    <!-- Pricing Section -->
-    <section class="pricing" id="pricing">
-        <div class="container">
-            <div class="section-title">
-                <h2 class="animate-on-scroll">Affordable Pricing Plans</h2>
-                <p class="animate-on-scroll">Choose the plan that fits your needs. All plans include our comprehensive vehicle history report.</p>
+  <!-- Pricing Section -->
+<section class="pricing" id="pricing">
+    <div class="container">
+        <div class="section-title">
+            <h2 class="animate-on-scroll">Affordable Pricing Plans</h2>
+            <p class="animate-on-scroll">Choose the plan that fits your needs. All plans include our comprehensive vehicle history report.</p>
+        </div>
+        <div class="pricing-grid">
+            <!-- Basic Package -->
+            <div class="pricing-card animate-on-scroll">
+                <div class="pricing-header">
+                    <h3 class="pricing-name">Basic Package</h3>
+                    <div class="pricing-price">$29.99</div>
+                    <div class="pricing-period">One-Time</div>
+                </div>
+                <div class="pricing-features">
+                    <ul>
+                        <li><i class="fa-regular fa-check"></i> Accident History</li>
+                        <li><i class="fa-regular fa-check"></i> Title Information</li>
+                        <li><i class="fa-regular fa-check"></i> Basic Specifications</li>
+                        <li class="disabled"><i class="fa-regular fa-times"></i> Service Records</li>
+                        <li class="disabled"><i class="fa-regular fa-times"></i> Ownership History</li>
+                        <li class="disabled"><i class="fa-regular fa-times"></i> Theft Records</li>
+                    </ul>
+                    <button class="pricing-button">Get Basic Report</button>
+                </div>
             </div>
-            <div class="pricing-grid">
-                <div class="pricing-card animate-on-scroll">
-                    <div class="pricing-header">
-                        <h3 class="pricing-name">Gold Package</h3>
-                        <div class="pricing-price">$69.99</div>
-                        <div class="pricing-period">One-Time</div>
-                    </div>
-                    <div class="pricing-features">
-                        <ul>
-                            <li><i class="fa-regular fa-check"></i> Accident History</li>
-                            <li><i class="fa-regular fa-check"></i> Title Information</li>
-                            <li><i class="fa-regular fa-check"></i> Basic Specifications</li>
-                            <li class="disabled"><i class="fa-regular fa-times"></i> Service Records</li>
-                            <li class="disabled"><i class="fa-regular fa-times"></i> Ownership History</li>
-                            <li class="disabled"><i class="fa-regular fa-times"></i> Theft Records</li>
-                        </ul>
-                        <button class="pricing-button">Get Basic Report</button>
-                    </div>
+
+            <!-- Silver Package -->
+            <div class="pricing-card featured animate-on-scroll">
+                <div class="pricing-badge">Most Popular</div>
+                <div class="pricing-header">
+                    <h3 class="pricing-name">Silver Package</h3>
+                    <div class="pricing-price">$49.99</div>
+                    <div class="pricing-period">One-Time</div>
                 </div>
-                <div class="pricing-card featured animate-on-scroll">
-                    <div class="pricing-badge">Most Popular</div>
-                    <div class="pricing-header">
-                        <h3 class="pricing-name">Silver Package</h3>
-                        <div class="pricing-price">$49.99</div>
-                        <div class="pricing-period">One-Time</div>
-                    </div>
-                    <div class="pricing-features">
-                        <ul>
-                            <li><i class="fa-regular fa-check"></i> Everything in Basic</li>
-                            <li><i class="fa-regular fa-check"></i> Service Records</li>
-                            <li><i class="fa-regular fa-check"></i> Ownership History</li>
-                            <li><i class="fa-regular fa-check"></i> Theft Records</li>
-                            <li><i class="fa-regular fa-check"></i> Recall Information</li>
-                            <li class="disabled"><i class="fa-regular fa-times"></i> Market Value</li>
-                        </ul>
-                        <button class="pricing-button">Get Standard Report</button>
-                    </div>
+                <div class="pricing-features">
+                    <ul>
+                        <li><i class="fa-regular fa-check"></i> Everything in Basic</li>
+                        <li><i class="fa-regular fa-check"></i> Service Records</li>
+                        <li><i class="fa-regular fa-check"></i> Ownership History</li>
+                        <li><i class="fa-regular fa-check"></i> Theft Records</li>
+                        <li><i class="fa-regular fa-check"></i> Recall Information</li>
+                        <li class="disabled"><i class="fa-regular fa-times"></i> Market Value Analysis</li>
+                    </ul>
+                    <button class="pricing-button">Get Standard Report</button>
                 </div>
-                <div class="pricing-card animate-on-scroll">
-                    <div class="pricing-header">
-                        <h3 class="pricing-name">Platinium Package</h3>
-                        <div class="pricing-price">$29.99</div>
-                        <div class="pricing-period">One-Time</div>
-                    </div>
-                    <div class="pricing-features">
-                        <ul>
-                            <li><i class="fa-regular fa-check"></i> Everything in Standard</li>
-                            <li><i class="fa-regular fa-check"></i> Market Value Analysis</li>
-                            <li><i class="fa-regular fa-check"></i> Detailed Vehicle Specs</li>
-                            <li><i class="fa-regular fa-check"></i> Sales History</li>
-                            <li><i class="fa-regular fa-check"></i> Lemon Check</li>
-                            <li><i class="fa-regular fa-check"></i> Flood Damage Check</li>
-                        </ul>
-                        <button class="pricing-button">Get Premium Report</button>
-                    </div>
+            </div>
+
+            <!-- Platinum Package -->
+            <div class="pricing-card animate-on-scroll">
+                <div class="pricing-header">
+                    <h3 class="pricing-name">Platinum Package</h3>
+                    <div class="pricing-price">$69.99</div>
+                    <div class="pricing-period">One-Time</div>
+                </div>
+                <div class="pricing-features">
+                    <ul>
+                        <li><i class="fa-regular fa-check"></i> Everything in Silver</li>
+                        <li><i class="fa-regular fa-check"></i> Market Value Analysis</li>
+                        <li><i class="fa-regular fa-check"></i> Detailed Vehicle Specs</li>
+                        <li><i class="fa-regular fa-check"></i> Sales History</li>
+                        <li><i class="fa-regular fa-check"></i> Lemon Check</li>
+                        <li><i class="fa-regular fa-check"></i> Flood Damage Check</li>
+                    </ul>
+                    <button class="pricing-button">Get Premium Report</button>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Trust Indicators -->
     <section class="trust-indicators">
