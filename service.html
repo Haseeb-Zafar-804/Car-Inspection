@@ -675,24 +675,48 @@ nav ul li a.active {
         }
 
         @media (max-width: 768px) {
-            .header-container {
-                padding: 10px 0;
-            }
-            
-            header {
-                height: 70px;
-            }
+    .mobile-menu {
+        display: block;
+    }
+    
+    nav {
+        position: fixed;
+        top: -100%;
+        left: 0;
+        width: 100%;
+        height: auto;
+        background-color: var(--card-bg);
+        transition: top 0.3s ease-in-out;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        z-index: 999;
+    }
+    
+    nav.active {
+        top: 80px;
+    }
+    
+    nav ul {
+        flex-direction: column;
+    }
+    
+    nav ul li {
+        margin: 10px 0;
+    }
+    
 
-            nav {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: var(--card-bg);
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-                padding: 20px;
-                z-index: 999;
+            @media (max-width: 480px) {
+header {
+    padding: 20px 15px;
+}
+
+header h1 {
+    font-size: 1.5rem;
+}
+
+header p {
+    font-size: 1rem;
+}
             }
 
             nav.active {
@@ -734,19 +758,7 @@ nav ul li a.active {
             .services-grid {
                 grid-template-columns: 1fr;
             }
-            
-            .logo-img {
-                width: 50px;
-                height: 50px;
             }
-            
-            .theme-toggle {
-                margin: 0 5px;
-                width: 32px;
-                height: 32px;
-                font-size: 16px;
-            }
-        }
 
         @media (max-width: 480px) {
             .container {
