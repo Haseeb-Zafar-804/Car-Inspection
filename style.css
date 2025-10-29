@@ -38,13 +38,13 @@ body {
     color: var(--text-color);
     line-height: 1.6;
     background-color: var(--bg-color);
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Outfit", sans-serif;
     overflow-x: hidden;
     transition: background-color 0.3s, color 0.3s;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Montserrat', sans-serif;
+      font-family: "Outfit", sans-serif;
     color: var(--dark-gray);
     font-weight: 700;
 }
@@ -1922,4 +1922,5 @@ textarea.form-control {
             display: block;
             filter: drop-shadow(0 0 25px rgba(255, 255, 255, 1)); /* 100% brightness */
         }
-        
+    
+            
