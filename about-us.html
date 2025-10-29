@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.0.7/countUp.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body>
     <style>
@@ -52,13 +55,13 @@ body {
     color: var(--text-color);
     line-height: 1.6;
     background-color: var(--bg-color);
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Outfit", sans-serif;
     overflow-x: hidden;
     transition: background-color 0.3s, color 0.3s;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Outfit", sans-serif;
     color: var(--dark-gray);
     font-weight: 700;
 }
@@ -863,8 +866,8 @@ footer {
     </section>
 
     
-    <!-- Footer -->
-    <footer>
+     <!-- Footer -->
+     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
@@ -917,7 +920,35 @@ footer {
             </div>
         </div>
     </footer>
-
+    <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/686c4560643c8f190db17acd/1ivjeu12r';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
+        <script>
+            // Simple function to open tawk.to chat
+            document.addEventListener('DOMContentLoaded', function() {
+                const questionsBtn = document.getElementById('questionsBtn');
+                
+                questionsBtn.addEventListener('click', function() {
+                    // Check if Tawk_API is available and open chat
+                    if (typeof Tawk_API !== 'undefined') {
+                        Tawk_API.maximize();
+                    } else {
+                        // Fallback if tawk.to isn't loaded
+                        alert('Chat service is currently unavailable. Please try again later.');
+                    }
+                });
+            });
+        </script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Mobile menu toggle
