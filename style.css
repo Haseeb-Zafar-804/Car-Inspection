@@ -987,20 +987,27 @@ transform: translateX(5px);
 }
 
 .pricing-button {
-    display: block;
     width: 100%;
     text-align: center;
     background: var(--gradient);
     color: var(--white);
     padding: 14px;
     border-radius: 6px;
-    text-decoration: none;
     font-weight: 600;
     transition: all 0.3s ease;
     border: none;
     cursor: pointer;
     font-size: 16px;
+    text-decoration: none !important; /* Force remove underline/dashed link */
+    outline: none; /* Removes dashed outline when clicked */
 }
+
+.pricing-button:focus,
+.pricing-button:active {
+    outline: none;
+    text-decoration: none;
+}
+
 
 .pricing-button:hover {
     transform: translateY(-3px);
