@@ -213,7 +213,7 @@ nav ul li a.active {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(rgba(255, 2, 2, 0.274), rgba(255, 4, 4, 0.151)), url('https://images.unsplash.com/photo-1486496572940-2bb2341fdbdf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+    background: linear-gradient(rgba(0, 0, 0, 0.082), rgba(0, 0, 0, 0.075)), url('hero-bg.jpg');
     background-size: cover;
     background-position: center;
     color: var(--white);
@@ -221,6 +221,7 @@ nav ul li a.active {
     text-align: center;
     position: relative;
     overflow: hidden;
+
 }
 
 .hero-content {
@@ -231,7 +232,7 @@ nav ul li a.active {
 }
 
 .hero h1 {
-    font-size: 52px;
+    font-size: 60px;
     margin-bottom: 20px;
     line-height: 1.2;
     color: var(--white);
