@@ -1,0 +1,2056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows Sticker & VIN Report - Car Inspection</title>
+    <!-- PayPal SDK - REPLACE WITH YOUR CLIENT ID -->
+    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&currency=USD"></script>
+    <!-- Font Awesome -->
+    <link rel="icon" type="image/png" href="logo.png" style="height: 90px;">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.0.7/countUp.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #cf0a0a;
+            --primary-dark: #820007;
+            --primary-light: #c90d0d;
+            --white: #ffffff;
+            --light-gray: #f8f9fa;
+            --gray: #e0e0e0;
+            --dark-gray: #2d3748;
+            --text: #4a5568;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --gradient: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            --bg-color: #ffffff;
+            --text-color: #4a5568;
+            --card-bg: #ffffff;
+            --border-radius: 8px;
+            --transition: all 0.3s ease;
+        }
+
+        .dark-mode {
+            --bg-color: #1a202c;
+            --text-color: #e2e8f0;
+            --card-bg: #2d3748;
+            --light-gray: #2d3748;
+            --dark-gray: #f7fafc;
+            --text: #efeff0;
+            --gray: #4a5568;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--bg-color);
+            font-family: "Outfit", sans-serif;
+            overflow-x: hidden;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: "Outfit", sans-serif;
+            color: var(--dark-gray);
+            font-weight: 700;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: var(--shadow);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition);
+            height: 80px;
+            border-bottom: 1px solid var(--gray);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            height: 100%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-menu > li {
+            position: relative;
+            margin: 0 15px;
+        }
+
+        .nav-menu > li > a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 600;
+            font-size: 16px;
+            padding: 8px 0;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .nav-menu > li > a:hover::after,
+        .nav-menu > li > a.active::after {
+            width: 100%;
+        }
+
+        .nav-menu > li > a:hover,
+        .nav-menu > li > a.active {
+            color: var(--primary);
+        }
+
+        /* Dropdown Styles */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--card-bg);
+            min-width: 200px;
+            border: 1px solid var(--gray);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            padding: 8px 0;
+            margin-top: 5px;
+        }
+
+        .dropdown-menu li {
+            list-style: none;
+            margin: 0;
+        }
+
+        .dropdown-menu li a {
+            display: block;
+            padding: 10px 20px;
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            text-align: left;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .dropdown-menu li a:hover {
+            background-color: var(--light-gray);
+            color: var(--primary);
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-toggle .fa-caret-down {
+            margin-left: 5px;
+            font-size: 12px;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .cta-button {
+            background: var(--gradient);
+            color: var(--white);
+            border: none;
+            padding: 10px 24px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 15px;
+            box-shadow: 0 4px 12px rgba(106, 13, 173, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(106, 13, 173, 0.4);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--dark-gray);
+            font-size: 18px;
+            cursor: pointer;
+            padding: 8px;
+            transition: var(--transition);
+            border: 1.7px solid var(--primary);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-toggle:hover {
+            color: var(--primary);
+            transform: rotate(30deg);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--dark-gray);
+            background: none;
+            border: none;
+            padding: 5px;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 80px;
+            background: var(--gradient);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        /* VIN Search Section */
+        .vin-search {
+            background: var(--card-bg);
+            padding: 80px 0;
+            margin-top: -50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .search-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .search-title {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .search-subtitle {
+            color: var(--text);
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+        }
+
+        .search-form {
+            background: var(--light-gray);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark-gray);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid var(--gray);
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: var(--transition);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(207, 10, 10, 0.2);
+        }
+
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23333' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 16px;
+        }
+
+        .vin-validation {
+            margin-top: 8px;
+            font-size: 0.9rem;
+            min-height: 20px;
+        }
+
+        .vin-valid {
+            color: #28a745;
+        }
+
+        .vin-invalid {
+            color: #dc3545;
+        }
+
+        .search-btn {
+            background: var(--gradient);
+            color: var(--white);
+            border: none;
+            padding: 18px 40px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .search-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(207, 10, 10, 0.3);
+        }
+
+        .search-btn:disabled {
+            background: #95a5a6;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Main Content - Windows Sticker Section */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 50px 0;
+            padding: 50px 0;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--light-gray);
+        }
+
+        .card-header i {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        .card-header h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+        }
+
+        .price-tag {
+            background: var(--gradient);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .price-amount {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .price-note {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .feature-list {
+            margin: 25px 0;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            padding: 12px;
+            background: var(--light-gray);
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .feature-item:hover {
+            background: var(--gray);
+            transform: translateX(5px);
+        }
+
+        .feature-item i {
+            color: #28a745;
+            font-size: 1.2rem;
+        }
+
+        .checkbox-group {
+            margin: 25px 0;
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            padding: 15px;
+            border: 2px solid var(--gray);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .checkbox-container:hover {
+            border-color: var(--primary);
+            background: var(--light-gray);
+        }
+
+        .checkbox-container.selected {
+            border-color: var(--primary);
+            background: rgba(207, 10, 10, 0.1);
+        }
+
+        .checkmark {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--gray);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .checkbox-container.selected .checkmark {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .checkmark i {
+            color: white;
+            font-size: 0.9rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .checkbox-container.selected .checkmark i {
+            opacity: 1;
+        }
+
+        .checkbox-label {
+            flex: 1;
+        }
+
+        .checkbox-label h3 {
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .checkbox-label p {
+            color: var(--text);
+            font-size: 0.9rem;
+        }
+
+        .input-group {
+            margin: 20px 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark-gray);
+        }
+
+        input[type="text"], textarea, select {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid var(--gray);
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: var(--transition);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        input[type="text"]:focus, textarea:focus, select:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(207, 10, 10, 0.1);
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .total-section {
+            background: var(--light-gray);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--gray);
+        }
+
+        .total-row:last-child {
+            border-bottom: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        #paypal-button-container {
+            margin: 30px 0;
+        }
+
+        .payment-info {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+            color: #856404;
+        }
+
+        .payment-info h4 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+
+        .success-screen {
+            text-align: center;
+            padding: 50px 30px;
+            display: none;
+        }
+
+        .success-icon {
+            font-size: 5rem;
+            color: #28a745;
+            margin-bottom: 25px;
+        }
+
+        .receipt {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+            text-align: left;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .receipt-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--gray);
+        }
+
+        .receipt-row:last-child {
+            border-bottom: none;
+        }
+
+        .btn {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            margin: 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(207, 10, 10, 0.3);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+        }
+
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 15px 0;
+            display: none;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .quantity-btn {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--gray);
+            background: var(--bg-color);
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .quantity-btn:hover {
+            border-color: var(--primary);
+            background: var(--primary);
+            color: white;
+        }
+
+        #quantity {
+            font-size: 1.5rem;
+            font-weight: bold;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 30px;
+            display: none;
+        }
+
+        .spinner {
+            border: 4px solid var(--light-gray);
+            border-top: 4px solid var(--primary);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(rgba(9, 26, 56, 0.9), rgba(22, 27, 36, 0.9)), url('https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 80px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 25px;
+            color: var(--white);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        .footer-column p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column ul li a {
+            color: var(--gray);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-column ul li a i {
+            margin-right: 8px;
+            width: 20px;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--white);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        /* Footer Logo Styles */
+        .footer-logo {
+            margin-bottom: 20px;
+        }
+
+        .footer-logo img {
+            width: 120px;
+            height: auto;
+            display: block;
+            filter: drop-shadow(0 0 25px rgba(255, 255, 255, 1));
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 1024px) {
+            .nav-menu > li {
+                margin: 0 10px;
+            }
+            
+            .nav-menu > li > a {
+                font-size: 15px;
+            }
+        }
+
+   /* ===============================
+   MOBILE NAVIGATION
+================================ */
+@media (max-width: 768px) {
+    .mobile-menu {
+        display: block;
+        font-size: 24px;
+        cursor: pointer;
+        color: var(--dark-gray);
+        background: none;
+        border: none;
+        padding: 10px;
+        margin-left: 15px;
+        z-index: 1001;
+        transition: transform 0.3s ease;
+    }
+    .logo-img {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+    .mobile-menu:hover {
+        color: var(--primary);
+    }
+    
+    /* Main navigation container */
+    nav {
+        position: fixed;
+        top: -100vh; /* Start above viewport */
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: var(--card-bg);
+        transition: top 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        padding: 100px 30px 40px;
+        z-index: 999;
+        overflow-y: auto;
+        display: block !important; /* Ensure it shows when active */
+    }
+    
+    nav.active {
+        top: 0; /* Slide down into view */
+    }
+    
+    /* Navigation menu */
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+    
+    nav ul li {
+        margin: 0;
+        width: 100%;
+        border-bottom: 1px solid rgba(207, 10, 10, 0.1);
+        transition: var(--transition);
+    }
+    
+    nav ul li:last-child {
+        border-bottom: none;
+    }
+    
+    /* Navigation links */
+    nav ul li a {
+        display: block;
+        padding: 18px 20px;
+        width: 100%;
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--dark-gray);
+        text-align: center;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+    
+    nav ul li a:hover,
+    nav ul li a.active {
+        color: var(--primary);
+        background-color: rgba(207, 10, 10, 0.05);
+        padding-left: 30px;
+    }
+    
+    /* Arrow indicator for hover */
+    nav ul li a::after {
+        content: '→';
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%) translateX(-10px);
+        opacity: 0;
+        transition: all 0.3s ease;
+        color: var(--primary);
+    }
+    
+    nav ul li a:hover::after,
+    nav ul li a.active::after {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0);
+    }
+    
+    /* Mobile dropdown styles */
+    .dropdown-menu {
+        position: static;
+        display: none;
+        width: 100%;
+        border: none;
+        box-shadow: none;
+        background-color: rgba(207, 10, 10, 0.03);
+        margin: 0;
+        padding: 0;
+        border-radius: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+    
+    .dropdown.active .dropdown-menu {
+        display: block;
+        max-height: 300px;
+    }
+    
+    .dropdown-menu li {
+        margin: 0;
+    }
+    
+    .dropdown-menu li a {
+        display: block;
+        padding: 15px 25px;
+        color: var(--text-color);
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 500;
+        text-align: left;
+        transition: all 0.3s ease;
+        border-left: 3px solid transparent;
+    }
+    
+    .dropdown-menu li a:hover {
+        background-color: rgba(207, 10, 10, 0.08);
+        color: var(--primary);
+        border-left-color: var(--primary);
+        padding-left: 35px;
+    }
+    
+    /* Dropdown toggle button */
+    .dropdown-toggle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .dropdown-toggle .fa-caret-down {
+        transition: transform 0.3s ease;
+    }
+    
+    .dropdown.active .dropdown-toggle .fa-caret-down {
+        transform: rotate(180deg);
+    }
+    
+    /* Header adjustments for mobile */
+    .header-container {
+        padding: 10px 0;
+    }
+    
+    .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-left: auto;
+    }
+    
+    .theme-toggle {
+        margin: 0;
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+    }
+    
+    .cta-button {
+        display: none; /* Hide CTA button on mobile as per your existing code */
+    }
+    
+    /* Body scroll prevention when menu is open */
+    body.menu-open {
+        overflow: hidden;
+    }
+}
+
+/* ===============================
+   VERY SMALL MOBILE DEVICES
+================================ */
+@media (max-width: 480px) {
+    header {
+        padding: 15px 0;
+    }
+    
+    .logo-img {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .hero h1 {
+        font-size: 1.8rem;
+        min-height: 100px;
+    }
+    
+    .hero p {
+        font-size: 0.9rem;
+    }
+    
+    nav {
+        padding: 80px 20px 30px;
+    }
+    
+    nav ul li a {
+        padding: 16px 15px;
+        font-size: 16px;
+    }
+    
+    .dropdown-menu li a {
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+} 
+    /* Add overlay when menu is open */
+    .menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 998;
+        display: none;
+        backdrop-filter: blur(3px);
+    }
+    
+    .menu-overlay.active {
+        display: block;
+        animation: fadeIn 0.3s ease;
+    }
+    
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+    }
+    
+    .vin-search {
+        padding: 40px 0;
+        margin-top: -30px;
+    }
+    
+    .search-title {
+        font-size: 2rem;
+    }
+    
+    .search-form {
+        padding: 25px;
+    }
+    
+    .main-content {
+        padding: 30px 0;
+    }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 0.9rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .footer-logo img {
+                width: 100px;
+                margin: 0 auto;
+            }
+            .cta-button {
+            display: none;
+        }
+        }
+      
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="container header-container">
+            <button class="mobile-menu">
+                <i class="fa-regular fa-bars"></i>
+            </button>
+            <div class="logo">
+                <a href="index.html" class="logo-img">
+                    <img src="logo.png" alt="Logo">
+                </a>
+            </div>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#sample-report">Sample Report</a></li>
+                    <li><a href="service.html">Service</a></li>
+                    <li><a href="windows-sticker.html" class="active">Windows Sticker</a></li>
+                    <li><a href="about-us.html">About Us</a></li>
+                    
+                    <!-- Dropdown -->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">
+                            Resources <i class="fa fa-caret-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="index.html#pricing">Pricing</a></li>
+                            <li><a href="faq.html">FAQ</a></li>
+                            <li><a href="index.html#sample-report">Sample Report</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fa-regular fa-moon"></i>
+                </button>
+                <button class="cta-button">Get Report</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Windows Sticker & VIN Reports</h1>
+            <p>Get official window stickers and complete vehicle history reports. Professional service with instant delivery.</p>
+        </div>
+    </section>
+
+    <!-- VIN Search Section -->
+    <section class="vin-search" id="vin-search">
+        <div class="container">
+            <div class="search-container">
+                <h2 class="search-title">Check Your Vehicle History</h2>
+                <p class="search-subtitle">Enter your VIN number to get a comprehensive vehicle history report</p>
+                <form class="search-form" id="vinForm">
+                    <div class="form-group">
+                        <label for="country">Country</label>
+                        <select id="country" class="form-control" required>
+                            <option value="">Select Country</option>
+                            <option value="us">United States</option>
+                            <option value="ca">Canada</option>
+                            <option value="uk">United Kingdom</option>
+                            <option value="au">Australia</option>
+                            <option value="de">Germany</option>
+                            <option value="fr">France</option>
+                            <option value="jp">Japan</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="vin">17-Digit VIN Number</label>
+                        <input type="text" id="vin" class="form-control" placeholder="e.g. 1HGCM82633A123456" maxlength="17" required>
+                        <div class="vin-validation" id="vinValidation"></div>
+                    </div>
+                    <button type="submit" class="search-btn" id="searchBtn">
+                        Get Free Vehicle Report <i class="fa-regular fa-arrow-right"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Purchase Section -->
+    <div class="container" id="purchase-section">
+        <h2 style="text-align: center; color: #cf0a0a; font-size: 2.5rem; margin: 50px 0 30px;">Purchase Services</h2>
+        
+        <div class="main-content">
+            <!-- Left Column: Product Selection -->
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa-regular fa-check-circle"></i>
+                    <h2>Select Your Service</h2>
+                </div>
+
+                <!-- Windows Sticker Option -->
+                <div class="checkbox-group">
+                    <div class="checkbox-container" id="stickerCheckbox" onclick="toggleService('sticker')">
+                        <div class="checkmark">
+                            <i class="fa-regular fa-check"></i>
+                        </div>
+                        <div class="checkbox-label">
+                            <h3>Windows Sticker</h3>
+                            <p>Official vehicle window sticker with all factory specifications, options, and MSRP information.</p>
+                        </div>
+                    </div>
+
+                    <!-- VIN Report Option -->
+                    <div class="checkbox-container" id="reportCheckbox" onclick="toggleService('report')">
+                        <div class="checkmark">
+                            <i class="fa-regular fa-check"></i>
+                        </div>
+                        <div class="checkbox-label">
+                            <h3>VIN History Report</h3>
+                            <p>Complete vehicle history including accidents, ownership, title problems, and service records.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quantity Control -->
+                <div class="quantity-control">
+                    <label>Quantity:</label>
+                    <button class="quantity-btn" onclick="changeQuantity(-1)">-</button>
+                    <span id="quantity">1</span>
+                    <button class="quantity-btn" onclick="changeQuantity(1)">+</button>
+                </div>
+
+                <!-- Vehicle Details -->
+                <div class="input-group">
+                    <label for="vinInput">Vehicle Identification Number (VIN)</label>
+                    <input type="text" id="vinInput" placeholder="Enter 17-digit VIN (e.g., 1FAFP404X1F192678)" maxlength="17">
+                </div>
+
+                <div class="input-group">
+                    <label for="vehicleYear">Vehicle Year</label>
+                    <select id="vehicleYear">
+                        <option value="">Select Year</option>
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                        <option value="2019">2019</option>
+                        <option value="2018">2018</option>
+                        <option value="2017">2017</option>
+                        <option value="2016">2016</option>
+                        <option value="2015">2015</option>
+                        <option value="2014">2014</option>
+                        <option value="2013">2013</option>
+                        <option value="2012">2012</option>
+                        <option value="2011">2011</option>
+                        <option value="2010">2010</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="vehicleMake">Vehicle Make</label>
+                    <input type="text" id="vehicleMake" placeholder="e.g., Ford, Toyota, BMW">
+                </div>
+
+                <div class="input-group">
+                    <label for="vehicleModel">Vehicle Model</label>
+                    <input type="text" id="vehicleModel" placeholder="e.g., Mustang, Camry, X5">
+                </div>
+
+                <div class="input-group">
+                    <label for="specialNotes">Special Instructions (Optional)</label>
+                    <textarea id="specialNotes" placeholder="Any specific requirements or notes..."></textarea>
+                </div>
+
+                <!-- Features Included -->
+                <div class="feature-list">
+                    <h3>What's Included:</h3>
+                    <div class="feature-item">
+                        <i class="fa-regular fa-check-circle"></i>
+                        <span>Official factory window sticker reproduction</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fa-regular fa-check-circle"></i>
+                        <span>Complete vehicle specifications</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fa-regular fa-check-circle"></i>
+                        <span>All factory options and packages</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fa-regular fa-check-circle"></i>
+                        <span>Original MSRP information</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fa-regular fa-check-circle"></i>
+                        <span>High-quality PDF delivery</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fa-regular fa-check-circle"></i>
+                        <span>Printable format for physical sticker</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Order Summary & Payment -->
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa-regular fa-shopping-cart"></i>
+                    <h2>Order Summary</h2>
+                </div>
+
+                <!-- Price Display -->
+                <div class="price-tag">
+                    <div class="price-amount" id="totalPrice">$0.00</div>
+                    <div class="price-note">Total Amount</div>
+                </div>
+
+                <!-- Order Breakdown -->
+                <div class="total-section">
+                    <div class="total-row">
+                        <span>Windows Sticker:</span>
+                        <span id="stickerPrice">$0.00</span>
+                    </div>
+                    <div class="total-row">
+                        <span>VIN Report:</span>
+                        <span id="reportPrice">$0.00</span>
+                    </div>
+                    <div class="total-row">
+                        <span>Quantity:</span>
+                        <span id="quantityDisplay">1</span>
+                    </div>
+                    <div class="total-row">
+                        <span>Subtotal:</span>
+                        <span id="subtotal">$0.00</span>
+                    </div>
+                    <div class="total-row">
+                        <span>Processing Fee:</span>
+                        <span>$0.00</span>
+                    </div>
+                    <div class="total-row">
+                        <span>Total:</span>
+                        <span id="finalTotal">$0.00</span>
+                    </div>
+                </div>
+
+                <!-- Error Message -->
+                <div class="error-message" id="errorMessage"></div>
+
+                <!-- Loading Spinner -->
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p>Processing your order...</p>
+                </div>
+
+                <!-- PayPal Button Container -->
+                <div id="paypal-button-container"></div>
+
+                <!-- Payment Information -->
+                <div class="payment-info">
+                    <h4><i class="fa-regular fa-info-circle"></i> Important Information</h4>
+                    <p>• Windows Sticker: $30.00 each</p>
+                    <p>• VIN Report: $30.00 each</p>
+                    <p>• Combined order (both): $55.00 (save $5)</p>
+                    <p>• Delivery: Instant PDF via email</p>
+                    <p>• Processing time: 1-2 business days for physical stickers</p>
+                </div>
+
+                <!-- Customer Information -->
+                <div class="input-group">
+                    <label for="customerEmail">Email Address</label>
+                    <input type="text" id="customerEmail" placeholder="Your email for delivery">
+                </div>
+
+                <div class="input-group">
+                    <label for="customerPhone">Phone Number (Optional)</label>
+                    <input type="text" id="customerPhone" placeholder="For delivery updates">
+                </div>
+
+                <!-- Success Screen -->
+                <div class="success-screen" id="successScreen">
+                    <div class="success-icon">
+                        <i class="fa-regular fa-check-circle"></i>
+                    </div>
+                    <h2>Order Successful!</h2>
+                    <p>Thank you for your purchase. Your order has been confirmed.</p>
+                    
+                    <div class="receipt" id="orderReceipt">
+                        <!-- Receipt will be dynamically filled -->
+                    </div>
+
+                    <div style="margin-top: 30px;">
+                        <button class="btn" onclick="startNewOrder()">
+                            <i class="fa-regular fa-plus"></i> Place Another Order
+                        </button>
+                        <button class="btn btn-secondary" onclick="printReceipt()">
+                            <i class="fa-regular fa-print"></i> Print Receipt
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <img src="logo.png" alt="CarVerifi Logo">
+                    </div>
+                    <p>Professional vehicle history reports to ensure your safety and peace of mind on the road.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+    
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html"><i class="fa-regular fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#sample-report"><i class="fa-regular fa-chevron-right"></i> Sample Report</a></li>
+                        <li><a href="#pricing"><i class="fa-regular fa-chevron-right"></i> Pricing</a></li>
+                        <li><a href="service.html"><i class="fa-regular fa-chevron-right"></i> Services</a></li>
+                        <li><a href="#faq"><i class="fa-regular fa-chevron-right"></i> FAQ</a></li>
+                    </ul>
+                </div>
+    
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#"><i class="fa-regular fa-chevron-right"></i> Vehicle History Report</a></li>
+                        <li><a href="#"><i class="fa-regular fa-chevron-right"></i> VIN Check</a></li>
+                        <li><a href="#"><i class="fa-regular fa-chevron-right"></i> Accident History</a></li>
+                        <li><a href="#"><i class="fa-regular fa-chevron-right"></i> Ownership History</a></li>
+                        <li><a href="#"><i class="fa-regular fa-chevron-right"></i> Service Records</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><a href="#"><i class="fa-regular fa-phone"></i> (555) 123-4567</a></li>
+                        <li><a href="#"><i class="fa-regular fa-envelope"></i> info@carverifi.com</a></li>
+                        <li><a href="#"><i class="fa-regular fa-location-dot"></i> 123 Auto Lane, Detroit, MI</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 CarVerifi. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            document.querySelector('.mobile-menu').addEventListener('click', function() {
+                document.querySelector('nav').classList.toggle('active');
+            });
+
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('nav a').forEach(link => {
+                link.addEventListener('click', () => {
+                    document.querySelector('nav').classList.remove('active');
+                });
+            });
+
+            // Header scroll effect
+            window.addEventListener('scroll', function() {
+                const header = document.getElementById('header');
+                if (window.scrollY > 100) {
+                    header.style.padding = '5px 0';
+                    header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+                } else {
+                    header.style.padding = '0';
+                    header.style.boxShadow = 'none';
+                }
+            });
+
+            // Dark mode toggle
+            const themeToggle = document.getElementById('themeToggle');
+            const themeIcon = themeToggle.querySelector('i');
+            
+            // Check for saved theme preference
+            const currentTheme = localStorage.getItem('theme') || 'light';
+            if (currentTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                themeIcon.className = 'fa-regular fa-sun';
+            }
+            
+            themeToggle.addEventListener('click', function() {
+                document.body.classList.toggle('dark-mode');
+                const isDarkMode = document.body.classList.contains('dark-mode');
+                
+                if (isDarkMode) {
+                    themeIcon.className = 'fa-regular fa-sun';
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    themeIcon.className = 'fa-regular fa-moon';
+                    localStorage.setItem('theme', 'light');
+                }
+            });
+
+            // Mobile dropdown toggle
+            document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+                toggle.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        const dropdown = this.closest('.dropdown');
+                        dropdown.classList.toggle('active');
+                    }
+                });
+            });
+
+            // Close all dropdowns when clicking outside (for mobile)
+            document.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768 && !e.target.closest('.dropdown')) {
+                    document.querySelectorAll('.dropdown').forEach(dropdown => {
+                        dropdown.classList.remove('active');
+                    });
+                }
+            });
+        });
+
+        // VIN elements
+        const vinInput = document.getElementById('vin');
+        const vinValidation = document.getElementById('vinValidation');
+        const searchBtn = document.getElementById('searchBtn');
+        const vinForm = document.getElementById('vinForm');
+
+        // VIN validation while typing
+        vinInput.addEventListener('input', function () {
+            const vin = vinInput.value.toUpperCase().replace(/\s+/g, '');
+            const vinRegex = /^[A-HJ-NPR-Z0-9]{17}$/;
+
+            if (vin.length === 17) {
+                if (vinRegex.test(vin)) {
+                    vinValidation.textContent = '✓ Valid VIN format';
+                    vinValidation.className = 'vin-validation vin-valid';
+                    searchBtn.disabled = false;
+                } else {
+                    vinValidation.textContent = '✗ Invalid VIN format';
+                    vinValidation.className = 'vin-validation vin-invalid';
+                    searchBtn.disabled = true;
+                }
+            } else {
+                vinValidation.textContent = '';
+                searchBtn.disabled = false;
+            }
+        });
+
+        // Redirect on submit
+        vinForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const vin = vinInput.value.trim().toUpperCase().replace(/\s+/g, '');
+
+            if (vin.length !== 17) {
+                vinValidation.textContent = "VIN must be exactly 17 characters.";
+                vinValidation.className = 'vin-validation vin-invalid';
+                return;
+            }
+
+            const redirectURL = "https://www.vindecoderz.com/EN/check-lookup/" + vin;
+            window.open(redirectURL, "_blank");
+        });
+
+        // Windows Sticker Purchase Variables
+        let selectedServices = {
+            sticker: false,
+            report: false
+        };
+        let quantity = 1;
+        let unitPrices = {
+            sticker: 30.00,
+            report: 30.00,
+            bundle: 55.00
+        };
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            updatePrices();
+            initPayPal();
+            
+            // Auto-uppercase VIN input for purchase form
+            document.getElementById('vinInput').addEventListener('input', function() {
+                this.value = this.value.toUpperCase();
+                this.value = this.value.replace(/[^A-Z0-9]/g, '');
+            });
+            
+            // Copy VIN from free check to purchase form
+            document.getElementById('vin').addEventListener('input', function() {
+                const vin = this.value.trim().toUpperCase();
+                if (vin.length === 17) {
+                    document.getElementById('vinInput').value = vin;
+                }
+            });
+        });
+
+        // Toggle service selection
+        function toggleService(service) {
+            const checkbox = document.getElementById(service + 'Checkbox');
+            
+            // Toggle selection
+            selectedServices[service] = !selectedServices[service];
+            checkbox.classList.toggle('selected');
+            
+            // Update prices
+            updatePrices();
+            
+            // Validate selection
+            validateOrder();
+        }
+
+        // Change quantity
+        function changeQuantity(change) {
+            const newQuantity = quantity + change;
+            if (newQuantity >= 1 && newQuantity <= 10) {
+                quantity = newQuantity;
+                document.getElementById('quantity').textContent = quantity;
+                document.getElementById('quantityDisplay').textContent = quantity;
+                updatePrices();
+            }
+        }
+
+        // Update all price displays
+        function updatePrices() {
+            const stickerSelected = selectedServices.sticker;
+            const reportSelected = selectedServices.report;
+            
+            // Calculate individual prices
+            let stickerPrice = 0;
+            let reportPrice = 0;
+            let subtotal = 0;
+            
+            if (stickerSelected && reportSelected) {
+                // Bundle price
+                subtotal = unitPrices.bundle * quantity;
+                stickerPrice = (unitPrices.bundle / 2) * quantity;
+                reportPrice = (unitPrices.bundle / 2) * quantity;
+            } else {
+                if (stickerSelected) {
+                    stickerPrice = unitPrices.sticker * quantity;
+                    subtotal += stickerPrice;
+                }
+                if (reportSelected) {
+                    reportPrice = unitPrices.report * quantity;
+                    subtotal += reportPrice;
+                }
+            }
+            
+            // Update display
+            document.getElementById('stickerPrice').textContent = stickerPrice > 0 ? `$${stickerPrice.toFixed(2)}` : '$0.00';
+            document.getElementById('reportPrice').textContent = reportPrice > 0 ? `$${reportPrice.toFixed(2)}` : '$0.00';
+            document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
+            document.getElementById('finalTotal').textContent = `$${subtotal.toFixed(2)}`;
+            document.getElementById('totalPrice').textContent = `$${subtotal.toFixed(2)}`;
+        }
+
+        // Validate order before payment
+        function validateOrder() {
+            const errorDiv = document.getElementById('errorMessage');
+            const vin = document.getElementById('vinInput').value.trim();
+            const email = document.getElementById('customerEmail').value.trim();
+            
+            // Check if at least one service is selected
+            if (!selectedServices.sticker && !selectedServices.report) {
+                showError('Please select at least one service (Windows Sticker or VIN Report)');
+                return false;
+            }
+            
+            // Check VIN
+            if (vin.length !== 17) {
+                showError('Please enter a valid 17-digit VIN number');
+                return false;
+            }
+            
+            // Check email
+            if (!email || !validateEmail(email)) {
+                showError('Please enter a valid email address for delivery');
+                return false;
+            }
+            
+            // Hide any error message
+            errorDiv.style.display = 'none';
+            return true;
+        }
+
+        // Show error message
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+            
+            // Scroll to error
+            errorDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Validate email format
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        // Initialize PayPal
+        function initPayPal() {
+            // ⚠️ IMPORTANT: Replace with your actual PayPal Client ID
+            const clientId = 'YOUR_PAYPAL_CLIENT_ID';
+            
+            paypal.Buttons({
+                style: {
+                    layout: 'vertical',
+                    color: 'blue',
+                    shape: 'rect',
+                    label: 'paypal'
+                },
+                
+                // Create order
+                createOrder: function(data, actions) {
+                    // Validate order first
+                    if (!validateOrder()) {
+                        return Promise.reject(new Error('Please fix the errors above'));
+                    }
+                    
+                    // Calculate total
+                    const total = calculateTotal();
+                    
+                    // Show loading
+                    document.getElementById('loading').style.display = 'block';
+                    
+                    // Create PayPal order
+                    return actions.order.create({
+                        purchase_units: [{
+                            amount: {
+                                value: total.toFixed(2),
+                                currency_code: 'USD'
+                            },
+                            description: generateOrderDescription(),
+                            custom_id: document.getElementById('vinInput').value.trim(),
+                            invoice_id: 'WIN-' + Date.now(),
+                            
+                            // Additional information for your records
+                            items: generateItemList()
+                        }],
+                        application_context: {
+                            brand_name: 'Car Inspection',
+                            shipping_preference: 'NO_SHIPPING',
+                            user_action: 'PAY_NOW'
+                        }
+                    });
+                },
+                
+                // On payment approval
+                onApprove: function(data, actions) {
+                    return actions.order.capture().then(function(details) {
+                        // Hide loading
+                        document.getElementById('loading').style.display = 'none';
+                        
+                        // ✅ Payment successful - money sent to your account
+                        console.log('✅ Payment completed!');
+                        console.log('💰 Transaction ID:', details.id);
+                        console.log('💵 Amount:', details.purchase_units[0].amount.value);
+                        console.log('📧 Customer Email:', details.payer.email_address);
+                        console.log('🚗 VIN:', document.getElementById('vinInput').value);
+                        
+                        // Show success screen
+                        showSuccessScreen(details);
+                        
+                        // In production, send this data to your backend
+                        // sendOrderToBackend(details);
+                    });
+                },
+                
+                // Handle errors
+                onError: function(err) {
+                    document.getElementById('loading').style.display = 'none';
+                    console.error('❌ PayPal Error:', err);
+                    showError('Payment failed. Please try again or contact support.');
+                },
+                
+                // Handle cancellation
+                onCancel: function(data) {
+                    document.getElementById('loading').style.display = 'none';
+                    console.log('Payment cancelled by user');
+                    showError('Payment was cancelled. You can try again when ready.');
+                }
+                
+            }).render('#paypal-button-container');
+        }
+
+        // Calculate total amount
+        function calculateTotal() {
+            const stickerSelected = selectedServices.sticker;
+            const reportSelected = selectedServices.report;
+            
+            if (stickerSelected && reportSelected) {
+                return unitPrices.bundle * quantity;
+            }
+            
+            let total = 0;
+            if (stickerSelected) total += unitPrices.sticker * quantity;
+            if (reportSelected) total += unitPrices.report * quantity;
+            
+            return total;
+        }
+
+        // Generate order description for PayPal
+        function generateOrderDescription() {
+            const services = [];
+            if (selectedServices.sticker) services.push('Windows Sticker');
+            if (selectedServices.report) services.push('VIN Report');
+            
+            const vin = document.getElementById('vinInput').value.trim();
+            return `${services.join(' + ')} for VIN: ${vin}`;
+        }
+
+        // Generate item list for PayPal
+        function generateItemList() {
+            const items = [];
+            
+            if (selectedServices.sticker) {
+                items.push({
+                    name: 'Windows Sticker',
+                    unit_amount: {
+                        currency_code: 'USD',
+                        value: unitPrices.sticker.toFixed(2)
+                    },
+                    quantity: quantity.toString(),
+                    category: 'DIGITAL_GOODS'
+                });
+            }
+            
+            if (selectedServices.report) {
+                items.push({
+                    name: 'VIN History Report',
+                    unit_amount: {
+                        currency_code: 'USD',
+                        value: unitPrices.report.toFixed(2)
+                    },
+                    quantity: quantity.toString(),
+                    category: 'DIGITAL_GOODS'
+                });
+            }
+            
+            return items;
+        }
+
+        // Show success screen
+        function showSuccessScreen(details) {
+            // Hide payment section
+            document.getElementById('paypal-button-container').style.display = 'none';
+            document.querySelector('.payment-info').style.display = 'none';
+            
+            // Generate receipt
+            generateReceipt(details);
+            
+            // Show success screen
+            document.getElementById('successScreen').style.display = 'block';
+            
+            // Scroll to success
+            document.getElementById('successScreen').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Generate receipt
+        function generateReceipt(details) {
+            const receiptDiv = document.getElementById('orderReceipt');
+            const vin = document.getElementById('vinInput').value.trim();
+            const email = document.getElementById('customerEmail').value.trim();
+            
+            let servicesHtml = '';
+            if (selectedServices.sticker) {
+                servicesHtml += `<div class="receipt-row">
+                    <span>Windows Sticker (${quantity}x):</span>
+                    <span>$${(unitPrices.sticker * quantity).toFixed(2)}</span>
+                </div>`;
+            }
+            if (selectedServices.report) {
+                servicesHtml += `<div class="receipt-row">
+                    <span>VIN Report (${quantity}x):</span>
+                    <span>$${(unitPrices.report * quantity).toFixed(2)}</span>
+                </div>`;
+            }
+            
+            receiptDiv.innerHTML = `
+                <div class="receipt-row">
+                    <span>Order Number:</span>
+                    <span>WIN-${Date.now().toString().slice(-8)}</span>
+                </div>
+                <div class="receipt-row">
+                    <span>Transaction ID:</span>
+                    <span>${details.id}</span>
+                </div>
+                <div class="receipt-row">
+                    <span>Order Date:</span>
+                    <span>${new Date().toLocaleString()}</span>
+                </div>
+                <div class="receipt-row">
+                    <span>VIN Number:</span>
+                    <span>${vin}</span>
+                </div>
+                <div class="receipt-row">
+                    <span>Vehicle:</span>
+                    <span>${document.getElementById('vehicleYear').value} ${document.getElementById('vehicleMake').value} ${document.getElementById('vehicleModel').value}</span>
+                </div>
+                <div class="receipt-row">
+                    <span>Delivery Email:</span>
+                    <span>${email}</span>
+                </div>
+                ${servicesHtml}
+                <div class="receipt-row">
+                    <span>Subtotal:</span>
+                    <span>$${calculateTotal().toFixed(2)}</span>
+                </div>
+                <div class="receipt-row">
+                    <span>Payment Method:</span>
+                    <span>PayPal</span>
+                </div>
+                <div class="receipt-row" style="font-weight: bold; color: #28a745;">
+                    <span>Total Paid:</span>
+                    <span>$${calculateTotal().toFixed(2)}</span>
+                </div>
+            `;
+        }
+
+        // Print receipt
+        function printReceipt() {
+            const printContent = document.getElementById('orderReceipt').innerHTML;
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(`
+                <html>
+                <head>
+                    <title>Order Receipt - Car Inspection</title>
+                    <style>
+                        body { font-family: Arial; padding: 20px; }
+                        .receipt { max-width: 500px; margin: 0 auto; }
+                        .receipt-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #ddd; }
+                        .total { font-weight: bold; font-size: 1.2rem; }
+                    </style>
+                </head>
+                <body>
+                    <div class="receipt">
+                        <h2>Car Inspection - Order Receipt</h2>
+                        ${printContent}
+                        <p style="margin-top: 30px;">Thank you for your purchase!</p>
+                    </div>
+                </body>
+                </html>
+            `);
+            printWindow.document.close();
+            printWindow.print();
+        }
+
+        // Start new order
+        function startNewOrder() {
+            // Reset everything
+            selectedServices = { sticker: false, report: false };
+            quantity = 1;
+            
+            // Reset checkboxes
+            document.getElementById('stickerCheckbox').classList.remove('selected');
+            document.getElementById('reportCheckbox').classList.remove('selected');
+            
+            // Reset inputs
+            document.getElementById('vinInput').value = '';
+            document.getElementById('vehicleYear').value = '';
+            document.getElementById('vehicleMake').value = '';
+            document.getElementById('vehicleModel').value = '';
+            document.getElementById('specialNotes').value = '';
+            document.getElementById('customerEmail').value = '';
+            document.getElementById('customerPhone').value = '';
+            document.getElementById('quantity').textContent = '1';
+            document.getElementById('quantityDisplay').textContent = '1';
+            
+            // Reset displays
+            updatePrices();
+            
+            // Hide success screen
+            document.getElementById('successScreen').style.display = 'none';
+            
+            // Show payment section
+            document.getElementById('paypal-button-container').style.display = 'block';
+            document.querySelector('.payment-info').style.display = 'block';
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
