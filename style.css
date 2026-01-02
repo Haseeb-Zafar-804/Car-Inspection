@@ -56,17 +56,168 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0 6px;
     box-sizing: border-box;
 }
-/* Header Styles */
+
+/* ===============================
+   NAVBAR BASE
+================================ */
+
+  nav ul li {
+    position: relative;
+  }
+  
+  /* ===============================
+     NAV LINKS (SAME FOR ALL)
+  ===============================
+  
+  /* ===============================
+     DROPDOWN
+  ================================ */
+  .dropdown {
+    position: relative;
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    border-radius: 2px;
+    border: 1px solid #efeff0;
+    padding: 10px 0;
+    min-width: 200px;
+    z-index: 100;
+    display: none;
+}
+
+.dropdown-item {
+    padding: 10px 20px;
+    display: block;
+    color: var(--google-gray);
+    text-decoration: none;
+    font-size: 14px;
+}
+
+  
+  /* Dropdown links */
+.dropdown-menu li a {
+    display: block;
+    color: #000;
+    padding: 12px 16px;
+    text-decoration: none;
+    white-space: nowrap;
+    text-align: left;          /* ✅ Left text alignment */
+    transition: none !important;
+    left: -30px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .dropdown-menu li a {
+      left: auto;          /* ✅ removes left offset */
+      text-align: left;    /* stays left aligned */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .mobile-menu {
+        display: block;
+    }
+    
+    nav {
+        position: fixed;
+        top: -100%;
+        left: 0;
+        width: 100%;
+        height: auto;
+        background-color: var(--card-bg);
+        transition: top 0.3s ease-in-out;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        z-index: 999;
+    }
+    
+    nav.active {
+        top: 80px;
+    }
+    
+    nav ul {
+        flex-direction: column;
+    }
+    
+    nav ul li {
+        margin: 10px 0;
+    }
+    
+
+            @media (max-width: 480px) {
+header {
+    padding: 20px 15px;
+}
+
+header h1 {
+    font-size: 1.5rem;
+}
+
+header p {
+    font-size: 1rem;
+}
+            }
+
+            nav.active {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li {
+                margin: 0 0 15px 0;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .services-hero {
+                padding: 120px 0 40px;
+            }
+
+            .services-hero h1 {
+                font-size: 2rem;
+            }
+
+            .section {
+                padding: 40px 0;
+            }
+
+            .cta-button {
+                display: none;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            }
+  /* Show dropdown */
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+  
+  /* Header Styles */
 header {
     background-color: var(--card-bg);
-    box-shadow: var(--shadow);
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000;
+    z-index: 999;
     transition: all 0.3s ease;
-    height: 100px;
+    height: 93px;
+    border-bottom: 1px solid #dfdfdf;
 }
 
 .header-container {
@@ -118,27 +269,30 @@ nav ul li {
 }
 
 nav ul li a {
+    display: inline-block;      /* ✅ allows text-align */
+    text-align: left;           /* ✅ left text */
     text-decoration: none;
     color: var(--dark-gray);
     font-weight: 600;
     font-size: 16px;
-    transition: color 0.3s;
+    transition: color 0.3s ease;
     position: relative;
 }
 
-nav ul li a:after {
+/* Smooth underline */
+nav ul li a::after {
     content: '';
     position: absolute;
     width: 0;
     height: 2px;
     bottom: -5px;
     left: 0;
-    background-color: var(--primary);
     transition: width 0.3s ease;
 }
 
-nav ul li a:hover:after,
-nav ul li a.active:after {
+/* Hover & active */
+nav ul li a:hover::after,
+nav ul li a.active::after {
     width: 100%;
 }
 
