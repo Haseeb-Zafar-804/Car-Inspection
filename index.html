@@ -16,38 +16,50 @@
  
 </head>
 <body>
-      <!-- Header -->
-    <header id="header">
-        <div class="container header-container">
-            <div class="mobile-menu" style="margin-left: 12px;">
-                <i class="fa-regular fa-bars"></i>
-            </div>
-            <div class="logo">
-                <div class="logo-img" style="cursor: pointer;" href="index.html">
-                    <img src="logo.png" alt="Logo" id="logo">
-                </div>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="#sample-report">Sample Report</a></li>
-                    <li><a href="#pricing">Pricing</a></li>
-                    <li><a href="service.html">Service</a></li>
-                    <li><a href="report.html">Book an Appointment</a></li>
-                    <li><a href="about-us.html">About US</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-            <div>
-                <button class="theme-toggle" id="themeToggle">
-                    <i class="fa-regular fa-moon"></i>
-                </button>
-                <button class="cta-button">Get Report</button>
-            </div>
+   <!-- Header -->
+<header id="header">
+    <div class="container header-container">
+        <div class="mobile-menu" style="margin-left: 12px;">
+            <!-- Fixed Font Awesome icon -->
+            <i class="fa-regular fa-bars"></i>
         </div>
-    </header>
-
+        <div class="logo">
+            <!-- Fixed: Wrapped img in an anchor tag or removed href from div -->
+            <a href="index.html" class="logo-img" style="cursor: pointer;">
+                <img src="logo.png" alt="Logo" id="logo">
+            </a>
+        </div>
+        <nav>
+            <ul class="nav-menu">
+              <li><a href="index.html" class="active">Home</a></li>
+              <li><a href="#sample-report">Sample Report</a></li>
+              <li><a href="service.html">Service</a></li>
+              <li><a href="windows-sticker.html">Windows Sticker</a></li>
+              <li><a href="about-us.html">About Us</a></li>
+          
+              <!-- Dropdown -->
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle">
+                  Resources <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="index.html#pricing">Pricing</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="index.html#sample-report">Sample Report</a></li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+          
+        <div>
+            <button class="theme-toggle" id="themeToggle">
+                <!-- Font Awesome icon for theme toggle -->
+                <i class="fa-regular fa-moon"></i>
+            </button>
+            <button class="cta-button">Get Report</button>
+        </div>
+    </div>
+</header>
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
@@ -830,51 +842,60 @@
 </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <div class="footer-logo">
-                        <img src="logo.png" alt="CarVerifi Logo">
-                    </div>
-                    <p>Professional vehicle history reports to ensure your safety and peace of mind on the road.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-column">
+                <div class="footer-logo">
+                    <img src="logo.png" alt="CarVerifi Logo">
                 </div>
-    
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="index.html"><i class="fa-regular fa-chevron-right"></i> Home</a></li>
-                        <li><a href="#sample-report"><i class="fa-regular fa-chevron-right"></i> Sample Report</a></li>
-                        <li><a href="#pricing"><i class="fa-regular fa-chevron-right"></i> Pricing</a></li>
-                        <li><a href="service.html"><i class="fa-regular fa-chevron-right"></i> Services</a></li>
-                        <li><a href="#faq"><i class="fa-regular fa-chevron-right"></i> FAQ</a></li>
-                    </ul>
+                <p>Professional vehicle history reports to ensure your safety and peace of mind on the road.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
                 </div>
-    
-                <div class="footer-column">
-                    <h3>Services</h3>
-                    <ul>
-                        <li><a href="#"><i class="fa-regular fa-chevron-right"></i> Vehicle History Report</a></li>
-                        <li><a href="#"><i class="fa-regular fa-chevron-right"></i> VIN Check</a></li>
-                        <li><a href="#"><i class="fa-regular fa-chevron-right"></i> Accident History</a></li>
-                        <li><a href="#"><i class="fa-regular fa-chevron-right"></i> Ownership History</a></li>
-                        <li><a href="#"><i class="fa-regular fa-chevron-right"></i> Service Records</a></li>
-                    </ul>
-                </div>
-    
-                
-        </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 CarVerifi. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html"><i class="fa-regular fa-chevron-right"></i> Home</a></li>
+                    <li><a href="#sample-report"><i class="fa-regular fa-chevron-right"></i> Sample Report</a></li>
+                    <li><a href="#pricing"><i class="fa-regular fa-chevron-right"></i> Pricing</a></li>
+                    <li><a href="service.html"><i class="fa-regular fa-chevron-right"></i> Services</a></li>
+                    <li><a href="#faq"><i class="fa-regular fa-chevron-right"></i> FAQ</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#"><i class="fa-regular fa-chevron-right"></i> Vehicle History Report</a></li>
+                    <li><a href="#"><i class="fa-regular fa-chevron-right"></i> VIN Check</a></li>
+                    <li><a href="#"><i class="fa-regular fa-chevron-right"></i> Accident History</a></li>
+                    <li><a href="#"><i class="fa-regular fa-chevron-right"></i> Ownership History</a></li>
+                    <li><a href="#"><i class="fa-regular fa-chevron-right"></i> Service Records</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact Info</h3>
+                <ul>
+                    <li><a href="#"><i class="fa-regular fa-phone"></i> (555) 123-4567</a></li>
+                    <li><a href="#"><i class="fa-regular fa-envelope"></i> info@carverifi.com</a></li>
+                    <li><a href="#"><i class="fa-regular fa-location-dot"></i> 123 Auto Lane, Detroit, MI</a></li>
+                </ul>
             </div>
         </div>
-    </footer>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 CarVerifi. All rights reserved. | Privacy Policy | Terms of Service</p>
+        </div>
+    </div>
+</footer>
     <!--Start of Tawk.to Script-->
 <script type="text/javascript">
     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
