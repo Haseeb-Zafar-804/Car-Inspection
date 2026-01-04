@@ -1,15 +1,14 @@
+// Back to Top Button with Progress Circle
 const backToTopBtn = document.getElementById('backToTop');
 const progressCircle = document.querySelector('.progress-ring-circle');
-const circumference = 2 * Math.PI * 24; // 2πr (r=24 because diameter=50-2=48)
+const circumference = 2 * Math.PI * 24;
 
-// Set initial stroke-dasharray and stroke-dashoffset
 if (progressCircle) {
     progressCircle.style.strokeDasharray = circumference;
     progressCircle.style.strokeDashoffset = circumference;
 }
 
 window.addEventListener('scroll', function() {
-    // Calculate scroll progress (0 to 1)
     const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
     const scrollPosition = window.scrollY;
     const scrollProgress = Math.min(scrollPosition / scrollHeight, 1);
@@ -20,12 +19,24 @@ window.addEventListener('scroll', function() {
         progressCircle.style.strokeDashoffset = offset;
     }
     
-    // Show/hide button (only appears after scrolling down 300px)
+    // Show/hide back to top button
     if (backToTopBtn) {
         if (scrollPosition > 300) {
             backToTopBtn.style.display = 'flex';
         } else {
             backToTopBtn.style.display = 'none';
+        }
+    }
+    
+    // Header scroll effect
+    const header = document.getElementById('header');
+    if (header) {
+        if (scrollPosition > 100) {
+            header.style.padding = '2px 0';
+            header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+        } else {
+            header.style.padding = '0';
+            header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
         }
     }
 });
@@ -39,8 +50,11 @@ if (backToTopBtn) {
     });
 }
 
+// Main DOM Content Loaded Functionality
 document.addEventListener('DOMContentLoaded', function() {
-    // FAQ functionality
+    // ============================================
+    // 1. FAQ FUNCTIONALITY
+    // ============================================
     const faqItems = document.querySelectorAll('.faq-item');
     
     faqItems.forEach(item => {
@@ -67,36 +81,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Mobile menu toggle
-    const mobileMenu = document.querySelector('.mobile-menu');
-    if (mobileMenu) {
-        mobileMenu.addEventListener('click', function() {
-            document.querySelector('nav').classList.toggle('active');
-        });
-    }
-
-    // Close mobile menu when clicking on a link
-    document.querySelectorAll('nav a').forEach(link => {
-        link.addEventListener('click', () => {
-            document.querySelector('nav').classList.remove('active');
-        });
-    });
-
-    // Header scroll effect
-    window.addEventListener('scroll', function() {
-        const header = document.getElementById('header');
-        if (header) {
-            if (window.scrollY > 100) {
-                header.style.padding = '5px 0';
-                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
-            } else {
-                header.style.padding = '0';
-                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-            }
-        }
-    });
-
-    // Scroll animations
+    // ============================================
+    // 2. SCROLL ANIMATIONS
+    // ============================================
     function checkScroll() {
         const elements = document.querySelectorAll('.animate-on-scroll');
         
@@ -110,12 +97,29 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Add scroll event listener for animations
     window.addEventListener('scroll', checkScroll);
-    // Initial check
     checkScroll();
 
-    // VIN elements
+    // Report container animation
+    const reportContainer = document.querySelector('.report-container');
+    
+    function checkReportScroll() {
+        if (reportContainer) {
+            const elementTop = reportContainer.getBoundingClientRect().top;
+            const elementVisible = 150;
+            
+            if (elementTop < window.innerHeight - elementVisible) {
+                reportContainer.classList.add('animated');
+            }
+        }
+    }
+    
+    window.addEventListener('load', checkReportScroll);
+    window.addEventListener('scroll', checkReportScroll);
+
+    // ============================================
+    // 3. VIN VALIDATION & SEARCH
+    // ============================================
     const vinInput = document.getElementById('vin');
     const vinValidation = document.getElementById('vinValidation');
     const searchBtn = document.getElementById('searchBtn');
@@ -160,7 +164,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Sample Report Tabs
+    // ============================================
+    // 4. SAMPLE REPORT TABS
+    // ============================================
     const reportTabs = document.querySelectorAll('.report-tab');
     const tabContents = document.querySelectorAll('.tab-content');
     
@@ -179,26 +185,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Animation for sample report section
-    const reportContainer = document.querySelector('.report-container');
-    
-    function checkReportScroll() {
-        if (reportContainer) {
-            const elementTop = reportContainer.getBoundingClientRect().top;
-            const elementVisible = 150;
-            
-            if (elementTop < window.innerHeight - elementVisible) {
-                reportContainer.classList.add('animated');
-            }
-        }
-    }
-    
-    // Initial check
-    window.addEventListener('load', checkReportScroll);
-    // Check on scroll
-    window.addEventListener('scroll', checkReportScroll);
-
-    // Stats Counter Animation
+    // ============================================
+    // 5. STATS COUNTER ANIMATION
+    // ============================================
     function animateStats() {
         const statNumbers = document.querySelectorAll('.stat-number');
 
@@ -242,7 +231,9 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(statsSection);
     }
 
-    // Dark Mode Toggle
+    // ============================================
+    // 6. DARK MODE TOGGLE
+    // ============================================
     const themeToggle = document.getElementById('themeToggle');
     if (themeToggle) {
         const themeIcon = themeToggle.querySelector('i');
@@ -268,7 +259,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Simple Auto Typing Animation
+    // ============================================
+    // 7. AUTO TYPING ANIMATION
+    // ============================================
     const messages = [
         " Get detailed vehicle history reports",
         " Ownership and accident records",
@@ -313,7 +306,9 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(typeWriter, 500);
     }
 
-    // Form Submission
+    // ============================================
+    // 8. FORM SUBMISSION
+    // ============================================
     const contactForm = document.getElementById('contactForm');
     const commentForm = document.getElementById('commentForm');
     
@@ -391,35 +386,226 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Mobile dropdown toggle
-    document.querySelectorAll('.dropdown > a').forEach(dropdown => {
-        dropdown.addEventListener('click', function(e) {
-            // Only on mobile screens
-            if (window.innerWidth <= 768) {
+    // ============================================
+    // 9. MOBILE MENU & DROPDOWN FUNCTIONALITY
+    // ============================================
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const nav = document.querySelector('nav');
+    const header = document.getElementById('header');
+    
+    if (mobileMenu && nav) {
+        // Toggle mobile menu
+        mobileMenu.addEventListener('click', function(e) {
+            e.stopPropagation();
+            nav.classList.toggle('active');
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!nav.contains(e.target) && !mobileMenu.contains(e.target)) {
+                nav.classList.remove('active');
+            }
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+            });
+        });
+        
+        // Fix for header container position on mobile
+        if (window.innerWidth <= 768) {
+            // Ensure header container has proper positioning
+            if (header) {
+                header.style.position = 'fixed';
+                header.style.top = '0';
+                header.style.width = '100%';
+                header.style.zIndex = '1000';
+                header.style.backgroundColor = 'white';
+            }
+            
+            // Add padding to body to account for fixed header
+            document.body.style.paddingTop = '60px';
+        }
+    }
+    
+    // ============================================
+    // 10. ENHANCED DROPDOWN BEHAVIOR FOR DEVICES UNDER 600PX
+    // ============================================
+    const dropdownToggles = document.querySelectorAll('.dropdown > a');
+    
+    // Function to close all dropdowns
+    function closeAllDropdowns(except = null) {
+        dropdownToggles.forEach(toggle => {
+            const dropdown = toggle.closest('.dropdown');
+            if (dropdown && dropdown !== except) {
+                dropdown.classList.remove('active');
+            }
+        });
+    }
+    
+    // Enhanced dropdown toggle for mobile
+    dropdownToggles.forEach(toggle => {
+        // Desktop: Show on hover (for screens > 600px)
+        toggle.addEventListener('mouseenter', function(e) {
+            if (window.innerWidth > 600) {
+                closeAllDropdowns();
+                const dropdown = this.closest('.dropdown');
+                if (dropdown) dropdown.classList.add('active');
+            }
+        });
+        
+        // Desktop: Hide on mouse leave
+        const dropdown = toggle.closest('.dropdown');
+        if (dropdown) {
+            dropdown.addEventListener('mouseleave', function(e) {
+                if (window.innerWidth > 600) {
+                    if (!this.contains(e.relatedTarget)) {
+                        this.classList.remove('active');
+                    }
+                }
+            });
+        }
+        
+        // Enhanced click behavior for mobile (under 600px)
+        toggle.addEventListener('click', function(e) {
+            if (window.innerWidth <= 600) {
                 e.preventDefault();
-                const parent = this.parentElement;
+                e.stopPropagation();
                 
-                // Toggle active class
-                parent.classList.toggle('active');
+                const dropdown = this.closest('.dropdown');
+                const allDropdowns = document.querySelectorAll('.dropdown');
                 
-                // Close other dropdowns
-                document.querySelectorAll('.dropdown').forEach(other => {
-                    if (other !== parent) {
-                        other.classList.remove('active');
+                // If this dropdown is already active, do nothing
+                if (dropdown.classList.contains('active')) {
+                    return;
+                }
+                
+                // Close all other dropdowns
+                allDropdowns.forEach(otherDropdown => {
+                    if (otherDropdown !== dropdown) {
+                        otherDropdown.classList.remove('active');
                     }
                 });
+                
+                // Open this dropdown
+                dropdown.classList.add('active');
+            } else if (window.innerWidth <= 768 && window.innerWidth > 600) {
+                // For tablets (601px to 768px): Toggle dropdown
+                e.preventDefault();
+                e.stopPropagation();
+                const dropdown = this.closest('.dropdown');
+                const isActive = dropdown.classList.contains('active');
+                
+                closeAllDropdowns(dropdown);
+                
+                if (!isActive) {
+                    dropdown.classList.add('active');
+                } else {
+                    dropdown.classList.remove('active');
+                }
             }
         });
     });
-
-    // Close dropdowns when clicking outside (mobile)
+    
+    // Close dropdowns when clicking outside (only for mobile under 600px)
     document.addEventListener('click', function(e) {
-        if (window.innerWidth <= 768) {
-            if (!e.target.closest('.dropdown')) {
-                document.querySelectorAll('.dropdown').forEach(dropdown => {
-                    dropdown.classList.remove('active');
-                });
+        if (window.innerWidth <= 600) {
+            // Check if click is inside any dropdown or its toggle
+            const clickedInsideDropdown = e.target.closest('.dropdown');
+            
+            // If click is outside ALL dropdowns
+            if (!clickedInsideDropdown) {
+                closeAllDropdowns();
+            } else {
+                // Click was inside a dropdown, but we need to check if it was on the toggle
+                const clickedToggle = e.target.closest('.dropdown > a');
+                if (!clickedToggle) {
+                    // Click was inside dropdown menu but not on toggle
+                    // Don't close - keep it open as requested
+                    return;
+                }
             }
         }
+    });
+    
+    // Close dropdowns when clicking on nav links inside dropdown (but not the toggle)
+    document.querySelectorAll('.dropdown-menu a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            if (window.innerWidth <= 600) {
+                // Close the parent dropdown
+                const dropdown = this.closest('.dropdown');
+                if (dropdown) {
+                    dropdown.classList.remove('active');
+                }
+                
+                // Also close the mobile menu
+                if (nav) {
+                    nav.classList.remove('active');
+                }
+            }
+        });
+    });
+    
+    // Handle window resize
+    window.addEventListener('resize', function() {
+        // Reset dropdowns on larger screens
+        if (window.innerWidth > 600) {
+            closeAllDropdowns();
+        }
+        
+        // Reset mobile menu
+        if (nav) {
+            nav.classList.remove('active');
+        }
+        
+        // Handle header positioning
+        if (window.innerWidth > 768) {
+            // Reset on desktop
+            if (header) {
+                header.style.position = '';
+                header.style.top = '';
+            }
+            document.body.style.paddingTop = '';
+        } else {
+            // Apply mobile styles
+            if (header) {
+                header.style.position = 'fixed';
+                header.style.top = '0';
+                header.style.width = '100%';
+                header.style.zIndex = '1000';
+                header.style.backgroundColor = 'white';
+            }
+            document.body.style.paddingTop = '60px';
+        }
+    });
+    
+    // ============================================
+    // 11. TAWK.TO CHAT FUNCTIONALITY
+    // ============================================
+    const questionsBtn = document.getElementById('questionsBtn');
+    if (questionsBtn) {
+        questionsBtn.addEventListener('click', function() {
+            // Check if Tawk_API is available and open chat
+            if (typeof Tawk_API !== 'undefined') {
+                Tawk_API.maximize();
+            } else {
+                // Fallback if tawk.to isn't loaded
+                alert('Chat service is currently unavailable. Please try again later.');
+            } 
+        });
+    }
+    
+    // ============================================
+    // 12. CTA BUTTON FUNCTIONALITY
+    // ============================================
+    const ctaButtons = document.querySelectorAll('.cta-button, .service-button');
+    ctaButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            // Scroll to top for VIN input or main page
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
     });
 });
