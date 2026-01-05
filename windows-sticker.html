@@ -1156,7 +1156,382 @@
             display: none;
         }
         }
+/* Email and Phone Input Styling */
+.input-group {
+    margin: 20px 0;
+    position: relative;
+}
 
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--dark-gray);
+}
+
+.input-group label.required::after {
+    content: " *";
+    color: var(--primary);
+}
+
+.input-group input[type="email"],
+.input-group input[type="tel"],
+.input-group input[type="text"] {
+    width: 100%;
+    padding: 14px 45px 14px 15px;
+    border: 2px solid var(--gray);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: var(--transition);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: inherit;
+}
+
+.input-group input[type="email"]:focus,
+.input-group input[type="tel"]:focus {
+    border-color: var(--primary);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(207, 10, 10, 0.1);
+}
+
+/* Input with icon */
+.input-group.with-icon {
+    position: relative;
+}
+
+.input-group.with-icon input {
+    padding-left: 45px;
+}
+
+.input-group.with-icon .input-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text);
+    font-size: 1.1rem;
+    transition: var(--transition);
+}
+
+.input-group.with-icon input:focus + .input-icon {
+    color: var(--primary);
+}
+
+/* Validation States */
+.input-group input.valid {
+    border-color: #28a745;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%2328a745' viewBox='0 0 16 16'%3E%3Cpath d='M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 16px;
+    padding-right: 40px;
+}
+
+.input-group input.invalid {
+    border-color: #dc3545;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23dc3545' viewBox='0 0 16 16'%3E%3Cpath d='M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z'/%3E%3Cpath d='M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 16px;
+    padding-right: 40px;
+}
+
+.input-group input.pending {
+    border-color: #ffc107;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23ffc107' viewBox='0 0 16 16'%3E%3Cpath d='M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z'/%3E%3Cpath d='M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm0-1A7 7 0 1 1 8 1a7 7 0 0 1 0 14z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 16px;
+    padding-right: 40px;
+}
+
+/* Validation Messages */
+.validation-message {
+    display: block;
+    margin-top: 6px;
+    font-size: 0.85rem;
+    min-height: 20px;
+    transition: var(--transition);
+}
+
+.validation-message.valid {
+    color: #28a745;
+}
+
+.validation-message.invalid {
+    color: #dc3545;
+}
+
+.validation-message.pending {
+    color: #ffc107;
+}
+
+/* Phone number formatting */
+.input-group input[type="tel"].formatted {
+    letter-spacing: 0.5px;
+}
+
+/* Placeholder Styling */
+.input-group input::placeholder {
+    color: #999;
+    opacity: 0.7;
+}
+
+.input-group input:focus::placeholder {
+    opacity: 0.5;
+}
+
+/* Hover Effects */
+.input-group input:hover:not(:focus):not(.valid):not(.invalid) {
+    border-color: #b0b0b0;
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+/* Dark Mode Adjustments */
+.dark-mode .input-group input[type="email"],
+.dark-mode .input-group input[type="tel"],
+.dark-mode .input-group input[type="text"] {
+    background-color: var(--card-bg);
+    border-color: var(--gray);
+    color: var(--text-color);
+}
+
+.dark-mode .input-group input::placeholder {
+    color: #aaa;
+}
+
+.dark-mode .input-group input:hover:not(:focus):not(.valid):not(.invalid) {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.dark-mode .input-group.with-icon .input-icon {
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
+/* Focus ring for accessibility */
+.input-group input:focus {
+    box-shadow: 0 0 0 3px rgba(207, 10, 10, 0.2);
+}
+
+/* Disabled state */
+.input-group input:disabled {
+    background-color: var(--light-gray);
+    border-color: var(--gray);
+    color: #999;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* Readonly state */
+.input-group input:read-only {
+    background-color: var(--light-gray);
+    border-color: var(--gray);
+    color: var(--text);
+}
+
+/* Success state additional styling */
+.input-group.success input {
+    border-color: #28a745;
+    background-color: rgba(40, 167, 69, 0.05);
+}
+
+/* Error state additional styling */
+.input-group.error input {
+    border-color: #dc3545;
+    background-color: rgba(220, 53, 69, 0.05);
+}
+
+/* Loading state */
+.input-group.loading::after {
+    content: '';
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--gray);
+    border-top: 2px solid var(--primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* Character counter for textareas */
+.char-counter {
+    text-align: right;
+    font-size: 0.8rem;
+    color: var(--text);
+    margin-top: 5px;
+}
+
+.char-counter.near-limit {
+    color: #ffc107;
+}
+
+.char-counter.over-limit {
+    color: #dc3545;
+}
+
+/* Phone number specific styling */
+.phone-input-group {
+    position: relative;
+}
+
+.phone-country-code {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text);
+    font-weight: 500;
+    pointer-events: none;
+}
+
+.phone-input-group input {
+    padding-left: 50px;
+}
+
+/* Email specific validation icon */
+.email-validation-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.email-validation-icon.visible {
+    opacity: 1;
+}
+
+.email-validation-icon.valid {
+    color: #28a745;
+}
+
+.email-validation-icon.invalid {
+    color: #dc3545;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .input-group input[type="email"],
+    .input-group input[type="tel"],
+    .input-group input[type="text"] {
+        padding: 12px 40px 12px 12px;
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+    
+    .input-group.with-icon input {
+        padding-left: 40px;
+    }
+    
+    .input-group.with-icon .input-icon {
+        left: 12px;
+    }
+    
+    .phone-input-group input {
+        padding-left: 45px;
+    }
+    
+    .phone-country-code {
+        left: 12px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .input-group {
+        margin: 15px 0;
+    }
+    
+    .input-group input[type="email"],
+    .input-group input[type="tel"],
+    .input-group input[type="text"] {
+        padding: 10px 35px 10px 10px;
+    }
+    
+    .validation-message {
+        font-size: 0.8rem;
+    }
+}
+
+/* Animation for validation state changes */
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.4); }
+    70% { box-shadow: 0 0 0 6px rgba(40, 167, 69, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0); }
+}
+
+.input-group input.valid {
+    animation: pulse 0.5s ease-in-out;
+}
+
+/* Tooltip for validation messages */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltip-text {
+    visibility: hidden;
+    width: 200px;
+    background-color: var(--dark-gray);
+    color: var(--white);
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+.tooltip .tooltip-text::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--dark-gray) transparent transparent transparent;
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Form group with help text */
+.form-group-help {
+    margin-top: 5px;
+    font-size: 0.85rem;
+    color: var(--text);
+    opacity: 0.8;
+}
+
+/* Compact input group for side-by-side fields */
+.input-group-compact {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+@media (max-width: 768px) {
+    .input-group-compact {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+}
 .footer-logo img {
     margin-left: 0;
 }
@@ -1179,7 +1554,7 @@
             <nav>
                 <ul class="nav-menu">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="report.html"  class="active">Report</a></li>
+                    <li><a href="report.html">Report</a></li>
                     <li><a href="service.html">Service</a></li>
                     <li><a href="windows-sticker.html" class="active">Windows Sticker</a></li>
                     <li><a href="about-us.html">About Us</a></li>
@@ -1210,8 +1585,8 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1>Windows Sticker & VIN Reports</h1>
-            <p>Get official window stickers and complete vehicle history reports. Professional service with instant delivery.</p>
+            <h1>Premium Vehicle Documentation Services</h1>
+            <p>Purchase official window stickers and complete vehicle history reports. Professional service with instant delivery.</p>
         </div>
     </section>
 
@@ -1220,7 +1595,7 @@
         <div class="container">
             <div class="search-container">
                 <h2 class="search-title">Check Your Vehicle History</h2>
-                <p class="search-subtitle">Enter your VIN number to get a comprehensive vehicle history report</p>
+                <p class="search-subtitle">Enter your VIN number to access premium vehicle information services</p>
                 <form class="search-form" id="vinForm">
                     <div class="form-group">
                         <label for="country">Country</label>
@@ -1241,7 +1616,7 @@
                         <div class="vin-validation" id="vinValidation"></div>
                     </div>
                     <button type="submit" class="search-btn" id="searchBtn">
-                        Get Free Vehicle Report <i class="fa-regular fa-arrow-right"></i>
+                        Get Vehicle Report <i class="fa-regular fa-arrow-right"></i>
                     </button>
                 </form>
             </div>
@@ -1317,6 +1692,7 @@
                         <option value="2012">2012</option>
                         <option value="2011">2011</option>
                         <option value="2010">2010</option>
+                        <!-- Add more years as needed -->
                     </select>
                 </div>
 
@@ -1430,13 +1806,13 @@
 
                 <!-- Customer Information -->
                 <div class="input-group">
-                    <label for="customerEmail">Email Address</label>
-                    <input type="text" id="customerEmail" placeholder="Your email for delivery">
+                    <label for="customerEmail">Email Address *</label>
+                    <input type="email" id="customerEmail" placeholder="Your email for delivery" required>
                 </div>
 
                 <div class="input-group">
-                    <label for="customerPhone">Phone Number (Optional)</label>
-                    <input type="text" id="customerPhone" placeholder="For delivery updates">
+                    <label for="customerPhone">Phone Number</label>
+                    <input type="tel" id="customerPhone" placeholder="For delivery updates">
                 </div>
 
                 <!-- Success Screen -->
@@ -1514,631 +1890,639 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2025 CarVerifi. All rights reserved. | Privacy Policy | Terms of Service</p>
+                <p>&copy; 2025 CarVerifi. All rights reserved. | <a href="#" style="color: var(--gray);">Privacy Policy</a> | <a href="#" style="color: var(--gray);">Terms of Service</a></p>
             </div>
         </div>
     </footer>
 
     <script>
-       document.addEventListener('DOMContentLoaded', function() {
-    // Mobile menu toggle
-    const mobileMenu = document.querySelector('.mobile-menu');
-    const nav = document.querySelector('nav');
-    const dropdownToggles = document.querySelectorAll('.dropdown > a');
-    
-    // Mobile menu functionality
-    mobileMenu.addEventListener('click', function(e) {
-        e.stopPropagation();
-        nav.classList.toggle('active');
-    });
-    
-    // Close mobile menu when clicking on a link
-    document.querySelectorAll('nav a:not(.dropdown-toggle)').forEach(link => {
-        link.addEventListener('click', () => {
-            nav.classList.remove('active');
-        });
-    });
-    
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', function(e) {
-        if (!nav.contains(e.target) && !mobileMenu.contains(e.target)) {
-            nav.classList.remove('active');
-        }
-    });
-    
-    // HEADER SCROLL EFFECT
-    window.addEventListener('scroll', function() {
-        const header = document.getElementById('header');
-        if (window.scrollY > 100) {
-            header.style.padding = '5px 0';
-            header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
-        } else {
-            header.style.padding = '0';
-            header.style.boxShadow = 'none';
-        }
-    });
-    
-    // DARK MODE TOGGLE
-    const themeToggle = document.getElementById('themeToggle');
-    const themeIcon = themeToggle.querySelector('i');
-    
-    const currentTheme = localStorage.getItem('theme') || 'light';
-    if (currentTheme === 'dark') {
-        document.body.classList.add('dark-mode');
-        themeIcon.className = 'fa-regular fa-sun';
-    }
-    
-    themeToggle.addEventListener('click', function() {
-        document.body.classList.toggle('dark-mode');
-        const isDarkMode = document.body.classList.contains('dark-mode');
-        
-        if (isDarkMode) {
-            themeIcon.className = 'fa-regular fa-sun';
-            localStorage.setItem('theme', 'dark');
-        } else {
-            themeIcon.className = 'fa-regular fa-moon';
-            localStorage.setItem('theme', 'light');
-        }
-    });
-    
-    // DROPDOWN FUNCTIONALITY FOR DEVICES UNDER 600PX
-    // Enhanced dropdown toggle with the specific behavior you requested
-    dropdownToggles.forEach(toggle => {
-        toggle.addEventListener('click', function(e) {
-            // Only apply special behavior for devices under 600px
-            if (window.innerWidth <= 600) {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                const dropdown = this.closest('.dropdown');
-                const allDropdowns = document.querySelectorAll('.dropdown');
-                
-                // If this dropdown is already active, do nothing
-                if (dropdown.classList.contains('active')) {
-                    return;
-                }
-                
-                // Close all other dropdowns
-                allDropdowns.forEach(otherDropdown => {
-                    if (otherDropdown !== dropdown) {
-                        otherDropdown.classList.remove('active');
-                    }
-                });
-                
-                // Open this dropdown
-                dropdown.classList.add('active');
-            }
-        });
-    });
-    
-    // Close dropdowns when clicking outside (only for mobile)
-    document.addEventListener('click', function(e) {
-        if (window.innerWidth <= 600) {
-            // Check if click is inside any dropdown or its toggle
-            const clickedInsideDropdown = e.target.closest('.dropdown');
+        // Windows Sticker Purchase Variables
+        let selectedServices = {
+            sticker: false,
+            report: false
+        };
+        let quantity = 1;
+        let unitPrices = {
+            sticker: 30.00,
+            report: 30.00,
+            bundle: 55.00
+        };
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const nav = document.querySelector('nav');
+            const dropdownToggles = document.querySelectorAll('.dropdown > a');
             
-            // If click is outside ALL dropdowns
-            if (!clickedInsideDropdown) {
-                document.querySelectorAll('.dropdown').forEach(dropdown => {
-                    dropdown.classList.remove('active');
+            // Mobile menu functionality
+            mobileMenu.addEventListener('click', function(e) {
+                e.stopPropagation();
+                nav.classList.toggle('active');
+            });
+            
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('nav a:not(.dropdown-toggle)').forEach(link => {
+                link.addEventListener('click', () => {
+                    nav.classList.remove('active');
                 });
-            } else {
-                // Click was inside a dropdown, but we need to check if it was on the toggle
-                const clickedToggle = e.target.closest('.dropdown > a');
-                if (!clickedToggle) {
-                    // Click was inside dropdown menu but not on toggle
-                    // Don't close - keep it open as requested
-                    return;
-                }
-            }
-        }
-    });
-    
-    // Close dropdowns when clicking on nav links inside dropdown (but not the toggle)
-    document.querySelectorAll('.dropdown-menu a').forEach(link => {
-        link.addEventListener('click', function(e) {
-            if (window.innerWidth <= 600) {
-                // Close the parent dropdown
-                const dropdown = this.closest('.dropdown');
-                if (dropdown) {
-                    dropdown.classList.remove('active');
-                }
-                
-                // Also close the mobile menu
-                if (nav) {
+            });
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!nav.contains(e.target) && !mobileMenu.contains(e.target)) {
                     nav.classList.remove('active');
                 }
-            }
-        });
-    });
-    
-    // Handle window resize
-    window.addEventListener('resize', function() {
-        // Reset dropdowns on larger screens
-        if (window.innerWidth > 600) {
-            document.querySelectorAll('.dropdown').forEach(dropdown => {
-                dropdown.classList.remove('active');
             });
             
-            // Reset mobile menu
-            if (nav) {
-                nav.classList.remove('active');
-            }
-        }
-    });
-    
-    // Prevent dropdown toggle from closing when clicking inside dropdown menu
-    document.querySelectorAll('.dropdown-menu').forEach(menu => {
-        menu.addEventListener('click', function(e) {
-            e.stopPropagation();
-        });
-    });
-    
-    // VIN VALIDATION FOR SEARCH FORM
-    const vinInput = document.getElementById('vin');
-    const vinValidation = document.getElementById('vinValidation');
-    const searchBtn = document.getElementById('searchBtn');
-    const vinForm = document.getElementById('vinForm');
-    
-    if (vinInput && vinValidation && searchBtn && vinForm) {
-        // VIN validation while typing
-        vinInput.addEventListener('input', function () {
-            const vin = vinInput.value.toUpperCase().replace(/\s+/g, '');
-            const vinRegex = /^[A-HJ-NPR-Z0-9]{17}$/;
-    
-            if (vin.length === 17) {
-                if (vinRegex.test(vin)) {
-                    vinValidation.textContent = '✓ Valid VIN format';
-                    vinValidation.className = 'vin-validation vin-valid';
-                    searchBtn.disabled = false;
+            // HEADER SCROLL EFFECT
+            window.addEventListener('scroll', function() {
+                const header = document.getElementById('header');
+                if (window.scrollY > 100) {
+                    header.style.padding = '5px 0';
+                    header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
                 } else {
-                    vinValidation.textContent = '✗ Invalid VIN format';
-                    vinValidation.className = 'vin-validation vin-invalid';
-                    searchBtn.disabled = true;
+                    header.style.padding = '0';
+                    header.style.boxShadow = 'none';
                 }
-            } else {
-                vinValidation.textContent = '';
-                searchBtn.disabled = false;
-            }
-        });
-    
-        // Redirect on submit
-        vinForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-    
-            const vin = vinInput.value.trim().toUpperCase().replace(/\s+/g, '');
-    
-            if (vin.length !== 17) {
-                vinValidation.textContent = "VIN must be exactly 17 characters.";
-                vinValidation.className = 'vin-validation vin-invalid';
-                return;
-            }
-    
-            const redirectURL = "https://www.vindecoderz.com/EN/check-lookup/" + vin;
-            window.open(redirectURL, "_blank");
-        });
-    }
-});
-
-// Windows Sticker Purchase Variables
-let selectedServices = {
-    sticker: false,
-    report: false
-};
-let quantity = 1;
-let unitPrices = {
-    sticker: 30.00,
-    report: 30.00,
-    bundle: 55.00
-};
-
-// Initialize on page load
-document.addEventListener('DOMContentLoaded', function() {
-    updatePrices();
-    initPayPal();
-    
-    // Auto-uppercase VIN input for purchase form
-    document.getElementById('vinInput').addEventListener('input', function() {
-        this.value = this.value.toUpperCase();
-        this.value = this.value.replace(/[^A-Z0-9]/g, '');
-    });
-    
-    // Copy VIN from free check to purchase form
-    document.getElementById('vin').addEventListener('input', function() {
-        const vin = this.value.trim().toUpperCase();
-        if (vin.length === 17) {
-            document.getElementById('vinInput').value = vin;
-        }
-    });
-});
-
-// Toggle service selection
-function toggleService(service) {
-    const checkbox = document.getElementById(service + 'Checkbox');
-    
-    // Toggle selection
-    selectedServices[service] = !selectedServices[service];
-    checkbox.classList.toggle('selected');
-    
-    // Update prices
-    updatePrices();
-    
-    // Validate selection
-    validateOrder();
-}
-
-// Change quantity
-function changeQuantity(change) {
-    const newQuantity = quantity + change;
-    if (newQuantity >= 1 && newQuantity <= 10) {
-        quantity = newQuantity;
-        document.getElementById('quantity').textContent = quantity;
-        document.getElementById('quantityDisplay').textContent = quantity;
-        updatePrices();
-    }
-}
-
-// Update all price displays
-function updatePrices() {
-    const stickerSelected = selectedServices.sticker;
-    const reportSelected = selectedServices.report;
-    
-    // Calculate individual prices
-    let stickerPrice = 0;
-    let reportPrice = 0;
-    let subtotal = 0;
-    
-    if (stickerSelected && reportSelected) {
-        // Bundle price
-        subtotal = unitPrices.bundle * quantity;
-        stickerPrice = (unitPrices.bundle / 2) * quantity;
-        reportPrice = (unitPrices.bundle / 2) * quantity;
-    } else {
-        if (stickerSelected) {
-            stickerPrice = unitPrices.sticker * quantity;
-            subtotal += stickerPrice;
-        }
-        if (reportSelected) {
-            reportPrice = unitPrices.report * quantity;
-            subtotal += reportPrice;
-        }
-    }
-    
-    // Update display
-    document.getElementById('stickerPrice').textContent = stickerPrice > 0 ? `$${stickerPrice.toFixed(2)}` : '$0.00';
-    document.getElementById('reportPrice').textContent = reportPrice > 0 ? `$${reportPrice.toFixed(2)}` : '$0.00';
-    document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
-    document.getElementById('finalTotal').textContent = `$${subtotal.toFixed(2)}`;
-    document.getElementById('totalPrice').textContent = `$${subtotal.toFixed(2)}`;
-}
-
-// Validate order before payment
-function validateOrder() {
-    const errorDiv = document.getElementById('errorMessage');
-    const vin = document.getElementById('vinInput').value.trim();
-    const email = document.getElementById('customerEmail').value.trim();
-    
-    // Check if at least one service is selected
-    if (!selectedServices.sticker && !selectedServices.report) {
-        showError('Please select at least one service (Windows Sticker or VIN Report)');
-        return false;
-    }
-    
-    // Check VIN
-    if (vin.length !== 17) {
-        showError('Please enter a valid 17-digit VIN number');
-        return false;
-    }
-    
-    // Check email
-    if (!email || !validateEmail(email)) {
-        showError('Please enter a valid email address for delivery');
-        return false;
-    }
-    
-    // Hide any error message
-    errorDiv.style.display = 'none';
-    return true;
-}
-
-// Show error message
-function showError(message) {
-    const errorDiv = document.getElementById('errorMessage');
-    errorDiv.textContent = message;
-    errorDiv.style.display = 'block';
-    
-    // Scroll to error
-    errorDiv.scrollIntoView({ behavior: 'smooth' });
-}
-
-// Validate email format
-function validateEmail(email) {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(email);
-}
-
-// Initialize PayPal
-function initPayPal() {
-    // ⚠️ IMPORTANT: Replace with your actual PayPal Client ID
-    const clientId = 'YOUR_PAYPAL_CLIENT_ID';
-    
-    paypal.Buttons({
-        style: {
-            layout: 'vertical',
-            color: 'blue',
-            shape: 'rect',
-            label: 'paypal'
-        },
-        
-        // Create order
-        createOrder: function(data, actions) {
-            // Validate order first
-            if (!validateOrder()) {
-                return Promise.reject(new Error('Please fix the errors above'));
+            });
+            
+            // DARK MODE TOGGLE
+            const themeToggle = document.getElementById('themeToggle');
+            const themeIcon = themeToggle.querySelector('i');
+            
+            const currentTheme = localStorage.getItem('theme') || 'light';
+            if (currentTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                themeIcon.className = 'fa-regular fa-sun';
             }
             
-            // Calculate total
-            const total = calculateTotal();
+            themeToggle.addEventListener('click', function() {
+                document.body.classList.toggle('dark-mode');
+                const isDarkMode = document.body.classList.contains('dark-mode');
+                
+                if (isDarkMode) {
+                    themeIcon.className = 'fa-regular fa-sun';
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    themeIcon.className = 'fa-regular fa-moon';
+                    localStorage.setItem('theme', 'light');
+                }
+            });
             
-            // Show loading
-            document.getElementById('loading').style.display = 'block';
+            // DROPDOWN FUNCTIONALITY FOR DEVICES UNDER 600PX
+            dropdownToggles.forEach(toggle => {
+                toggle.addEventListener('click', function(e) {
+                    // Only apply special behavior for devices under 600px
+                    if (window.innerWidth <= 600) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        
+                        const dropdown = this.closest('.dropdown');
+                        const allDropdowns = document.querySelectorAll('.dropdown');
+                        
+                        // If this dropdown is already active, do nothing
+                        if (dropdown.classList.contains('active')) {
+                            return;
+                        }
+                        
+                        // Close all other dropdowns
+                        allDropdowns.forEach(otherDropdown => {
+                            if (otherDropdown !== dropdown) {
+                                otherDropdown.classList.remove('active');
+                            }
+                        });
+                        
+                        // Open this dropdown
+                        dropdown.classList.add('active');
+                    }
+                });
+            });
             
-            // Create PayPal order
-            return actions.order.create({
-                purchase_units: [{
-                    amount: {
-                        value: total.toFixed(2),
-                        currency_code: 'USD'
-                    },
-                    description: generateOrderDescription(),
-                    custom_id: document.getElementById('vinInput').value.trim(),
-                    invoice_id: 'WIN-' + Date.now(),
+            // Close dropdowns when clicking outside (only for mobile)
+            document.addEventListener('click', function(e) {
+                if (window.innerWidth <= 600) {
+                    // Check if click is inside any dropdown or its toggle
+                    const clickedInsideDropdown = e.target.closest('.dropdown');
                     
-                    // Additional information for your records
-                    items: generateItemList()
-                }],
-                application_context: {
-                    brand_name: 'Car Inspection',
-                    shipping_preference: 'NO_SHIPPING',
-                    user_action: 'PAY_NOW'
+                    // If click is outside ALL dropdowns
+                    if (!clickedInsideDropdown) {
+                        document.querySelectorAll('.dropdown').forEach(dropdown => {
+                            dropdown.classList.remove('active');
+                        });
+                    } else {
+                        // Click was inside a dropdown, but we need to check if it was on the toggle
+                        const clickedToggle = e.target.closest('.dropdown > a');
+                        if (!clickedToggle) {
+                            // Click was inside dropdown menu but not on toggle
+                            // Don't close - keep it open as requested
+                            return;
+                        }
+                    }
                 }
             });
-        },
-        
-        // On payment approval
-        onApprove: function(data, actions) {
-            return actions.order.capture().then(function(details) {
-                // Hide loading
-                document.getElementById('loading').style.display = 'none';
-                
-                // ✅ Payment successful - money sent to your account
-                console.log('✅ Payment completed!');
-                console.log('💰 Transaction ID:', details.id);
-                console.log('💵 Amount:', details.purchase_units[0].amount.value);
-                console.log('📧 Customer Email:', details.payer.email_address);
-                console.log('🚗 VIN:', document.getElementById('vinInput').value);
-                
-                // Show success screen
-                showSuccessScreen(details);
-                
-                // In production, send this data to your backend
-                // sendOrderToBackend(details);
+            
+            // Close dropdowns when clicking on nav links inside dropdown (but not the toggle)
+            document.querySelectorAll('.dropdown-menu a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 600) {
+                        // Close the parent dropdown
+                        const dropdown = this.closest('.dropdown');
+                        if (dropdown) {
+                            dropdown.classList.remove('active');
+                        }
+                        
+                        // Also close the mobile menu
+                        if (nav) {
+                            nav.classList.remove('active');
+                        }
+                    }
+                });
             });
-        },
-        
-        // Handle errors
-        onError: function(err) {
-            document.getElementById('loading').style.display = 'none';
-            console.error('❌ PayPal Error:', err);
-            showError('Payment failed. Please try again or contact support.');
-        },
-        
-        // Handle cancellation
-        onCancel: function(data) {
-            document.getElementById('loading').style.display = 'none';
-            console.log('Payment cancelled by user');
-            showError('Payment was cancelled. You can try again when ready.');
+            
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                // Reset dropdowns on larger screens
+                if (window.innerWidth > 600) {
+                    document.querySelectorAll('.dropdown').forEach(dropdown => {
+                        dropdown.classList.remove('active');
+                    });
+                    
+                    // Reset mobile menu
+                    if (nav) {
+                        nav.classList.remove('active');
+                    }
+                }
+            });
+            
+            // Prevent dropdown toggle from closing when clicking inside dropdown menu
+            document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                menu.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            });
+            
+            // VIN VALIDATION FOR SEARCH FORM
+            const vinInput = document.getElementById('vin');
+            const vinValidation = document.getElementById('vinValidation');
+            const searchBtn = document.getElementById('searchBtn');
+            const vinForm = document.getElementById('vinForm');
+            
+            if (vinInput && vinValidation && searchBtn && vinForm) {
+                // VIN validation while typing
+                vinInput.addEventListener('input', function () {
+                    const vin = vinInput.value.toUpperCase().replace(/\s+/g, '');
+                    const vinRegex = /^[A-HJ-NPR-Z0-9]{17}$/;
+            
+                    if (vin.length === 17) {
+                        if (vinRegex.test(vin)) {
+                            vinValidation.textContent = '✓ Valid VIN format';
+                            vinValidation.className = 'vin-validation vin-valid';
+                            searchBtn.disabled = false;
+                        } else {
+                            vinValidation.textContent = '✗ Invalid VIN format';
+                            vinValidation.className = 'vin-validation vin-invalid';
+                            searchBtn.disabled = true;
+                        }
+                    } else {
+                        vinValidation.textContent = '';
+                        searchBtn.disabled = false;
+                    }
+                });
+            
+                // VIN form submission - now redirects to purchase section
+                vinForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+            
+                    const vin = vinInput.value.trim().toUpperCase().replace(/\s+/g, '');
+            
+                    if (vin.length !== 17) {
+                        vinValidation.textContent = "VIN must be exactly 17 characters.";
+                        vinValidation.className = 'vin-validation vin-invalid';
+                        return;
+                    }
+                    
+                    // Copy VIN to purchase form
+                    document.getElementById('vinInput').value = vin;
+                    
+                    // Auto-select VIN Report service
+                    if (!selectedServices.report) {
+                        toggleService('report');
+                    }
+                    
+                    // Scroll to purchase section
+                    document.getElementById('purchase-section').scrollIntoView({ 
+                        behavior: 'smooth' 
+                    });
+                    
+                    // Show message
+                    vinValidation.textContent = '✓ VIN added to purchase form. Select services above.';
+                    vinValidation.className = 'vin-validation vin-valid';
+                });
+            }
+            
+            // Initialize purchase system
+            updatePrices();
+            initPayPal();
+            
+            // Auto-uppercase VIN input for purchase form
+            document.getElementById('vinInput').addEventListener('input', function() {
+                this.value = this.value.toUpperCase();
+                this.value = this.value.replace(/[^A-Z0-9]/g, '');
+            });
+            
+            // Copy VIN from search form to purchase form
+            document.getElementById('vin').addEventListener('input', function() {
+                const vin = this.value.trim().toUpperCase();
+                if (vin.length === 17) {
+                    document.getElementById('vinInput').value = vin;
+                }
+            });
+        });
+
+        // Toggle service selection
+        function toggleService(service) {
+            const checkbox = document.getElementById(service + 'Checkbox');
+            
+            // Toggle selection
+            selectedServices[service] = !selectedServices[service];
+            checkbox.classList.toggle('selected');
+            
+            // Update prices
+            updatePrices();
         }
-        
-    }).render('#paypal-button-container');
-}
 
-// Calculate total amount
-function calculateTotal() {
-    const stickerSelected = selectedServices.sticker;
-    const reportSelected = selectedServices.report;
-    
-    if (stickerSelected && reportSelected) {
-        return unitPrices.bundle * quantity;
-    }
-    
-    let total = 0;
-    if (stickerSelected) total += unitPrices.sticker * quantity;
-    if (reportSelected) total += unitPrices.report * quantity;
-    
-    return total;
-}
+        // Change quantity
+        function changeQuantity(change) {
+            const newQuantity = quantity + change;
+            if (newQuantity >= 1 && newQuantity <= 10) {
+                quantity = newQuantity;
+                document.getElementById('quantity').textContent = quantity;
+                document.getElementById('quantityDisplay').textContent = quantity;
+                updatePrices();
+            }
+        }
 
-// Generate order description for PayPal
-function generateOrderDescription() {
-    const services = [];
-    if (selectedServices.sticker) services.push('Windows Sticker');
-    if (selectedServices.report) services.push('VIN Report');
-    
-    const vin = document.getElementById('vinInput').value.trim();
-    return `${services.join(' + ')} for VIN: ${vin}`;
-}
+        // Update all price displays
+        function updatePrices() {
+            const stickerSelected = selectedServices.sticker;
+            const reportSelected = selectedServices.report;
+            
+            // Calculate individual prices
+            let stickerPrice = 0;
+            let reportPrice = 0;
+            let subtotal = 0;
+            
+            if (stickerSelected && reportSelected) {
+                // Bundle price
+                subtotal = unitPrices.bundle * quantity;
+                stickerPrice = (unitPrices.bundle / 2) * quantity;
+                reportPrice = (unitPrices.bundle / 2) * quantity;
+            } else {
+                if (stickerSelected) {
+                    stickerPrice = unitPrices.sticker * quantity;
+                    subtotal += stickerPrice;
+                }
+                if (reportSelected) {
+                    reportPrice = unitPrices.report * quantity;
+                    subtotal += reportPrice;
+                }
+            }
+            
+            // Update display
+            document.getElementById('stickerPrice').textContent = stickerPrice > 0 ? `$${stickerPrice.toFixed(2)}` : '$0.00';
+            document.getElementById('reportPrice').textContent = reportPrice > 0 ? `$${reportPrice.toFixed(2)}` : '$0.00';
+            document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
+            document.getElementById('finalTotal').textContent = `$${subtotal.toFixed(2)}`;
+            document.getElementById('totalPrice').textContent = `$${subtotal.toFixed(2)}`;
+        }
 
-// Generate item list for PayPal
-function generateItemList() {
-    const items = [];
-    
-    if (selectedServices.sticker) {
-        items.push({
-            name: 'Windows Sticker',
-            unit_amount: {
-                currency_code: 'USD',
-                value: unitPrices.sticker.toFixed(2)
-            },
-            quantity: quantity.toString(),
-            category: 'DIGITAL_GOODS'
-        });
-    }
-    
-    if (selectedServices.report) {
-        items.push({
-            name: 'VIN History Report',
-            unit_amount: {
-                currency_code: 'USD',
-                value: unitPrices.report.toFixed(2)
-            },
-            quantity: quantity.toString(),
-            category: 'DIGITAL_GOODS'
-        });
-    }
-    
-    return items;
-}
+        // Validate order before payment
+        function validateOrder() {
+            const errorDiv = document.getElementById('errorMessage');
+            const vin = document.getElementById('vinInput').value.trim();
+            const email = document.getElementById('customerEmail').value.trim();
+            
+            // Check if at least one service is selected
+            if (!selectedServices.sticker && !selectedServices.report) {
+                showError('Please select at least one service (Windows Sticker or VIN Report)');
+                return false;
+            }
+            
+            // Check VIN
+            if (vin.length !== 17) {
+                showError('Please enter a valid 17-digit VIN number');
+                return false;
+            }
+            
+            // Check email
+            if (!email || !validateEmail(email)) {
+                showError('Please enter a valid email address for delivery');
+                return false;
+            }
+            
+            // Hide any error message
+            errorDiv.style.display = 'none';
+            return true;
+        }
 
-// Show success screen
-function showSuccessScreen(details) {
-    // Hide payment section
-    document.getElementById('paypal-button-container').style.display = 'none';
-    document.querySelector('.payment-info').style.display = 'none';
-    
-    // Generate receipt
-    generateReceipt(details);
-    
-    // Show success screen
-    document.getElementById('successScreen').style.display = 'block';
-    
-    // Scroll to success
-    document.getElementById('successScreen').scrollIntoView({ behavior: 'smooth' });
-}
+        // Show error message
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+            
+            // Scroll to error
+            errorDiv.scrollIntoView({ behavior: 'smooth' });
+        }
 
-// Generate receipt
-function generateReceipt(details) {
-    const receiptDiv = document.getElementById('orderReceipt');
-    const vin = document.getElementById('vinInput').value.trim();
-    const email = document.getElementById('customerEmail').value.trim();
-    
-    let servicesHtml = '';
-    if (selectedServices.sticker) {
-        servicesHtml += `<div class="receipt-row">
-            <span>Windows Sticker (${quantity}x):</span>
-            <span>$${(unitPrices.sticker * quantity).toFixed(2)}</span>
-        </div>`;
-    }
-    if (selectedServices.report) {
-        servicesHtml += `<div class="receipt-row">
-            <span>VIN Report (${quantity}x):</span>
-            <span>$${(unitPrices.report * quantity).toFixed(2)}</span>
-        </div>`;
-    }
-    
-    receiptDiv.innerHTML = `
-        <div class="receipt-row">
-            <span>Order Number:</span>
-            <span>WIN-${Date.now().toString().slice(-8)}</span>
-        </div>
-        <div class="receipt-row">
-            <span>Transaction ID:</span>
-            <span>${details.id}</span>
-        </div>
-        <div class="receipt-row">
-            <span>Order Date:</span>
-            <span>${new Date().toLocaleString()}</span>
-        </div>
-        <div class="receipt-row">
-            <span>VIN Number:</span>
-            <span>${vin}</span>
-        </div>
-        <div class="receipt-row">
-            <span>Vehicle:</span>
-            <span>${document.getElementById('vehicleYear').value} ${document.getElementById('vehicleMake').value} ${document.getElementById('vehicleModel').value}</span>
-        </div>
-        <div class="receipt-row">
-            <span>Delivery Email:</span>
-            <span>${email}</span>
-        </div>
-        ${servicesHtml}
-        <div class="receipt-row">
-            <span>Subtotal:</span>
-            <span>$${calculateTotal().toFixed(2)}</span>
-        </div>
-        <div class="receipt-row">
-            <span>Payment Method:</span>
-            <span>PayPal</span>
-        </div>
-        <div class="receipt-row" style="font-weight: bold; color: #28a745;">
-            <span>Total Paid:</span>
-            <span>$${calculateTotal().toFixed(2)}</span>
-        </div>
-    `;
-}
+        // Validate email format
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
 
-// Print receipt
-function printReceipt() {
-    const printContent = document.getElementById('orderReceipt').innerHTML;
-    const printWindow = window.open('', '_blank');
-    printWindow.document.write(`
-        <html>
-        <head>
-            <title>Order Receipt - Car Inspection</title>
-            <style>
-                body { font-family: Arial; padding: 20px; }
-                .receipt { max-width: 500px; margin: 0 auto; }
-                .receipt-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #ddd; }
-                .total { font-weight: bold; font-size: 1.2rem; }
-            </style>
-        </head>
-        <body>
-            <div class="receipt">
-                <h2>Car Inspection - Order Receipt</h2>
-                ${printContent}
-                <p style="margin-top: 30px;">Thank you for your purchase!</p>
-            </div>
-        </body>
-        </html>
-    `);
-    printWindow.document.close();
-    printWindow.print();
-}
+        // Initialize PayPal
+        function initPayPal() {
+            // ⚠️ IMPORTANT: Replace with your actual PayPal Client ID
+            const clientId = 'YOUR_PAYPAL_CLIENT_ID';
+            
+            paypal.Buttons({
+                style: {
+                    layout: 'vertical',
+                    color: 'blue',
+                    shape: 'rect',
+                    label: 'paypal'
+                },
+                
+                // Create order
+                createOrder: function(data, actions) {
+                    // Validate order first
+                    if (!validateOrder()) {
+                        return Promise.reject(new Error('Please fix the errors above'));
+                    }
+                    
+                    // Calculate total
+                    const total = calculateTotal();
+                    
+                    // Show loading
+                    document.getElementById('loading').style.display = 'block';
+                    
+                    // Create PayPal order
+                    return actions.order.create({
+                        purchase_units: [{
+                            amount: {
+                                value: total.toFixed(2),
+                                currency_code: 'USD'
+                            },
+                            description: generateOrderDescription(),
+                            custom_id: document.getElementById('vinInput').value.trim(),
+                            invoice_id: 'WIN-' + Date.now(),
+                            
+                            // Additional information for your records
+                            items: generateItemList()
+                        }],
+                        application_context: {
+                            brand_name: 'CarVerifi',
+                            shipping_preference: 'NO_SHIPPING',
+                            user_action: 'PAY_NOW'
+                        }
+                    });
+                },
+                
+                // On payment approval
+                onApprove: function(data, actions) {
+                    return actions.order.capture().then(function(details) {
+                        // Hide loading
+                        document.getElementById('loading').style.display = 'none';
+                        
+                        // ✅ Payment successful
+                        console.log('✅ Payment completed!');
+                        console.log('💰 Transaction ID:', details.id);
+                        console.log('💵 Amount:', details.purchase_units[0].amount.value);
+                        console.log('📧 Customer Email:', details.payer.email_address);
+                        console.log('🚗 VIN:', document.getElementById('vinInput').value);
+                        
+                        // Show success screen
+                        showSuccessScreen(details);
+                        
+                        // In production, send this data to your backend
+                        // sendOrderToBackend(details);
+                    });
+                },
+                
+                // Handle errors
+                onError: function(err) {
+                    document.getElementById('loading').style.display = 'none';
+                    console.error('❌ PayPal Error:', err);
+                    showError('Payment failed. Please try again or contact support.');
+                },
+                
+                // Handle cancellation
+                onCancel: function(data) {
+                    document.getElementById('loading').style.display = 'none';
+                    console.log('Payment cancelled by user');
+                    showError('Payment was cancelled. You can try again when ready.');
+                }
+                
+            }).render('#paypal-button-container');
+        }
 
-// Start new order
-function startNewOrder() {
-    // Reset everything
-    selectedServices = { sticker: false, report: false };
-    quantity = 1;
-    
-    // Reset checkboxes
-    document.getElementById('stickerCheckbox').classList.remove('selected');
-    document.getElementById('reportCheckbox').classList.remove('selected');
-    
-    // Reset inputs
-    document.getElementById('vinInput').value = '';
-    document.getElementById('vehicleYear').value = '';
-    document.getElementById('vehicleMake').value = '';
-    document.getElementById('vehicleModel').value = '';
-    document.getElementById('specialNotes').value = '';
-    document.getElementById('customerEmail').value = '';
-    document.getElementById('customerPhone').value = '';
-    document.getElementById('quantity').textContent = '1';
-    document.getElementById('quantityDisplay').textContent = '1';
-    
-    // Reset displays
-    updatePrices();
-    
-    // Hide success screen
-    document.getElementById('successScreen').style.display = 'none';
-    
-    // Show payment section
-    document.getElementById('paypal-button-container').style.display = 'block';
-    document.querySelector('.payment-info').style.display = 'block';
-    
-    // Scroll to top
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
+        // Calculate total amount
+        function calculateTotal() {
+            const stickerSelected = selectedServices.sticker;
+            const reportSelected = selectedServices.report;
+            
+            if (stickerSelected && reportSelected) {
+                return unitPrices.bundle * quantity;
+            }
+            
+            let total = 0;
+            if (stickerSelected) total += unitPrices.sticker * quantity;
+            if (reportSelected) total += unitPrices.report * quantity;
+            
+            return total;
+        }
+
+        // Generate order description for PayPal
+        function generateOrderDescription() {
+            const services = [];
+            if (selectedServices.sticker) services.push('Windows Sticker');
+            if (selectedServices.report) services.push('VIN Report');
+            
+            const vin = document.getElementById('vinInput').value.trim();
+            return `${services.join(' + ')} for VIN: ${vin}`;
+        }
+
+        // Generate item list for PayPal
+        function generateItemList() {
+            const items = [];
+            
+            if (selectedServices.sticker) {
+                items.push({
+                    name: 'Windows Sticker',
+                    unit_amount: {
+                        currency_code: 'USD',
+                        value: unitPrices.sticker.toFixed(2)
+                    },
+                    quantity: quantity.toString(),
+                    category: 'DIGITAL_GOODS'
+                });
+            }
+            
+            if (selectedServices.report) {
+                items.push({
+                    name: 'VIN History Report',
+                    unit_amount: {
+                        currency_code: 'USD',
+                        value: unitPrices.report.toFixed(2)
+                    },
+                    quantity: quantity.toString(),
+                    category: 'DIGITAL_GOODS'
+                });
+            }
+            
+            return items;
+        }
+
+        // Show success screen
+        function showSuccessScreen(details) {
+            // Hide payment section
+            document.getElementById('paypal-button-container').style.display = 'none';
+            document.querySelector('.payment-info').style.display = 'none';
+            
+            // Generate receipt
+            generateReceipt(details);
+            
+            // Show success screen
+            document.getElementById('successScreen').style.display = 'block';
+            
+            // Scroll to success
+            document.getElementById('successScreen').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Generate receipt
+        function generateReceipt(details) {
+            const receiptDiv = document.getElementById('orderReceipt');
+            const vin = document.getElementById('vinInput').value.trim();
+            const email = document.getElementById('customerEmail').value.trim();
+            
+            let servicesHtml = '';
+            if (selectedServices.sticker) {
+                servicesHtml += `<div class="receipt-row">
+                    <span>Windows Sticker (${quantity}x):</span>
+                    <span>$${(unitPrices.sticker * quantity).toFixed(2)}</span>
+                </div>`;
+            }
+            if (selectedServices.report) {
+                servicesHtml += `<div class="receipt-row">
+                    <span>VIN Report (${quantity}x):</span>
+                    <span>$${(unitPrices.report * quantity).toFixed(2)}</span>
+                </div>`;
+            }
+            
+            receiptDiv.innerHTML = `
+                <div class="receipt-row">
+                    <span>Order Number:</span>
+                    <span>WIN-${Date.now().toString().slice(-8)}</span>
+                </div>
+                <div class="receipt-row">
+                    <span>Transaction ID:</span>
+                    <span>${details.id}</span>
+                </div>
+                <div class="receipt-row">
+                    <span>Order Date:</span>
+                    <span>${new Date().toLocaleString()}</span>
+                </div>
+                <div class="receipt-row">
+                    <span>VIN Number:</span>
+                    <span>${vin}</span>
+                </div>
+                <div class="receipt-row">
+                    <span>Vehicle:</span>
+                    <span>${document.getElementById('vehicleYear').value} ${document.getElementById('vehicleMake').value} ${document.getElementById('vehicleModel').value}</span>
+                </div>
+                <div class="receipt-row">
+                    <span>Delivery Email:</span>
+                    <span>${email}</span>
+                </div>
+                ${servicesHtml}
+                <div class="receipt-row">
+                    <span>Subtotal:</span>
+                    <span>$${calculateTotal().toFixed(2)}</span>
+                </div>
+                <div class="receipt-row">
+                    <span>Payment Method:</span>
+                    <span>PayPal</span>
+                </div>
+                <div class="receipt-row" style="font-weight: bold; color: #28a745;">
+                    <span>Total Paid:</span>
+                    <span>$${calculateTotal().toFixed(2)}</span>
+                </div>
+            `;
+        }
+
+        // Print receipt
+        function printReceipt() {
+            const printContent = document.getElementById('orderReceipt').innerHTML;
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(`
+                <html>
+                <head>
+                    <title>Order Receipt - CarVerifi</title>
+                    <style>
+                        body { font-family: Arial; padding: 20px; }
+                        .receipt { max-width: 500px; margin: 0 auto; }
+                        .receipt-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #ddd; }
+                        .total { font-weight: bold; font-size: 1.2rem; }
+                    </style>
+                </head>
+                <body>
+                    <div class="receipt">
+                        <h2>CarVerifi - Order Receipt</h2>
+                        ${printContent}
+                        <p style="margin-top: 30px;">Thank you for your purchase!</p>
+                    </div>
+                </body>
+                </html>
+            `);
+            printWindow.document.close();
+            printWindow.print();
+        }
+
+        // Start new order
+        function startNewOrder() {
+            // Reset everything
+            selectedServices = { sticker: false, report: false };
+            quantity = 1;
+            
+            // Reset checkboxes
+            document.getElementById('stickerCheckbox').classList.remove('selected');
+            document.getElementById('reportCheckbox').classList.remove('selected');
+            
+            // Reset inputs
+            document.getElementById('vinInput').value = '';
+            document.getElementById('vehicleYear').value = '';
+            document.getElementById('vehicleMake').value = '';
+            document.getElementById('vehicleModel').value = '';
+            document.getElementById('specialNotes').value = '';
+            document.getElementById('customerEmail').value = '';
+            document.getElementById('customerPhone').value = '';
+            document.getElementById('quantity').textContent = '1';
+            document.getElementById('quantityDisplay').textContent = '1';
+            
+            // Reset displays
+            updatePrices();
+            
+            // Hide success screen
+            document.getElementById('successScreen').style.display = 'none';
+            
+            // Show payment section
+            document.getElementById('paypal-button-container').style.display = 'block';
+            document.querySelector('.payment-info').style.display = 'block';
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
     </script>
 </body>
 </html>
