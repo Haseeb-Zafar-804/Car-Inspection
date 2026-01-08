@@ -121,13 +121,39 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="vin">17-Digit VIN Number</label>
-                        <input type="text" id="vin" class="form-control" placeholder="e.g. 1HGCM82633A123456" maxlength="17" required>
+                        <label for="vin">17-Digit VIN Number *</label>
+                        <input type="text"
+                               id="vin"
+                               class="form-control"
+                               placeholder="e.g. 1HGCM82633A123456"
+                               maxlength="17"
+                               required>
                         <div class="vin-validation" id="vinValidation"></div>
                     </div>
-                    <button type="submit" class="search-btn" id="searchBtn">
-                        Get Vehicle Report <i class="fa-regular fa-arrow-right"></i></button>
-                </form>
+    
+                    <button type="submit" class="search-btn">
+                        Get Vehicle Report <i class="fa-regular fa-arrow-right"></i>
+                    </button>
+                    
+                    </form>
+                    
+                    <script>
+                        function redirectToSticker() {
+                            const vin = document.getElementById("vin").value.trim();
+                            const validation = document.getElementById("vinValidation");
+                    
+                            if (vin.length !== 17) {
+                                validation.textContent = "VIN must be exactly 17 characters.";
+                                validation.style.color = "red";
+                                return false; // stop submit
+                            }
+                    
+                            // Redirect
+                            window.location.href = "window-sticker.html?vin=" + encodeURIComponent(vin);
+                            return false; // prevent default form submit
+                        }
+                    </script>
+                    
             </div>
         </div>
     </section>
