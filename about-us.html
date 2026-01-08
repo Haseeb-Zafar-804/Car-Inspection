@@ -16,6 +16,7 @@
 </head>
 <body>
     <style>
+
 :root {
     --primary: #cf0a0a;
     --primary-dark: #820007;
@@ -81,148 +82,6 @@ h1, h2, h3, h4, h5, h6 {
 
   nav ul li {
     position: relative;
-  }
-  
-  /* ===============================
-     NAV LINKS (SAME FOR ALL)
-  ===============================
-  
-  /* ===============================
-     DROPDOWN
-  ================================ */
-  .dropdown {
-    position: relative;
-  }
-  
-  .dropdown-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: white;
-    border-radius: 2px;
-    border: 1px solid #efeff0;
-    padding: 10px 0;
-    min-width: 200px;
-    z-index: 100;
-    display: none;
-}
-
-.dropdown-item {
-    padding: 10px 20px;
-    display: block;
-    color: var(--google-gray);
-    text-decoration: none;
-    font-size: 14px;
-}
-
-  
-  /* Dropdown links */
-.dropdown-menu li a {
-    display: block;
-    color: #000;
-    padding: 12px 16px;
-    text-decoration: none;
-    white-space: nowrap;
-    text-align: left;          /* ✅ Left text alignment */
-    transition: none !important;
-    left: -30px;
-  }
-
-  @media screen and (max-width: 768px) {
-    .dropdown-menu li a {
-      left: auto;          /* ✅ removes left offset */
-      text-align: left;    /* stays left aligned */
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .mobile-menu {
-        display: block;
-    }
-    
-    nav {
-        position: fixed;
-        top: -100%;
-        left: 0;
-        width: 100%;
-        height: auto;
-        background-color: var(--card-bg);
-        transition: top 0.3s ease-in-out;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        padding: 20px;
-        z-index: 999;
-    }
-    
-    nav.active {
-        top: 80px;
-    }
-    
-    nav ul {
-        flex-direction: column;
-    }
-    
-    nav ul li {
-        margin: 10px 0;
-    }
-    
-
-            @media (max-width: 480px) {
-header {
-    padding: 20px 15px;
-}
-
-header h1 {
-    font-size: 1.5rem;
-}
-
-header p {
-    font-size: 1rem;
-}
-            }
-
-            nav.active {
-                display: block;
-            }
-
-            nav ul {
-                flex-direction: column;
-            }
-
-            nav ul li {
-                margin: 0 0 15px 0;
-            }
-
-            .mobile-menu {
-                display: block;
-            }
-
-            .services-hero {
-                padding: 120px 0 40px;
-            }
-
-            .services-hero h1 {
-                font-size: 2rem;
-            }
-
-            .section {
-                padding: 40px 0;
-            }
-
-            .cta-button {
-                display: none;
-            }
-
-            .section-title h2 {
-                font-size: 1.8rem;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-            }
-  /* Show dropdown */
-  .dropdown:hover .dropdown-menu {
-    display: block;
   }
   
   /* Header Styles */
@@ -364,6 +223,93 @@ nav ul li a.active {
     cursor: pointer;
     color: var(--dark-gray);
 }
+
+  @media (max-width: 768px) {
+    .mobile-menu {
+        display: block;
+    }
+    
+    nav {
+        position: fixed;
+        top: -100%;
+        left: 0;
+        width: 100%;
+        height: auto;
+        background-color: var(--card-bg);
+        transition: top 0.3s ease-in-out;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        z-index: 999;
+    }
+    
+    nav.active {
+        top: 80px;
+    }
+    
+    nav ul {
+        flex-direction: column;
+    }
+    
+    nav ul li {
+        margin: 10px 0;
+    }
+    
+
+            @media (max-width: 480px) {
+header {
+    padding: 20px 15px;
+}
+
+header h1 {
+    font-size: 1.5rem;
+}
+
+header p {
+    font-size: 1rem;
+}
+            }
+
+            nav.active {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li {
+                margin: 0 0 15px 0;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .services-hero {
+                padding: 120px 0 40px;
+            }
+
+            .services-hero h1 {
+                font-size: 2rem;
+            }
+
+            .section {
+                padding: 40px 0;
+            }
+
+            .cta-button {
+                display: none;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            }
+
 /* Content Styles */
 .content {
     padding: 40px 20px;
@@ -881,59 +827,6 @@ footer {
             display: block;
             filter: drop-shadow(0 0 25px rgba(255, 255, 255, 1)); /* 100% brightness */
         }
-        
-/* ===============================
-   NAVBAR BASE
-================================ */
-
-  nav ul li {
-    position: relative;
-  }
-  
-  /* ===============================
-     NAV LINKS (SAME FOR ALL)
-  ===============================
-  
-  /* ===============================
-     DROPDOWN
-  ================================ */
-  .dropdown {
-    position: relative;
-  }
-  
-  /* Dropdown menu box */
-  .dropdown-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #ffffff;
-    min-width: 180px;
-border: 1px solid #e2e1e1;
-    border-radius: 6px;
-    z-index: 1000;
-    padding: 6px 0;
-    text-align: left;
-  }
-  
-  /* Dropdown links */
-.dropdown-menu li a {
-    display: block;
-    color: #000;
-    padding: 12px 16px;
-    text-decoration: none;
-    white-space: nowrap;
-    text-align: left;          /* ✅ Left text alignment */
-    transition: none !important;
-    left: -30px;
-  }
-
-  @media screen and (max-width: 768px) {
-    .dropdown-menu li a {
-      left: auto;          /* ✅ removes left offset */
-      text-align: left;    /* stays left aligned */
-    }
-  }
     </style>
 <header id="header">
     <div class="container header-container">
@@ -949,22 +842,12 @@ border: 1px solid #e2e1e1;
         <nav>
             <ul class="nav-menu">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="#sample-report">Sample Report</a></li>
+                <li><a href="report.html">Sample Report</a></li>
                 <li><a href="service.html">Service</a></li>
                 <li><a href="report.html">Windows Sticker</a></li>
                 <li><a href="about-us.html" class="active">About Us</a></li>
-                
-                <!-- Dropdown -->
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle">
-                        Resources <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="index.html#pricing">Pricing</a></li>
-                        <li><a href="faq.html">FAQ</a></li>
-                        <li><a href="index.html#sample-report">Sample Report</a></li>
-                    </ul>
-                </li>
+                <li><a href="index.html#pricing">Pricing</a></li>
+                <li><a href="faq.html">FAQ</a></li>
             </ul>
         </nav>
         
@@ -1121,7 +1004,7 @@ border: 1px solid #e2e1e1;
                     <h3>Quick Links</h3>
                     <ul>
                         <li><a href="index.html"><i class="fa-regular fa-chevron-right"></i> Home</a></li>
-                        <li><a href="#sample-report"><i class="fa-regular fa-chevron-right"></i> Sample Report</a></li>
+                        <li><a href="report.html"><i class="fa-regular fa-chevron-right"></i> Sample Report</a></li>
                         <li><a href="#pricing"><i class="fa-regular fa-chevron-right"></i> Pricing</a></li>
                         <li><a href="service.html"><i class="fa-regular fa-chevron-right"></i> Services</a></li>
                         <li><a href="#faq"><i class="fa-regular fa-chevron-right"></i> FAQ</a></li>
@@ -1226,113 +1109,6 @@ border: 1px solid #e2e1e1;
                     }, 16);
                 });
             }
-// Dropdown functionality for both desktop and mobile
-document.addEventListener('DOMContentLoaded', function() {
-    // Get all dropdown toggles
-    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-    
-    // Function to close all dropdowns
-    function closeAllDropdowns(except = null) {
-        dropdownToggles.forEach(toggle => {
-            if (toggle !== except) {
-                const dropdown = toggle.closest('.dropdown');
-                const menu = dropdown.querySelector('.dropdown-menu');
-                dropdown.classList.remove('active');
-                menu.style.display = 'none';
-            }
-        });
-    }
-    
-    // Function to toggle a specific dropdown
-    function toggleDropdown(dropdownToggle) {
-        const dropdown = dropdownToggle.closest('.dropdown');
-        const menu = dropdown.querySelector('.dropdown-menu');
-        const isActive = dropdown.classList.contains('active');
-        
-        closeAllDropdowns(dropdownToggle);
-        
-        if (!isActive) {
-            dropdown.classList.add('active');
-            menu.style.display = 'block';
-        } else {
-            dropdown.classList.remove('active');
-            menu.style.display = 'none';
-        }
-    }
-    
-    // Add event listeners for each dropdown toggle
-    dropdownToggles.forEach(toggle => {
-        // For desktop: Show on hover
-        toggle.addEventListener('mouseenter', function(e) {
-            if (window.innerWidth > 768) { // Desktop
-                closeAllDropdowns(this);
-                const dropdown = this.closest('.dropdown');
-                const menu = dropdown.querySelector('.dropdown-menu');
-                dropdown.classList.add('active');
-                menu.style.display = 'block';
-            }
-        });
-        
-        // For desktop: Hide on mouse leave (from parent)
-        const dropdown = toggle.closest('.dropdown');
-        dropdown.addEventListener('mouseleave', function(e) {
-            if (window.innerWidth > 768) { // Desktop
-                // Check if mouse is leaving the entire dropdown area
-                if (!this.contains(e.relatedTarget)) {
-                    this.classList.remove('active');
-                    const menu = this.querySelector('.dropdown-menu');
-                    if (menu) {
-                        menu.style.display = 'none';
-                    }
-                }
-            }
-        });
-        
-        // For mobile/tablet: Toggle on click
-        toggle.addEventListener('click', function(e) {
-            if (window.innerWidth <= 768) { // Mobile/Tablet
-                e.preventDefault();
-                e.stopPropagation();
-                toggleDropdown(this);
-            }
-        });
-    });
-    
-    // Close dropdowns when clicking outside
-    document.addEventListener('click', function(e) {
-        if (!e.target.closest('.dropdown')) {
-            closeAllDropdowns();
-        }
-    });
-    
-    // Close dropdowns when clicking on dropdown items (mobile only)
-    document.querySelectorAll('.dropdown-menu a').forEach(item => {
-        item.addEventListener('click', function() {
-            if (window.innerWidth <= 768) { // Mobile/Tablet
-                const dropdown = this.closest('.dropdown');
-                dropdown.classList.remove('active');
-                const menu = dropdown.querySelector('.dropdown-menu');
-                menu.style.display = 'none';
-            }
-        });
-    });
-    
-    // Close dropdowns on window resize (reset state)
-    window.addEventListener('resize', function() {
-        // If resizing from mobile to desktop, close all dropdowns
-        if (window.innerWidth > 768) {
-            closeAllDropdowns();
-        }
-    });
-    
-    // Close dropdowns when pressing Escape key
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            closeAllDropdowns();
-        }
-    });
-});
-        
             
             // Start counter animation when stats section is in view
             const statsSection = document.querySelector('.stats-section');
