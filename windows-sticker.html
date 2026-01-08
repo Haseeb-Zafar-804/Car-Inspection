@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Windows Sticker & VIN Report - Car Inspection</title>
+    <title>Windows Sticker & VIN Report - CarVerifi</title>
     <!-- PayPal SDK - REPLACE WITH YOUR CLIENT ID -->
     <script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&currency=USD"></script>
     <!-- Font Awesome -->
@@ -14,11 +14,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.0.7/countUp.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <style>
         /* Base Styles */
         * {
@@ -26,7 +23,6 @@
             padding: 0;
             box-sizing: border-box;
         }
-
         :root {
             --primary: #cf0a0a;
             --primary-dark: #820007;
@@ -41,7 +37,7 @@
             --bg-color: #ffffff;
             --text-color: #4a5568;
             --card-bg: #ffffff;
-            --border-radius: 2px;
+            --border-radius: 6px;
             --transition: all 0.3s ease;
         }
 
@@ -51,7 +47,7 @@
             --card-bg: #2d3748;
             --light-gray: #2d3748;
             --dark-gray: #f7fafc;
-            --text: #efeff0;
+            --text: #e2e8f0;
             --gray: #4a5568;
         }
 
@@ -66,6 +62,7 @@
             font-family: "Outfit", sans-serif;
             overflow-x: hidden;
             transition: background-color 0.3s, color 0.3s;
+            padding-top: 84px; /* Add padding for fixed header */
         }
 
         h1, h2, h3, h4, h5, h6 {
@@ -78,31 +75,28 @@
             width: 100%;
             max-width: 1300px;
             margin: 0 auto;
+            padding: 0 20px;
         }
 
-        /* Header Styles */
+        /* Header Styles - Matching index.html */
         header {
             background-color: var(--card-bg);
-            box-shadow: var(--shadow);
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1000;
-            transition: var(--transition);
+            transition: all 0.3s ease;
             height: 84px;
-            border-bottom: 1px solid var(--gray);
+            border-bottom: 1px solid #dfdfdf;
         }
 
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            .header-container {
-    padding: 10px 0;   /* ⬅ adds 20px total (top + bottom) */
-    height: 100%;
-}
-
+            padding: 20px 0;
+            height: 100%;
         }
 
         .logo {
@@ -125,6 +119,7 @@
             object-fit: cover;
         }
 
+        /* Navigation Styles */
         nav {
             display: flex;
             align-items: center;
@@ -137,76 +132,25 @@
             padding: 0;
         }
 
-        .nav-menu > li {
-            position: relative;
-            margin: 0 15px;
+        .nav-menu li {
+            margin-left: 30px;
         }
 
-        .nav-menu > li > a {
+        .nav-menu li a {
             text-decoration: none;
             color: var(--dark-gray);
             font-weight: 600;
             font-size: 16px;
-            padding: 8px 0;
+            transition: color 0.3s;
             position: relative;
-            transition: var(--transition);
-        }
-
-        .nav-menu > li > a:hover::after,
-        .nav-menu > li > a.active::after {
-            width: 100%;
-        }
-
-        .nav-menu > li > a:hover,
-        .nav-menu > li > a.active {
-            color: var(--primary);
-        }
-
-        /* Dropdown Styles */
-        .dropdown-menu {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background-color: var(--card-bg);
-            min-width: 200px;
-            border: 1px solid var(--gray);
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            z-index: 1000;
             padding: 8px 0;
-            margin-top: 5px;
-        }
-
-        .dropdown-menu li {
-            list-style: none;
-            margin: 0;
-        }
-
-        .dropdown-menu li a {
             display: block;
-            padding: 10px 20px;
-            color: var(--text-color);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            text-align: left;
-            transition: var(--transition);
-            white-space: nowrap;
         }
 
-        .dropdown-menu li a:hover {
-            background-color: var(--light-gray);
+
+        .nav-menu li a:hover,
+        .nav-menu li a.active {
             color: var(--primary);
-        }
-
-        .dropdown:hover .dropdown-menu {
-            display: block;
-        }
-
-        .dropdown-toggle .fa-caret-down {
-            margin-left: 5px;
-            font-size: 12px;
         }
 
         .header-actions {
@@ -223,7 +167,7 @@
             border-radius: var(--border-radius);
             font-weight: 600;
             cursor: pointer;
-            transition: var(--transition);
+            transition: all 0.3s ease;
             font-size: 15px;
             box-shadow: 0 4px 12px rgba(106, 13, 173, 0.3);
         }
@@ -240,7 +184,7 @@
             font-size: 18px;
             cursor: pointer;
             padding: 8px;
-            transition: var(--transition);
+            transition: all 0.3s;
             border: 1.7px solid var(--primary);
             border-radius: 50%;
             width: 40px;
@@ -262,12 +206,12 @@
             color: var(--dark-gray);
             background: none;
             border: none;
-            padding: 5px;
+            z-index: 1000;
         }
 
         /* Hero Section */
         .hero {
-            padding: 160px 0 80px;
+            padding: 80px 0 60px;
             background: var(--gradient);
             color: white;
             text-align: center;
@@ -276,14 +220,14 @@
         }
 
         .hero h1 {
-            font-size: 3rem;
+            font-size: 2.8rem;
             color: white;
             margin-bottom: 20px;
             font-weight: 700;
         }
 
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             max-width: 700px;
             margin: 0 auto 30px;
             opacity: 0.9;
@@ -292,8 +236,8 @@
         /* VIN Search Section */
         .vin-search {
             background: var(--card-bg);
-            padding: 80px 0;
-            margin-top: -50px;
+            padding: 60px 0;
+            margin-top: -40px;
             border-radius: 20px;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
             position: relative;
@@ -308,7 +252,7 @@
 
         .search-title {
             color: var(--primary);
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             margin-bottom: 15px;
         }
 
@@ -320,7 +264,7 @@
 
         .search-form {
             background: var(--light-gray);
-            padding: 40px;
+            padding: 30px;
             border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
         }
@@ -339,7 +283,7 @@
 
         .form-control {
             width: 100%;
-            padding: 15px;
+            padding: 14px;
             border: 2px solid var(--gray);
             border-radius: var(--border-radius);
             font-size: 1rem;
@@ -380,7 +324,7 @@
             background: var(--gradient);
             color: var(--white);
             border: none;
-            padding: 18px 40px;
+            padding: 16px 40px;
             border-radius: 10px;
             font-size: 1.1rem;
             font-weight: 600;
@@ -547,6 +491,7 @@
         .checkbox-label {
             flex: 1;
         }
+        
 
         .checkbox-label h3 {
             color: var(--primary);
@@ -554,6 +499,48 @@
         }
 
         .checkbox-label p {
+            color: var(--text);
+            font-size: 0.9rem;
+        }
+
+        /* Report Type Selection (for US/Canada only) */
+        .report-type-group {
+            margin: 25px 0;
+            display: none;
+        }
+
+        .report-type-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            padding: 15px;
+            border: 2px solid var(--gray);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .report-type-container:hover {
+            border-color: var(--primary);
+            background: var(--light-gray);
+        }
+
+        .report-type-container.selected {
+            border-color: var(--primary);
+            background: rgba(207, 10, 10, 0.1);
+        }
+
+        .report-type-label {
+            flex: 1;
+        }
+
+        .report-type-label h4 {
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .report-type-label p {
             color: var(--text);
             font-size: 0.9rem;
         }
@@ -569,22 +556,77 @@
             color: var(--dark-gray);
         }
 
-        input[type="text"], textarea, select {
-            width: 100%;
-            padding: 14px;
-            border: 2px solid var(--gray);
-            border-radius: var(--border-radius);
-            font-size: 1rem;
-            transition: var(--transition);
-            background-color: var(--bg-color);
-            color: var(--text-color);
-        }
+        input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea,
+select {
+    width: 100%;
+    padding: 15px 16px;
+    border: 1.8px solid rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.25s ease;
+    background: linear-gradient(180deg, #ffffff, #fafafa);
+    color: var(--text-color);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
+}
 
-        input[type="text"]:focus, textarea:focus, select:focus {
-            border-color: var(--primary);
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(207, 10, 10, 0.1);
-        }
+/* Hover Effect */
+input[type="text"]:hover,
+input[type="email"]:hover,
+input[type="tel"]:hover,
+textarea:hover,
+select:hover {
+    border-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Focus Effect */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--primary);
+    outline: none;
+    background: #fff;
+    box-shadow: 
+        0 0 0 4px rgba(207, 10, 10, 0.12),
+        inset 0 1px 2px rgba(0,0,0,0.05);
+}
+
+/* Placeholder Styling */
+input::placeholder,
+textarea::placeholder {
+    color: rgba(0, 0, 0, 0.45);
+    font-weight: 400;
+}
+
+/* Select Arrow Fix */
+select {
+    cursor: pointer;
+}
+
+/* Textarea Styling */
+textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+/* Mobile Optimization */
+@media (max-width: 600px) {
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea,
+    select {
+        padding: 14px;
+        font-size: 0.95rem;
+        border-radius: 8px;
+    }
+}
+
 
         textarea {
             min-height: 120px;
@@ -745,6 +787,21 @@
             100% { transform: rotate(360deg); }
         }
 
+        /* User Details Section */
+        .user-details-section {
+            margin: 30px 0;
+            padding: 25px;
+            background: var(--light-gray);
+            border-radius: 10px;
+            border: 1px solid var(--gray);
+        }
+
+        .user-details-section h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+        }
+
         /* Footer */
         footer {
             background: linear-gradient(rgba(9, 26, 56, 0.9), rgba(22, 27, 36, 0.9)), url('https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
@@ -823,7 +880,7 @@
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             color: var(--white);
-            transition: var(--transition);
+            transition: all 0.3s ease;
             text-decoration: none;
         }
 
@@ -840,7 +897,6 @@
             font-size: 14px;
         }
 
-        /* Footer Logo Styles */
         .footer-logo {
             margin-bottom: 20px;
         }
@@ -852,291 +908,99 @@
             filter: drop-shadow(0 0 25px rgba(255, 255, 255, 1));
         }
 
-        /* Mobile Responsiveness */
+        /* Mobile Responsiveness - Fixed CSS */
         @media (max-width: 1024px) {
-            .nav-menu > li {
-                margin: 0 10px;
+            .nav-menu li {
+                margin-left: 20px;
             }
             
-            .nav-menu > li > a {
+            .nav-menu li a {
                 font-size: 15px;
             }
         }
 
-   /* ===============================
-   MOBILE NAVIGATION
-================================ */
-@media (max-width: 768px) {
-    .mobile-menu {
-        display: block;
-        font-size: 24px;
-        cursor: pointer;
-        color: var(--dark-gray);
-        background: none;
-        border: none;
-        padding: 10px;
-        margin-left: 15px;
-        z-index: 1001;
-        transition: transform 0.3s ease;
-    }
-    .logo-img {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-    .mobile-menu:hover {
-        color: var(--primary);
-    }
-    
-    /* Main navigation container */
-    nav {
-        position: fixed;
-        top: -100vh; /* Start above viewport */
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        background-color: var(--card-bg);
-        transition: top 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-        padding: 100px 30px 40px;
-        z-index: 999;
-        overflow-y: auto;
-        display: block !important; /* Ensure it shows when active */
-    }
-    
-    nav.active {
-        top: 0; /* Slide down into view */
-    }
-    
-    /* Navigation menu */
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-        gap: 0;
-        padding: 0;
-        margin: 0;
-        width: 100%;
-    }
-    
-    nav ul li {
-        margin: 0;
-        width: 100%;
-        border-bottom: 1px solid rgba(207, 10, 10, 0.1);
-        transition: var(--transition);
-    }
-    
-    nav ul li:last-child {
-        border-bottom: none;
-    }
-    
-    /* Navigation links */
-    nav ul li a {
-        display: block;
-        padding: 18px 20px;
-        width: 100%;
-        font-size: 18px;
-        font-weight: 600;
-        color: var(--dark-gray);
-        text-align: center;
-        transition: all 0.3s ease;
-        position: relative;
-    }
-    
-    
-    /* Arrow indicator for hover */
-    nav ul li a::after {
-        position: absolute;
-        right: 20px;
-        top: 50%;
-        transform: translateY(-50%) translateX(-10px);
-        opacity: 0;
-        transition: all 0.3s ease;
-        color: var(--primary);
-    }
-    
-    nav ul li a:hover::after,
-    nav ul li a.active::after {
-        opacity: 1;
-        transform: translateY(-50%) translateX(0);
-    }
-    
-    /* Mobile dropdown styles */
-    .dropdown-menu {
-        position: static;
-        display: none;
-        width: 100%;
-        border: none;
-        box-shadow: none;
-        background-color: rgba(207, 10, 10, 0.03);
-        margin: 0;
-        padding: 0;
-        border-radius: 0;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    }
-    
-    .dropdown.active .dropdown-menu {
-        display: block;
-        max-height: 300px;
-    }
-    
-    .dropdown-menu li {
-        margin: 0;
-    }
-    
-    .dropdown-menu li a {
-        display: block;
-        padding: 15px 25px;
-        color: var(--text-color);
-        text-decoration: none;
-        font-size: 16px;
-        font-weight: 500;
-        text-align: left;
-        transition: all 0.3s ease;
-        border-left: 3px solid transparent;
-    }
-    
-    .dropdown-menu li a:hover {
-        background-color: rgba(207, 10, 10, 0.08);
-        color: var(--primary);
-        border-left-color: var(--primary);
-        padding-left: 35px;
-    }
-    
-    /* Dropdown toggle button */
-    .dropdown-toggle {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 8px;
-    }
-    
-    .dropdown-toggle .fa-caret-down {
-        transition: transform 0.3s ease;
-    }
-    
-    .dropdown.active .dropdown-toggle .fa-caret-down {
-        transform: rotate(180deg);
-    }
-    
-    /* Header adjustments for mobile */
-    .header-container {
-        padding: 10px 0;
-    }
-    
-    .header-actions {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-left: auto;
-    }
-    
-    .theme-toggle {
-        margin: 0;
-        width: 36px;
-        height: 36px;
-        font-size: 16px;
-    }
-    
-    .cta-button {
-        display: none; /* Hide CTA button on mobile as per your existing code */
-    }
-    
-    /* Body scroll prevention when menu is open */
-    body.menu-open {
-        overflow: hidden;
-    }
-}
-
-/* ===============================
-   VERY SMALL MOBILE DEVICES
-================================ */
-@media (max-width: 480px) {
-    header {
-        padding: 15px 0;
-    }
-    
-    .logo-img {
-        width: 60px;
-        height: 60px;
-    }
-    
-    .hero h1 {
-        font-size: 3rem;
-        min-height: 100px;
-    }
-    
-    .hero p {
-        font-size: 0.9rem;
-    }
-    
-    nav {
-        padding: 80px 20px 30px;
-    }
-    
-    nav ul li a {
-        padding: 16px 15px;
-        font-size: 16px;
-    }
-    
-    .dropdown-menu li a {
-        padding: 12px 20px;
-        font-size: 14px;
-    }
-} 
-    /* Add overlay when menu is open */
-    .menu-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        z-index: 998;
-        display: none;
-        backdrop-filter: blur(3px);
-    }
-    
-    .menu-overlay.active {
-        display: block;
-        animation: fadeIn 0.3s ease;
-    }
-    
-    @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-    }
-    
-    .hero h1 {
-        font-size: 2.2rem;
-    }
-    
-    .hero p {
-        font-size: 1rem;
-    }
-    
-    .vin-search {
-        padding: 40px 0;
-        margin-top: -30px;
-    }
-    
-    .search-title {
-        font-size: 2rem;
-    }
-    
-    .search-form {
-        padding: 25px;
-    }
-    
-    .main-content {
-        padding: 30px 0;
-    }
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 84px;
+                left: 0;
+                width: 100%;
+                height: calc(100vh - 84px);
+                background-color: var(--card-bg);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                padding: 30px 20px;
+                z-index: 998;
+                display: none;
+                overflow-y: auto;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            .nav-menu {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .nav-menu li {
+                margin: 0;
+                width: 100%;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-menu li:last-child {
+                border-bottom: none;
+            }
+            
+            .nav-menu li a {
+                padding: 15px 0;
+                font-size: 18px;
+                display: block;
+                width: 100%;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .vin-search {
+                padding: 40px 0;
+                margin-top: -30px;
+            }
+            
+            .search-title {
+                font-size: 2rem;
+            }
+            
+            .search-form {
+                padding: 25px;
+            }
+            
+            .main-content {
+                padding: 30px 0;
+            }
+            
+            .cta-button {
+                display: none;
+            }
+            
+            .header-container {
+                padding: 10px 0;
+            }
+        }
 
         @media (max-width: 480px) {
             .hero h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
             
             .hero p {
@@ -1152,391 +1016,41 @@
                 width: 100px;
                 margin: 0 auto;
             }
-            .cta-button {
-            display: none;
-        }
-        }
-/* Email and Phone Input Styling */
-.input-group {
-    margin: 20px 0;
-    position: relative;
-}
-
-.input-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-    color: var(--dark-gray);
-}
-
-.input-group label.required::after {
-    content: " *";
-    color: var(--primary);
-}
-
-.input-group input[type="email"],
-.input-group input[type="tel"],
-.input-group input[type="text"] {
-    width: 100%;
-    padding: 14px 45px 14px 15px;
+            
+            .card {
+                padding: 20px;
+            }
+            
+            .price-amount {
+                font-size: 2.8rem;
+            }
+        }/* Add this CSS to fix the checkboxes */
+.report-type-container .checkmark {
+    width: 24px;
+    height: 24px;
     border: 2px solid var(--gray);
-    border-radius: var(--border-radius);
-    font-size: 1rem;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: var(--transition);
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    font-family: inherit;
 }
 
-.input-group input[type="email"]:focus,
-.input-group input[type="tel"]:focus {
+.report-type-container.selected .checkmark {
+    background: var(--primary);
     border-color: var(--primary);
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(207, 10, 10, 0.1);
 }
 
-/* Input with icon */
-.input-group.with-icon {
-    position: relative;
-}
-
-.input-group.with-icon input {
-    padding-left: 45px;
-}
-
-.input-group.with-icon .input-icon {
-    position: absolute;
-    left: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--text);
-    font-size: 1.1rem;
-    transition: var(--transition);
-}
-
-.input-group.with-icon input:focus + .input-icon {
-    color: var(--primary);
-}
-
-/* Validation States */
-.input-group input.valid {
-    border-color: #28a745;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%2328a745' viewBox='0 0 16 16'%3E%3Cpath d='M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 15px center;
-    background-size: 16px;
-    padding-right: 40px;
-}
-
-.input-group input.invalid {
-    border-color: #dc3545;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23dc3545' viewBox='0 0 16 16'%3E%3Cpath d='M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z'/%3E%3Cpath d='M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 15px center;
-    background-size: 16px;
-    padding-right: 40px;
-}
-
-.input-group input.pending {
-    border-color: #ffc107;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23ffc107' viewBox='0 0 16 16'%3E%3Cpath d='M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z'/%3E%3Cpath d='M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm0-1A7 7 0 1 1 8 1a7 7 0 0 1 0 14z'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 15px center;
-    background-size: 16px;
-    padding-right: 40px;
-}
-
-/* Validation Messages */
-.validation-message {
-    display: block;
-    margin-top: 6px;
-    font-size: 0.85rem;
-    min-height: 20px;
-    transition: var(--transition);
-}
-
-.validation-message.valid {
-    color: #28a745;
-}
-
-.validation-message.invalid {
-    color: #dc3545;
-}
-
-.validation-message.pending {
-    color: #ffc107;
-}
-
-/* Phone number formatting */
-.input-group input[type="tel"].formatted {
-    letter-spacing: 0.5px;
-}
-
-/* Placeholder Styling */
-.input-group input::placeholder {
-    color: #999;
-    opacity: 0.7;
-}
-
-.input-group input:focus::placeholder {
-    opacity: 0.5;
-}
-
-/* Hover Effects */
-.input-group input:hover:not(:focus):not(.valid):not(.invalid) {
-    border-color: #b0b0b0;
-    background-color: rgba(0, 0, 0, 0.02);
-}
-
-/* Dark Mode Adjustments */
-.dark-mode .input-group input[type="email"],
-.dark-mode .input-group input[type="tel"],
-.dark-mode .input-group input[type="text"] {
-    background-color: var(--card-bg);
-    border-color: var(--gray);
-    color: var(--text-color);
-}
-
-.dark-mode .input-group input::placeholder {
-    color: #aaa;
-}
-
-.dark-mode .input-group input:hover:not(:focus):not(.valid):not(.invalid) {
-    background-color: rgba(255, 255, 255, 0.05);
-}
-
-.dark-mode .input-group.with-icon .input-icon {
-    color: var(--text-color);
-    opacity: 0.7;
-}
-
-/* Focus ring for accessibility */
-.input-group input:focus {
-    box-shadow: 0 0 0 3px rgba(207, 10, 10, 0.2);
-}
-
-/* Disabled state */
-.input-group input:disabled {
-    background-color: var(--light-gray);
-    border-color: var(--gray);
-    color: #999;
-    cursor: not-allowed;
-    opacity: 0.7;
-}
-
-/* Readonly state */
-.input-group input:read-only {
-    background-color: var(--light-gray);
-    border-color: var(--gray);
-    color: var(--text);
-}
-
-/* Success state additional styling */
-.input-group.success input {
-    border-color: #28a745;
-    background-color: rgba(40, 167, 69, 0.05);
-}
-
-/* Error state additional styling */
-.input-group.error input {
-    border-color: #dc3545;
-    background-color: rgba(220, 53, 69, 0.05);
-}
-
-/* Loading state */
-.input-group.loading::after {
-    content: '';
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 16px;
-    height: 16px;
-    border: 2px solid var(--gray);
-    border-top: 2px solid var(--primary);
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-}
-
-/* Character counter for textareas */
-.char-counter {
-    text-align: right;
-    font-size: 0.8rem;
-    color: var(--text);
-    margin-top: 5px;
-}
-
-.char-counter.near-limit {
-    color: #ffc107;
-}
-
-.char-counter.over-limit {
-    color: #dc3545;
-}
-
-/* Phone number specific styling */
-.phone-input-group {
-    position: relative;
-}
-
-.phone-country-code {
-    position: absolute;
-    left: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--text);
-    font-weight: 500;
-    pointer-events: none;
-}
-
-.phone-input-group input {
-    padding-left: 50px;
-}
-
-/* Email specific validation icon */
-.email-validation-icon {
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 1rem;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.email-validation-icon.visible {
-    opacity: 1;
-}
-
-.email-validation-icon.valid {
-    color: #28a745;
-}
-
-.email-validation-icon.invalid {
-    color: #dc3545;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .input-group input[type="email"],
-    .input-group input[type="tel"],
-    .input-group input[type="text"] {
-        padding: 12px 40px 12px 12px;
-        font-size: 16px; /* Prevents zoom on iOS */
-    }
-    
-    .input-group.with-icon input {
-        padding-left: 40px;
-    }
-    
-    .input-group.with-icon .input-icon {
-        left: 12px;
-    }
-    
-    .phone-input-group input {
-        padding-left: 45px;
-    }
-    
-    .phone-country-code {
-        left: 12px;
-        font-size: 0.9rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .input-group {
-        margin: 15px 0;
-    }
-    
-    .input-group input[type="email"],
-    .input-group input[type="tel"],
-    .input-group input[type="text"] {
-        padding: 10px 35px 10px 10px;
-    }
-    
-    .validation-message {
-        font-size: 0.8rem;
-    }
-}
-
-/* Animation for validation state changes */
-@keyframes pulse {
-    0% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.4); }
-    70% { box-shadow: 0 0 0 6px rgba(40, 167, 69, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0); }
-}
-
-.input-group input.valid {
-    animation: pulse 0.5s ease-in-out;
-}
-
-/* Tooltip for validation messages */
-.tooltip {
-    position: relative;
-    display: inline-block;
-}
-
-.tooltip .tooltip-text {
-    visibility: hidden;
-    width: 200px;
-    background-color: var(--dark-gray);
-    color: var(--white);
-    text-align: center;
-    border-radius: 6px;
-    padding: 8px;
-    position: absolute;
-    z-index: 1;
-    bottom: 125%;
-    left: 50%;
-    transform: translateX(-50%);
+.report-type-container .checkmark i {
+    color: white;
+    font-size: 0.9rem;
     opacity: 0;
     transition: opacity 0.3s;
-    font-size: 0.85rem;
-    line-height: 1.4;
 }
 
-.tooltip .tooltip-text::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: var(--dark-gray) transparent transparent transparent;
-}
-
-.tooltip:hover .tooltip-text {
-    visibility: visible;
+.report-type-container.selected .checkmark i {
     opacity: 1;
 }
-
-/* Form group with help text */
-.form-group-help {
-    margin-top: 5px;
-    font-size: 0.85rem;
-    color: var(--text);
-    opacity: 0.8;
-}
-
-/* Compact input group for side-by-side fields */
-.input-group-compact {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-}
-
-@media (max-width: 768px) {
-    .input-group-compact {
-        grid-template-columns: 1fr;
-        gap: 10px;
-    }
-}
-.footer-logo img {
-    margin-left: 0;
-}
-
-      
     </style>
 </head>
 <body>
@@ -1558,18 +1072,8 @@
                     <li><a href="service.html">Service</a></li>
                     <li><a href="windows-sticker.html" class="active">Windows Sticker</a></li>
                     <li><a href="about-us.html">About Us</a></li>
-                    
-                    <!-- Dropdown -->
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle">
-                            Resources <i class="fa fa-caret-down"></i>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="index.html#pricing">Pricing</a></li>
-                            <li><a href="faq.html">FAQ</a></li>
-                            <li><a href="index.html#sample-report">Sample Report</a></li>
-                        </ul>
-                    </li>
+                    <li><a href="index.html#pricing">Pricing</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
                 </ul>
             </nav>
             
@@ -1594,11 +1098,11 @@
     <section class="vin-search" id="vin-search">
         <div class="container">
             <div class="search-container">
-                <h2 class="search-title">Check Your Vehicle History</h2>
+                <h2 class="search-title">Get Your Windows Sticker</h2>
                 <p class="search-subtitle">Enter your VIN number to access premium vehicle information services</p>
                 <form class="search-form" id="vinForm">
                     <div class="form-group">
-                        <label for="country">Country</label>
+                        <label for="country">Country *</label>
                         <select id="country" class="form-control" required>
                             <option value="">Select Country</option>
                             <option value="us">United States</option>
@@ -1608,10 +1112,11 @@
                             <option value="de">Germany</option>
                             <option value="fr">France</option>
                             <option value="jp">Japan</option>
+                            <option value="other">Other Country</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="vin">17-Digit VIN Number</label>
+                        <label for="vin">17-Digit VIN Number *</label>
                         <input type="text" id="vin" class="form-control" placeholder="e.g. 1HGCM82633A123456" maxlength="17" required>
                         <div class="vin-validation" id="vinValidation"></div>
                     </div>
@@ -1635,9 +1140,9 @@
                     <h2>Select Your Service</h2>
                 </div>
 
-                <!-- Windows Sticker Option -->
+                <!-- Windows Sticker Option - AUTO SELECTED -->
                 <div class="checkbox-group">
-                    <div class="checkbox-container" id="stickerCheckbox" onclick="toggleService('sticker')">
+                    <div class="checkbox-container selected" id="stickerCheckbox">
                         <div class="checkmark">
                             <i class="fa-regular fa-check"></i>
                         </div>
@@ -1647,7 +1152,7 @@
                         </div>
                     </div>
 
-                    <!-- VIN Report Option -->
+                    <!-- VIN Report Option - User can select if they want -->
                     <div class="checkbox-container" id="reportCheckbox" onclick="toggleService('report')">
                         <div class="checkmark">
                             <i class="fa-regular fa-check"></i>
@@ -1655,6 +1160,31 @@
                         <div class="checkbox-label">
                             <h3>VIN History Report</h3>
                             <p>Complete vehicle history including accidents, ownership, title problems, and service records.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Report Type Selection (for US/Canada only) -->
+                <div class="report-type-group" id="reportTypeGroup">
+                    <h3 style="margin-bottom: 15px; color: var(--primary);">Select Report Type (US/Canada Only)</h3>
+                    
+                    <div class="report-type-container" id="carfaxCheckbox" onclick="toggleReportType('carfax')">
+                        <div class="checkmark">
+                            <i class="fa-regular fa-check"></i>
+                        </div>
+                        <div class="report-type-label">
+                            <h4>Carfax Report</h4>
+                            <p>Comprehensive vehicle history from Carfax database. Most trusted in North America.</p>
+                        </div>
+                    </div>
+
+                    <div class="report-type-container selected" id="autocheckCheckbox" onclick="toggleReportType('autocheck')">
+                        <div class="checkmark">
+                            <i class="fa-regular fa-check"></i>
+                        </div>
+                        <div class="report-type-label">
+                            <h4>AutoCheck Report</h4>
+                            <p>Detailed vehicle history from Experian AutoCheck. Includes score and comparisons.</p>
                         </div>
                     </div>
                 </div>
@@ -1669,41 +1199,8 @@
 
                 <!-- Vehicle Details -->
                 <div class="input-group">
-                    <label for="vinInput">Vehicle Identification Number (VIN)</label>
-                    <input type="text" id="vinInput" placeholder="Enter 17-digit VIN (e.g., 1FAFP404X1F192678)" maxlength="17">
-                </div>
-
-                <div class="input-group">
-                    <label for="vehicleYear">Vehicle Year</label>
-                    <select id="vehicleYear">
-                        <option value="">Select Year</option>
-                        <option value="2024">2024</option>
-                        <option value="2023">2023</option>
-                        <option value="2022">2022</option>
-                        <option value="2021">2021</option>
-                        <option value="2020">2020</option>
-                        <option value="2019">2019</option>
-                        <option value="2018">2018</option>
-                        <option value="2017">2017</option>
-                        <option value="2016">2016</option>
-                        <option value="2015">2015</option>
-                        <option value="2014">2014</option>
-                        <option value="2013">2013</option>
-                        <option value="2012">2012</option>
-                        <option value="2011">2011</option>
-                        <option value="2010">2010</option>
-                        <!-- Add more years as needed -->
-                    </select>
-                </div>
-
-                <div class="input-group">
-                    <label for="vehicleMake">Vehicle Make</label>
-                    <input type="text" id="vehicleMake" placeholder="e.g., Ford, Toyota, BMW">
-                </div>
-
-                <div class="input-group">
-                    <label for="vehicleModel">Vehicle Model</label>
-                    <input type="text" id="vehicleModel" placeholder="e.g., Mustang, Camry, X5">
+                    <label for="vinInput">Vehicle Identification Number (VIN) *</label>
+                    <input type="text" id="vinInput" placeholder="Enter 17-digit VIN (e.g., 1FAFP404X1F192678)" maxlength="17" required>
                 </div>
 
                 <div class="input-group">
@@ -1750,7 +1247,7 @@
 
                 <!-- Price Display -->
                 <div class="price-tag">
-                    <div class="price-amount" id="totalPrice">$0.00</div>
+                    <div class="price-amount" id="totalPrice">$30.00</div>
                     <div class="price-note">Total Amount</div>
                 </div>
 
@@ -1758,11 +1255,15 @@
                 <div class="total-section">
                     <div class="total-row">
                         <span>Windows Sticker:</span>
-                        <span id="stickerPrice">$0.00</span>
+                        <span id="stickerPrice">$30.00</span>
                     </div>
                     <div class="total-row">
                         <span>VIN Report:</span>
                         <span id="reportPrice">$0.00</span>
+                    </div>
+                    <div class="total-row">
+                        <span>Report Type:</span>
+                        <span id="reportTypeDisplay">N/A</span>
                     </div>
                     <div class="total-row">
                         <span>Quantity:</span>
@@ -1770,7 +1271,7 @@
                     </div>
                     <div class="total-row">
                         <span>Subtotal:</span>
-                        <span id="subtotal">$0.00</span>
+                        <span id="subtotal">$30.00</span>
                     </div>
                     <div class="total-row">
                         <span>Processing Fee:</span>
@@ -1778,7 +1279,31 @@
                     </div>
                     <div class="total-row">
                         <span>Total:</span>
-                        <span id="finalTotal">$0.00</span>
+                        <span id="finalTotal">$30.00</span>
+                    </div>
+                </div>
+
+                <!-- User Details Section -->
+                <div class="user-details-section">
+                    <h3>Your Information</h3>
+                    <div class="input-group">
+                        <label for="customerName">Full Name *</label>
+                        <input type="text" id="customerName" placeholder="Enter your full name" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="customerEmail">Email Address *</label>
+                        <input type="email" id="customerEmail" placeholder="Your email for delivery" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="customerPhone">Phone Number *</label>
+                        <input type="tel" id="customerPhone" placeholder="For delivery updates" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="customerAddress">Address (Optional)</label>
+                        <textarea id="customerAddress" placeholder="Your address (optional)"></textarea>
                     </div>
                 </div>
 
@@ -1802,17 +1327,7 @@
                     <p>• Combined order (both): $55.00 (save $5)</p>
                     <p>• Delivery: Instant PDF via email</p>
                     <p>• Processing time: 1-2 business days for physical stickers</p>
-                </div>
-
-                <!-- Customer Information -->
-                <div class="input-group">
-                    <label for="customerEmail">Email Address *</label>
-                    <input type="email" id="customerEmail" placeholder="Your email for delivery" required>
-                </div>
-
-                <div class="input-group">
-                    <label for="customerPhone">Phone Number</label>
-                    <input type="tel" id="customerPhone" placeholder="For delivery updates">
+                    <p>• All reports delivered within 24 hours</p>
                 </div>
 
                 <!-- Success Screen -->
@@ -1861,7 +1376,7 @@
                     <h3>Quick Links</h3>
                     <ul>
                         <li><a href="index.html"><i class="fa-regular fa-chevron-right"></i> Home</a></li>
-                        <li><a href="#sample-report"><i class="fa-regular fa-chevron-right"></i> Sample Report</a></li>
+                        <li><a href="report.html"><i class="fa-regular fa-chevron-right"></i> Sample Report</a></li>
                         <li><a href="#pricing"><i class="fa-regular fa-chevron-right"></i> Pricing</a></li>
                         <li><a href="service.html"><i class="fa-regular fa-chevron-right"></i> Services</a></li>
                         <li><a href="#faq"><i class="fa-regular fa-chevron-right"></i> FAQ</a></li>
@@ -1898,9 +1413,11 @@
     <script>
         // Windows Sticker Purchase Variables
         let selectedServices = {
-            sticker: false,
+            sticker: true, // Auto-selected by default
             report: false
         };
+        let selectedCountry = '';
+        let selectedReportType = 'autocheck'; // Default to AutoCheck
         let quantity = 1;
         let unitPrices = {
             sticker: 30.00,
@@ -1909,10 +1426,9 @@
         };
 
         document.addEventListener('DOMContentLoaded', function() {
-            // Mobile menu toggle
+            // Mobile menu toggle - Fixed CSS
             const mobileMenu = document.querySelector('.mobile-menu');
             const nav = document.querySelector('nav');
-            const dropdownToggles = document.querySelectorAll('.dropdown > a');
             
             // Mobile menu functionality
             mobileMenu.addEventListener('click', function(e) {
@@ -1921,7 +1437,7 @@
             });
             
             // Close mobile menu when clicking on a link
-            document.querySelectorAll('nav a:not(.dropdown-toggle)').forEach(link => {
+            document.querySelectorAll('nav a').forEach(link => {
                 link.addEventListener('click', () => {
                     nav.classList.remove('active');
                 });
@@ -1938,10 +1454,8 @@
             window.addEventListener('scroll', function() {
                 const header = document.getElementById('header');
                 if (window.scrollY > 100) {
-                    header.style.padding = '5px 0';
                     header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
                 } else {
-                    header.style.padding = '0';
                     header.style.boxShadow = 'none';
                 }
             });
@@ -1969,103 +1483,18 @@
                 }
             });
             
-            // DROPDOWN FUNCTIONALITY FOR DEVICES UNDER 600PX
-            dropdownToggles.forEach(toggle => {
-                toggle.addEventListener('click', function(e) {
-                    // Only apply special behavior for devices under 600px
-                    if (window.innerWidth <= 600) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        
-                        const dropdown = this.closest('.dropdown');
-                        const allDropdowns = document.querySelectorAll('.dropdown');
-                        
-                        // If this dropdown is already active, do nothing
-                        if (dropdown.classList.contains('active')) {
-                            return;
-                        }
-                        
-                        // Close all other dropdowns
-                        allDropdowns.forEach(otherDropdown => {
-                            if (otherDropdown !== dropdown) {
-                                otherDropdown.classList.remove('active');
-                            }
-                        });
-                        
-                        // Open this dropdown
-                        dropdown.classList.add('active');
-                    }
-                });
-            });
-            
-            // Close dropdowns when clicking outside (only for mobile)
-            document.addEventListener('click', function(e) {
-                if (window.innerWidth <= 600) {
-                    // Check if click is inside any dropdown or its toggle
-                    const clickedInsideDropdown = e.target.closest('.dropdown');
-                    
-                    // If click is outside ALL dropdowns
-                    if (!clickedInsideDropdown) {
-                        document.querySelectorAll('.dropdown').forEach(dropdown => {
-                            dropdown.classList.remove('active');
-                        });
-                    } else {
-                        // Click was inside a dropdown, but we need to check if it was on the toggle
-                        const clickedToggle = e.target.closest('.dropdown > a');
-                        if (!clickedToggle) {
-                            // Click was inside dropdown menu but not on toggle
-                            // Don't close - keep it open as requested
-                            return;
-                        }
-                    }
-                }
-            });
-            
-            // Close dropdowns when clicking on nav links inside dropdown (but not the toggle)
-            document.querySelectorAll('.dropdown-menu a').forEach(link => {
-                link.addEventListener('click', function(e) {
-                    if (window.innerWidth <= 600) {
-                        // Close the parent dropdown
-                        const dropdown = this.closest('.dropdown');
-                        if (dropdown) {
-                            dropdown.classList.remove('active');
-                        }
-                        
-                        // Also close the mobile menu
-                        if (nav) {
-                            nav.classList.remove('active');
-                        }
-                    }
-                });
-            });
-            
-            // Handle window resize
-            window.addEventListener('resize', function() {
-                // Reset dropdowns on larger screens
-                if (window.innerWidth > 600) {
-                    document.querySelectorAll('.dropdown').forEach(dropdown => {
-                        dropdown.classList.remove('active');
-                    });
-                    
-                    // Reset mobile menu
-                    if (nav) {
-                        nav.classList.remove('active');
-                    }
-                }
-            });
-            
-            // Prevent dropdown toggle from closing when clicking inside dropdown menu
-            document.querySelectorAll('.dropdown-menu').forEach(menu => {
-                menu.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                });
-            });
-            
             // VIN VALIDATION FOR SEARCH FORM
             const vinInput = document.getElementById('vin');
+            const countrySelect = document.getElementById('country');
             const vinValidation = document.getElementById('vinValidation');
             const searchBtn = document.getElementById('searchBtn');
             const vinForm = document.getElementById('vinForm');
+            
+            // Track country selection
+            countrySelect.addEventListener('change', function() {
+                selectedCountry = this.value;
+                updateReportTypeVisibility();
+            });
             
             if (vinInput && vinValidation && searchBtn && vinForm) {
                 // VIN validation while typing
@@ -2094,6 +1523,13 @@
                     e.preventDefault();
             
                     const vin = vinInput.value.trim().toUpperCase().replace(/\s+/g, '');
+                    const country = countrySelect.value;
+                    
+                    if (!country) {
+                        vinValidation.textContent = "Please select your country.";
+                        vinValidation.className = 'vin-validation vin-invalid';
+                        return;
+                    }
             
                     if (vin.length !== 17) {
                         vinValidation.textContent = "VIN must be exactly 17 characters.";
@@ -2103,11 +1539,10 @@
                     
                     // Copy VIN to purchase form
                     document.getElementById('vinInput').value = vin;
+                    selectedCountry = country;
                     
-                    // Auto-select VIN Report service
-                    if (!selectedServices.report) {
-                        toggleService('report');
-                    }
+                    // Update report type visibility based on country
+                    updateReportTypeVisibility();
                     
                     // Scroll to purchase section
                     document.getElementById('purchase-section').scrollIntoView({ 
@@ -2139,8 +1574,29 @@
             });
         });
 
+        // Update report type visibility based on country
+        function updateReportTypeVisibility() {
+            const reportTypeGroup = document.getElementById('reportTypeGroup');
+            const reportTypeDisplay = document.getElementById('reportTypeDisplay');
+            
+            if (selectedCountry === 'us' || selectedCountry === 'ca') {
+                // Show Carfax/AutoCheck selection for US/Canada
+                reportTypeGroup.style.display = 'block';
+                reportTypeDisplay.textContent = 'AutoCheck (Default)';
+            } else {
+                // Hide for other countries
+                reportTypeGroup.style.display = 'none';
+                reportTypeDisplay.textContent = 'Standard Report';
+            }
+        }
+
         // Toggle service selection
         function toggleService(service) {
+            // Windows Sticker is always selected, can't be deselected
+            if (service === 'sticker') {
+                return; // Don't allow deselecting Windows Sticker
+            }
+            
             const checkbox = document.getElementById(service + 'Checkbox');
             
             // Toggle selection
@@ -2149,6 +1605,23 @@
             
             // Update prices
             updatePrices();
+        }
+
+        // Toggle report type selection
+        function toggleReportType(type) {
+            // Remove selection from both
+            document.getElementById('carfaxCheckbox').classList.remove('selected');
+            document.getElementById('autocheckCheckbox').classList.remove('selected');
+            
+            // Add selection to clicked one
+            document.getElementById(type + 'Checkbox').classList.add('selected');
+            
+            // Update selected type
+            selectedReportType = type;
+            
+            // Update display
+            document.getElementById('reportTypeDisplay').textContent = 
+                type === 'carfax' ? 'Carfax Report' : 'AutoCheck Report';
         }
 
         // Change quantity
@@ -2164,7 +1637,7 @@
 
         // Update all price displays
         function updatePrices() {
-            const stickerSelected = selectedServices.sticker;
+            const stickerSelected = selectedServices.sticker; // Always true
             const reportSelected = selectedServices.report;
             
             // Calculate individual prices
@@ -2201,12 +1674,8 @@
             const errorDiv = document.getElementById('errorMessage');
             const vin = document.getElementById('vinInput').value.trim();
             const email = document.getElementById('customerEmail').value.trim();
-            
-            // Check if at least one service is selected
-            if (!selectedServices.sticker && !selectedServices.report) {
-                showError('Please select at least one service (Windows Sticker or VIN Report)');
-                return false;
-            }
+            const name = document.getElementById('customerName').value.trim();
+            const phone = document.getElementById('customerPhone').value.trim();
             
             // Check VIN
             if (vin.length !== 17) {
@@ -2214,9 +1683,21 @@
                 return false;
             }
             
+            // Check name
+            if (!name) {
+                showError('Please enter your full name');
+                return false;
+            }
+            
             // Check email
             if (!email || !validateEmail(email)) {
                 showError('Please enter a valid email address for delivery');
+                return false;
+            }
+            
+            // Check phone
+            if (!phone) {
+                showError('Please enter your phone number');
                 return false;
             }
             
@@ -2246,90 +1727,105 @@
             // ⚠️ IMPORTANT: Replace with your actual PayPal Client ID
             const clientId = 'YOUR_PAYPAL_CLIENT_ID';
             
-            paypal.Buttons({
-                style: {
-                    layout: 'vertical',
-                    color: 'blue',
-                    shape: 'rect',
-                    label: 'paypal'
-                },
-                
-                // Create order
-                createOrder: function(data, actions) {
-                    // Validate order first
-                    if (!validateOrder()) {
-                        return Promise.reject(new Error('Please fix the errors above'));
+            // Only render PayPal button if client ID is not placeholder
+            if (clientId !== 'YOUR_PAYPAL_CLIENT_ID') {
+                paypal.Buttons({
+                    style: {
+                        layout: 'vertical',
+                        color: 'blue',
+                        shape: 'rect',
+                        label: 'paypal'
+                    },
+                    
+                    // Create order
+                    createOrder: function(data, actions) {
+                        // Validate order first
+                        if (!validateOrder()) {
+                            return Promise.reject(new Error('Please fix the errors above'));
+                        }
+                        
+                        // Calculate total
+                        const total = calculateTotal();
+                        const description = generateOrderDescription();
+                        const vin = document.getElementById('vinInput').value.trim();
+                        
+                        // Show loading
+                        document.getElementById('loading').style.display = 'block';
+                        
+                        // Create PayPal order with detailed item breakdown
+                        return actions.order.create({
+                            purchase_units: [{
+                                amount: {
+                                    value: total.toFixed(2),
+                                    currency_code: 'USD',
+                                    breakdown: {
+                                        item_total: {
+                                            value: total.toFixed(2),
+                                            currency_code: 'USD'
+                                        }
+                                    }
+                                },
+                                description: description,
+                                custom_id: vin,
+                                invoice_id: 'CARV-' + Date.now().toString().slice(-8),
+                                
+                                // Item details for PayPal receipt
+                                items: generateItemList()
+                            }],
+                            application_context: {
+                                brand_name: 'CarVerifi',
+                                shipping_preference: 'NO_SHIPPING',
+                                user_action: 'PAY_NOW'
+                            }
+                        });
+                    },
+                    
+                    // On payment approval
+                    onApprove: function(data, actions) {
+                        return actions.order.capture().then(function(details) {
+                            // Hide loading
+                            document.getElementById('loading').style.display = 'none';
+                            
+                            // ✅ Payment successful
+                            console.log('✅ Payment completed!');
+                            console.log('💰 Transaction ID:', details.id);
+                            console.log('💵 Amount:', details.purchase_units[0].amount.value);
+                            console.log('📧 Customer Email:', details.payer.email_address);
+                            console.log('🚗 VIN:', document.getElementById('vinInput').value);
+                            
+                            // Show success screen
+                            showSuccessScreen(details);
+                            
+                            // In production, send this data to your backend
+                            // sendOrderToBackend(details);
+                        });
+                    },
+                    
+                    // Handle errors
+                    onError: function(err) {
+                        document.getElementById('loading').style.display = 'none';
+                        console.error('❌ PayPal Error:', err);
+                        showError('Payment failed. Please try again or contact support.');
+                    },
+                    
+                    // Handle cancellation
+                    onCancel: function(data) {
+                        document.getElementById('loading').style.display = 'none';
+                        console.log('Payment cancelled by user');
+                        showError('Payment was cancelled. You can try again when ready.');
                     }
                     
-                    // Calculate total
-                    const total = calculateTotal();
-                    
-                    // Show loading
-                    document.getElementById('loading').style.display = 'block';
-                    
-                    // Create PayPal order
-                    return actions.order.create({
-                        purchase_units: [{
-                            amount: {
-                                value: total.toFixed(2),
-                                currency_code: 'USD'
-                            },
-                            description: generateOrderDescription(),
-                            custom_id: document.getElementById('vinInput').value.trim(),
-                            invoice_id: 'WIN-' + Date.now(),
-                            
-                            // Additional information for your records
-                            items: generateItemList()
-                        }],
-                        application_context: {
-                            brand_name: 'CarVerifi',
-                            shipping_preference: 'NO_SHIPPING',
-                            user_action: 'PAY_NOW'
-                        }
-                    });
-                },
-                
-                // On payment approval
-                onApprove: function(data, actions) {
-                    return actions.order.capture().then(function(details) {
-                        // Hide loading
-                        document.getElementById('loading').style.display = 'none';
-                        
-                        // ✅ Payment successful
-                        console.log('✅ Payment completed!');
-                        console.log('💰 Transaction ID:', details.id);
-                        console.log('💵 Amount:', details.purchase_units[0].amount.value);
-                        console.log('📧 Customer Email:', details.payer.email_address);
-                        console.log('🚗 VIN:', document.getElementById('vinInput').value);
-                        
-                        // Show success screen
-                        showSuccessScreen(details);
-                        
-                        // In production, send this data to your backend
-                        // sendOrderToBackend(details);
-                    });
-                },
-                
-                // Handle errors
-                onError: function(err) {
-                    document.getElementById('loading').style.display = 'none';
-                    console.error('❌ PayPal Error:', err);
-                    showError('Payment failed. Please try again or contact support.');
-                },
-                
-                // Handle cancellation
-                onCancel: function(data) {
-                    document.getElementById('loading').style.display = 'none';
-                    console.log('Payment cancelled by user');
-                    showError('Payment was cancelled. You can try again when ready.');
-                }
-                
-            }).render('#paypal-button-container');
+                }).render('#paypal-button-container');
+            } else {
+                // Show warning if client ID is not set
+                document.getElementById('paypal-button-container').innerHTML = 
+                    '<div class="error-message" style="display:block;">⚠️ Please set your PayPal Client ID in the script tag</div>';
+            }
         }
 
         // Calculate total amount
         function calculateTotal() {
-            const stickerSelected = selectedServices.sticker;
+            const stickerSelected = selectedServices.sticker; // Always true
             const reportSelected = selectedServices.report;
             
             if (stickerSelected && reportSelected) {
@@ -2347,13 +1843,26 @@
         function generateOrderDescription() {
             const services = [];
             if (selectedServices.sticker) services.push('Windows Sticker');
-            if (selectedServices.report) services.push('VIN Report');
+            if (selectedServices.report) {
+                if (selectedCountry === 'us' || selectedCountry === 'ca') {
+                    services.push(`${selectedReportType === 'carfax' ? 'Carfax' : 'AutoCheck'} Report`);
+                } else {
+                    services.push('VIN Report');
+                }
+            }
             
             const vin = document.getElementById('vinInput').value.trim();
-            return `${services.join(' + ')} for VIN: ${vin}`;
+            const notes = document.getElementById('specialNotes').value.trim();
+            let description = `${services.join(' + ')} for VIN: ${vin}`;
+            
+            if (notes) {
+                description += ` (Notes: ${notes.substring(0, 50)}${notes.length > 50 ? '...' : ''})`;
+            }
+            
+            return description;
         }
 
-        // Generate item list for PayPal
+        // Generate item list for PayPal receipt
         function generateItemList() {
             const items = [];
             
@@ -2365,19 +1874,31 @@
                         value: unitPrices.sticker.toFixed(2)
                     },
                     quantity: quantity.toString(),
-                    category: 'DIGITAL_GOODS'
+                    category: 'DIGITAL_GOODS',
+                    description: 'Official vehicle window sticker with factory specifications'
                 });
             }
             
             if (selectedServices.report) {
+                let reportName = 'VIN History Report';
+                let reportDescription = 'Complete vehicle history report';
+                
+                if (selectedCountry === 'us' || selectedCountry === 'ca') {
+                    reportName = selectedReportType === 'carfax' ? 'Carfax Report' : 'AutoCheck Report';
+                    reportDescription = selectedReportType === 'carfax' ? 
+                        'Comprehensive Carfax vehicle history' : 
+                        'Detailed Experian AutoCheck report with score';
+                }
+                
                 items.push({
-                    name: 'VIN History Report',
+                    name: reportName,
                     unit_amount: {
                         currency_code: 'USD',
                         value: unitPrices.report.toFixed(2)
                     },
                     quantity: quantity.toString(),
-                    category: 'DIGITAL_GOODS'
+                    category: 'DIGITAL_GOODS',
+                    description: reportDescription
                 });
             }
             
@@ -2389,6 +1910,7 @@
             // Hide payment section
             document.getElementById('paypal-button-container').style.display = 'none';
             document.querySelector('.payment-info').style.display = 'none';
+            document.querySelector('.user-details-section').style.display = 'none';
             
             // Generate receipt
             generateReceipt(details);
@@ -2404,7 +1926,11 @@
         function generateReceipt(details) {
             const receiptDiv = document.getElementById('orderReceipt');
             const vin = document.getElementById('vinInput').value.trim();
+            const name = document.getElementById('customerName').value.trim();
             const email = document.getElementById('customerEmail').value.trim();
+            const phone = document.getElementById('customerPhone').value.trim();
+            const address = document.getElementById('customerAddress').value.trim();
+            const notes = document.getElementById('specialNotes').value.trim();
             
             let servicesHtml = '';
             if (selectedServices.sticker) {
@@ -2414,16 +1940,51 @@
                 </div>`;
             }
             if (selectedServices.report) {
+                let reportName = 'VIN History Report';
+                if (selectedCountry === 'us' || selectedCountry === 'ca') {
+                    reportName = selectedReportType === 'carfax' ? 'Carfax Report' : 'AutoCheck Report';
+                }
+                
                 servicesHtml += `<div class="receipt-row">
-                    <span>VIN Report (${quantity}x):</span>
+                    <span>${reportName} (${quantity}x):</span>
                     <span>$${(unitPrices.report * quantity).toFixed(2)}</span>
+                </div>`;
+            }
+            
+            let customerInfoHtml = `
+                <div class="receipt-row">
+                    <span>Customer:</span>
+                    <span>${name}</span>
+                </div>
+                <div class="receipt-row">
+                    <span>Email:</span>
+                    <span>${email}</span>
+                </div>
+                <div class="receipt-row">
+                    <span>Phone:</span>
+                    <span>${phone}</span>
+                </div>
+            `;
+            
+            if (address) {
+                customerInfoHtml += `<div class="receipt-row">
+                    <span>Address:</span>
+                    <span style="max-width: 200px; text-align: right;">${address}</span>
+                </div>`;
+            }
+            
+            let specialNotesHtml = '';
+            if (notes) {
+                specialNotesHtml = `<div class="receipt-row">
+                    <span>Special Notes:</span>
+                    <span style="max-width: 200px; text-align: right;">${notes}</span>
                 </div>`;
             }
             
             receiptDiv.innerHTML = `
                 <div class="receipt-row">
                     <span>Order Number:</span>
-                    <span>WIN-${Date.now().toString().slice(-8)}</span>
+                    <span>CARV-${Date.now().toString().slice(-8)}</span>
                 </div>
                 <div class="receipt-row">
                     <span>Transaction ID:</span>
@@ -2434,29 +1995,26 @@
                     <span>${new Date().toLocaleString()}</span>
                 </div>
                 <div class="receipt-row">
+                    <span>Payment Method:</span>
+                    <span>PayPal (${details.payer.email_address})</span>
+                </div>
+                <div class="receipt-row">
                     <span>VIN Number:</span>
-                    <span>${vin}</span>
+                    <span><strong>${vin}</strong></span>
                 </div>
-                <div class="receipt-row">
-                    <span>Vehicle:</span>
-                    <span>${document.getElementById('vehicleYear').value} ${document.getElementById('vehicleMake').value} ${document.getElementById('vehicleModel').value}</span>
-                </div>
-                <div class="receipt-row">
-                    <span>Delivery Email:</span>
-                    <span>${email}</span>
-                </div>
+                ${customerInfoHtml}
+                ${specialNotesHtml}
                 ${servicesHtml}
                 <div class="receipt-row">
                     <span>Subtotal:</span>
                     <span>$${calculateTotal().toFixed(2)}</span>
                 </div>
-                <div class="receipt-row">
-                    <span>Payment Method:</span>
-                    <span>PayPal</span>
-                </div>
-                <div class="receipt-row" style="font-weight: bold; color: #28a745;">
+                <div class="receipt-row" style="font-weight: bold; color: #28a745; font-size: 1.1rem;">
                     <span>Total Paid:</span>
-                    <span>$${calculateTotal().toFixed(2)}</span>
+                    <span>$${calculateTotal().toFixed(2)} USD</span>
+                </div>
+                <div class="receipt-row" style="margin-top: 20px; padding-top: 20px; border-top: 2px dashed var(--gray);">
+                    <span style="font-style: italic; color: var(--text);">Your documents will be delivered to ${email} within 24 hours.</span>
                 </div>
             `;
         }
@@ -2474,13 +2032,18 @@
                         .receipt { max-width: 500px; margin: 0 auto; }
                         .receipt-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #ddd; }
                         .total { font-weight: bold; font-size: 1.2rem; }
+                        @media print {
+                            body { padding: 0; }
+                        }
                     </style>
                 </head>
                 <body>
                     <div class="receipt">
                         <h2>CarVerifi - Order Receipt</h2>
+                        <p>Windows Sticker & VIN Report Service</p>
+                        <p>Order Date: ${new Date().toLocaleString()}</p>
                         ${printContent}
-                        <p style="margin-top: 30px;">Thank you for your purchase!</p>
+                        <p style="margin-top: 30px; font-style: italic;">Thank you for your purchase!</p>
                     </div>
                 </body>
                 </html>
@@ -2492,23 +2055,30 @@
         // Start new order
         function startNewOrder() {
             // Reset everything
-            selectedServices = { sticker: false, report: false };
+            selectedServices = { sticker: true, report: false }; // Windows Sticker auto-selected
             quantity = 1;
+            selectedReportType = 'autocheck';
             
             // Reset checkboxes
-            document.getElementById('stickerCheckbox').classList.remove('selected');
+            document.getElementById('stickerCheckbox').classList.add('selected');
             document.getElementById('reportCheckbox').classList.remove('selected');
+            document.getElementById('carfaxCheckbox').classList.remove('selected');
+            document.getElementById('autocheckCheckbox').classList.add('selected');
             
             // Reset inputs
             document.getElementById('vinInput').value = '';
-            document.getElementById('vehicleYear').value = '';
-            document.getElementById('vehicleMake').value = '';
-            document.getElementById('vehicleModel').value = '';
             document.getElementById('specialNotes').value = '';
+            document.getElementById('customerName').value = '';
             document.getElementById('customerEmail').value = '';
             document.getElementById('customerPhone').value = '';
+            document.getElementById('customerAddress').value = '';
             document.getElementById('quantity').textContent = '1';
             document.getElementById('quantityDisplay').textContent = '1';
+            document.getElementById('reportTypeDisplay').textContent = 'N/A';
+            
+            // Reset visibility
+            document.getElementById('reportTypeGroup').style.display = 'none';
+            document.querySelector('.user-details-section').style.display = 'block';
             
             // Reset displays
             updatePrices();
