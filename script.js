@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
-            const redirectURL = "https://www.vindecoderz.com/EN/check-lookup/" + vin;
+            const redirectURL = "windows-sticker.html";
             window.open(redirectURL, "_blank");
         });
     }
