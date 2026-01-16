@@ -503,10 +503,13 @@
             font-size: 0.9rem;
         }
 
-        /* Report Type Selection (for US/Canada only) */
+        /* Report Type Selection - Show only when VIN Report is selected */
         .report-type-group {
             margin: 25px 0;
-            display: none;
+            display: none; /* Changed from 'block' to 'none' */
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.3s ease, transform 0.3s ease;
         }
 
         .report-type-container {
@@ -1024,33 +1027,34 @@ textarea {
             .price-amount {
                 font-size: 2.8rem;
             }
-        }/* Add this CSS to fix the checkboxes */
-.report-type-container .checkmark {
-    width: 24px;
-    height: 24px;
-    border: 2px solid var(--gray);
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: var(--transition);
-}
+        }
+        /* Add this CSS to fix the checkboxes */
+        .report-type-container .checkmark {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--gray);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
 
-.report-type-container.selected .checkmark {
-    background: var(--primary);
-    border-color: var(--primary);
-}
+        .report-type-container.selected .checkmark {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
 
-.report-type-container .checkmark i {
-    color: white;
-    font-size: 0.9rem;
-    opacity: 0;
-    transition: opacity 0.3s;
-}
+        .report-type-container .checkmark i {
+            color: white;
+            font-size: 0.9rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
 
-.report-type-container.selected .checkmark i {
-    opacity: 1;
-}
+        .report-type-container.selected .checkmark i {
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
@@ -1121,7 +1125,7 @@ textarea {
                         <div class="vin-validation" id="vinValidation"></div>
                     </div>
                     <button type="submit" class="search-btn" id="searchBtn">
-                        Get Vehicle Report <i class="fa-regular fa-arrow-right"></i>
+                        Get Windows Sticker <i class="fa-regular fa-arrow-right"></i>
                     </button>
                 </form>
             </div>
@@ -1164,17 +1168,17 @@ textarea {
                     </div>
                 </div>
 
-                <!-- Report Type Selection (for US/Canada only) -->
+                <!-- Report Type Selection - Show only when VIN Report is selected -->
                 <div class="report-type-group" id="reportTypeGroup">
-                    <h3 style="margin-bottom: 15px; color: var(--primary);">Select Report Type (US/Canada Only)</h3>
+                    <h3 style="margin-bottom: 15px; color: var(--primary);">Select Report Database</h3>
                     
                     <div class="report-type-container" id="carfaxCheckbox" onclick="toggleReportType('carfax')">
                         <div class="checkmark">
                             <i class="fa-regular fa-check"></i>
                         </div>
                         <div class="report-type-label">
-                            <h4>Carfax Report</h4>
-                            <p>Comprehensive vehicle history from Carfax database. Most trusted in North America.</p>
+                            <h4>Carfax Report (Premium)</h4>
+                            <p>Comprehensive vehicle history from Carfax database. Most trusted worldwide.</p>
                         </div>
                     </div>
 
@@ -1183,7 +1187,7 @@ textarea {
                             <i class="fa-regular fa-check"></i>
                         </div>
                         <div class="report-type-label">
-                            <h4>AutoCheck Report</h4>
+                            <h4>AutoCheck Report (Standard)</h4>
                             <p>Detailed vehicle history from Experian AutoCheck. Includes score and comparisons.</p>
                         </div>
                     </div>
@@ -1262,8 +1266,8 @@ textarea {
                         <span id="reportPrice">$0.00</span>
                     </div>
                     <div class="total-row">
-                        <span>Report Type:</span>
-                        <span id="reportTypeDisplay">N/A</span>
+                        <span>Report Database:</span>
+                        <span id="reportTypeDisplay">AutoCheck (Standard)</span>
                     </div>
                     <div class="total-row">
                         <span>Quantity:</span>
@@ -1493,7 +1497,6 @@ textarea {
             // Track country selection
             countrySelect.addEventListener('change', function() {
                 selectedCountry = this.value;
-                updateReportTypeVisibility();
             });
             
             if (vinInput && vinValidation && searchBtn && vinForm) {
@@ -1541,9 +1544,6 @@ textarea {
                     document.getElementById('vinInput').value = vin;
                     selectedCountry = country;
                     
-                    // Update report type visibility based on country
-                    updateReportTypeVisibility();
-                    
                     // Scroll to purchase section
                     document.getElementById('purchase-section').scrollIntoView({ 
                         behavior: 'smooth' 
@@ -1558,6 +1558,9 @@ textarea {
             // Initialize purchase system
             updatePrices();
             initPayPal();
+            
+            // Ensure report type options are hidden initially
+            document.getElementById('reportTypeGroup').style.display = 'none';
             
             // Auto-uppercase VIN input for purchase form
             document.getElementById('vinInput').addEventListener('input', function() {
@@ -1574,22 +1577,6 @@ textarea {
             });
         });
 
-        // Update report type visibility based on country
-        function updateReportTypeVisibility() {
-            const reportTypeGroup = document.getElementById('reportTypeGroup');
-            const reportTypeDisplay = document.getElementById('reportTypeDisplay');
-            
-            if (selectedCountry === 'us' || selectedCountry === 'ca') {
-                // Show Carfax/AutoCheck selection for US/Canada
-                reportTypeGroup.style.display = 'block';
-                reportTypeDisplay.textContent = 'AutoCheck (Default)';
-            } else {
-                // Hide for other countries
-                reportTypeGroup.style.display = 'none';
-                reportTypeDisplay.textContent = 'Standard Report';
-            }
-        }
-
         // Toggle service selection
         function toggleService(service) {
             // Windows Sticker is always selected, can't be deselected
@@ -1602,6 +1589,31 @@ textarea {
             // Toggle selection
             selectedServices[service] = !selectedServices[service];
             checkbox.classList.toggle('selected');
+            
+            // Show/hide report type options based on report selection
+            if (service === 'report') {
+                const reportTypeGroup = document.getElementById('reportTypeGroup');
+                if (selectedServices.report) {
+                    // Show with fade in
+                    reportTypeGroup.style.display = 'block';
+                    reportTypeGroup.style.opacity = '0';
+                    reportTypeGroup.style.transform = 'translateY(-10px)';
+                    
+                    setTimeout(() => {
+                        reportTypeGroup.style.transition = 'all 0.3s ease';
+                        reportTypeGroup.style.opacity = '1';
+                        reportTypeGroup.style.transform = 'translateY(0)';
+                    }, 10);
+                } else {
+                    // Hide with fade out
+                    reportTypeGroup.style.opacity = '0';
+                    reportTypeGroup.style.transform = 'translateY(-10px)';
+                    
+                    setTimeout(() => {
+                        reportTypeGroup.style.display = 'none';
+                    }, 300);
+                }
+            }
             
             // Update prices
             updatePrices();
@@ -1621,7 +1633,7 @@ textarea {
             
             // Update display
             document.getElementById('reportTypeDisplay').textContent = 
-                type === 'carfax' ? 'Carfax Report' : 'AutoCheck Report';
+                type === 'carfax' ? 'Carfax Report (Premium)' : 'AutoCheck Report (Standard)';
         }
 
         // Change quantity
@@ -1844,11 +1856,7 @@ textarea {
             const services = [];
             if (selectedServices.sticker) services.push('Windows Sticker');
             if (selectedServices.report) {
-                if (selectedCountry === 'us' || selectedCountry === 'ca') {
-                    services.push(`${selectedReportType === 'carfax' ? 'Carfax' : 'AutoCheck'} Report`);
-                } else {
-                    services.push('VIN Report');
-                }
+                services.push(`${selectedReportType === 'carfax' ? 'Carfax' : 'AutoCheck'} Report`);
             }
             
             const vin = document.getElementById('vinInput').value.trim();
@@ -1880,15 +1888,10 @@ textarea {
             }
             
             if (selectedServices.report) {
-                let reportName = 'VIN History Report';
-                let reportDescription = 'Complete vehicle history report';
-                
-                if (selectedCountry === 'us' || selectedCountry === 'ca') {
-                    reportName = selectedReportType === 'carfax' ? 'Carfax Report' : 'AutoCheck Report';
-                    reportDescription = selectedReportType === 'carfax' ? 
-                        'Comprehensive Carfax vehicle history' : 
-                        'Detailed Experian AutoCheck report with score';
-                }
+                let reportName = selectedReportType === 'carfax' ? 'Carfax Report (Premium)' : 'AutoCheck Report (Standard)';
+                let reportDescription = selectedReportType === 'carfax' ? 
+                    'Comprehensive Carfax vehicle history report' : 
+                    'Detailed Experian AutoCheck vehicle history report';
                 
                 items.push({
                     name: reportName,
@@ -1940,10 +1943,7 @@ textarea {
                 </div>`;
             }
             if (selectedServices.report) {
-                let reportName = 'VIN History Report';
-                if (selectedCountry === 'us' || selectedCountry === 'ca') {
-                    reportName = selectedReportType === 'carfax' ? 'Carfax Report' : 'AutoCheck Report';
-                }
+                let reportName = selectedReportType === 'carfax' ? 'Carfax Report (Premium)' : 'AutoCheck Report (Standard)';
                 
                 servicesHtml += `<div class="receipt-row">
                     <span>${reportName} (${quantity}x):</span>
@@ -2065,6 +2065,9 @@ textarea {
             document.getElementById('carfaxCheckbox').classList.remove('selected');
             document.getElementById('autocheckCheckbox').classList.add('selected');
             
+            // Hide report type options (since report is not selected by default)
+            document.getElementById('reportTypeGroup').style.display = 'none';
+            
             // Reset inputs
             document.getElementById('vinInput').value = '';
             document.getElementById('specialNotes').value = '';
@@ -2074,10 +2077,9 @@ textarea {
             document.getElementById('customerAddress').value = '';
             document.getElementById('quantity').textContent = '1';
             document.getElementById('quantityDisplay').textContent = '1';
-            document.getElementById('reportTypeDisplay').textContent = 'N/A';
+            document.getElementById('reportTypeDisplay').textContent = 'AutoCheck Report (Standard)';
             
             // Reset visibility
-            document.getElementById('reportTypeGroup').style.display = 'none';
             document.querySelector('.user-details-section').style.display = 'block';
             
             // Reset displays
