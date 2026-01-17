@@ -1120,7 +1120,7 @@ textarea {
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="vin">17-Digit VIN Number *</label>
+                        <label for="vin">VIN Number / Reg Number*</label>
                         <input type="text" id="vin" class="form-control" placeholder="e.g. 1HGCM82633A123456" maxlength="17" required>
                         <div class="vin-validation" id="vinValidation"></div>
                     </div>
@@ -1487,74 +1487,40 @@ textarea {
                 }
             });
             
-            // VIN VALIDATION FOR SEARCH FORM
-            const vinInput = document.getElementById('vin');
-            const countrySelect = document.getElementById('country');
-            const vinValidation = document.getElementById('vinValidation');
-            const searchBtn = document.getElementById('searchBtn');
-            const vinForm = document.getElementById('vinForm');
-            
-            // Track country selection
-            countrySelect.addEventListener('change', function() {
-                selectedCountry = this.value;
-            });
-            
-            if (vinInput && vinValidation && searchBtn && vinForm) {
-                // VIN validation while typing
-                vinInput.addEventListener('input', function () {
-                    const vin = vinInput.value.toUpperCase().replace(/\s+/g, '');
-                    const vinRegex = /^[A-HJ-NPR-Z0-9]{17}$/;
-            
-                    if (vin.length === 17) {
-                        if (vinRegex.test(vin)) {
-                            vinValidation.textContent = '✓ Valid VIN format';
-                            vinValidation.className = 'vin-validation vin-valid';
-                            searchBtn.disabled = false;
-                        } else {
-                            vinValidation.textContent = '✗ Invalid VIN format';
-                            vinValidation.className = 'vin-validation vin-invalid';
-                            searchBtn.disabled = true;
-                        }
-                    } else {
-                        vinValidation.textContent = '';
-                        searchBtn.disabled = false;
-                    }
-                });
-            
-                // VIN form submission - now redirects to purchase section
-                vinForm.addEventListener('submit', function (e) {
-                    e.preventDefault();
-            
-                    const vin = vinInput.value.trim().toUpperCase().replace(/\s+/g, '');
-                    const country = countrySelect.value;
-                    
-                    if (!country) {
-                        vinValidation.textContent = "Please select your country.";
-                        vinValidation.className = 'vin-validation vin-invalid';
-                        return;
-                    }
-            
-                    if (vin.length !== 17) {
-                        vinValidation.textContent = "VIN must be exactly 17 characters.";
-                        vinValidation.className = 'vin-validation vin-invalid';
-                        return;
-                    }
-                    
-                    // Copy VIN to purchase form
-                    document.getElementById('vinInput').value = vin;
-                    selectedCountry = country;
-                    
-                    // Scroll to purchase section
-                    document.getElementById('purchase-section').scrollIntoView({ 
-                        behavior: 'smooth' 
-                    });
-                    
-                    // Show message
-                    vinValidation.textContent = '✓ VIN added to purchase form. Select services above.';
-                    vinValidation.className = 'vin-validation vin-valid';
-                });
-            }
-            
+           // ELEMENTS
+const vinInput = document.getElementById('vin');
+const countrySelect = document.getElementById('country');
+const vinForm = document.getElementById('vinForm');
+
+if (vinInput && countrySelect && vinForm) {
+
+    // Auto format VIN (uppercase + no spaces)
+    vinInput.addEventListener('input', function () {
+        vinInput.value = vinInput.value.toUpperCase().replace(/\s+/g, '');
+    });
+
+    // Form submit
+    vinForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const vin = vinInput.value.trim().toUpperCase().replace(/\s+/g, '');
+        const country = countrySelect.value;
+
+        // Copy VIN to purchase form (no validation)
+        const purchaseVinInput = document.getElementById('vinInput');
+        if (purchaseVinInput) {
+            purchaseVinInput.value = vin;
+        }
+
+        // Save selected country
+        selectedCountry = country;
+
+        // Scroll to purchase section
+        document.getElementById('purchase-section').scrollIntoView({
+            behavior: 'smooth'
+        });
+     });
+    } 
             // Initialize purchase system
             updatePrices();
             initPayPal();
@@ -1569,12 +1535,13 @@ textarea {
             });
             
             // Copy VIN from search form to purchase form
-            document.getElementById('vin').addEventListener('input', function() {
-                const vin = this.value.trim().toUpperCase();
-                if (vin.length === 17) {
-                    document.getElementById('vinInput').value = vin;
-                }
-            });
+// Copy VIN from search form to purchase form (no validation)
+document.getElementById('vin').addEventListener('input', function () {
+    const vin = this.value.trim().toUpperCase();
+    document.getElementById('vinInput').value = vin;
+});
+
+
         });
 
         // Toggle service selection
