@@ -121,50 +121,25 @@ document.addEventListener('DOMContentLoaded', function() {
     // 3. VIN VALIDATION & SEARCH
     // ============================================
     const vinInput = document.getElementById('vin');
-    const vinValidation = document.getElementById('vinValidation');
-    const searchBtn = document.getElementById('searchBtn');
     const vinForm = document.getElementById('vinForm');
-
+    
     if (vinInput && vinForm) {
-        // VIN validation while typing
-        vinInput.addEventListener('input', function() {
-            const vin = vinInput.value.toUpperCase().replace(/\s+/g, '');
-            const vinRegex = /^[A-HJ-NPR-Z0-9]{17}$/;
-
-            if (vin.length === 17) {
-                if (vinRegex.test(vin)) {
-                    vinValidation.textContent = '✓ Valid VIN format';
-                    vinValidation.className = 'vin-validation vin-valid';
-                    if (searchBtn) searchBtn.disabled = false;
-                } else {
-                    vinValidation.textContent = '✗ Invalid VIN format';
-                    vinValidation.className = 'vin-validation vin-invalid';
-                    if (searchBtn) searchBtn.disabled = true;
-                }
-            } else {
-                vinValidation.textContent = '';
-                if (searchBtn) searchBtn.disabled = false;
-            }
+    
+        // Optional: auto-format (uppercase + no spaces)
+        vinInput.addEventListener('input', function () {
+            vinInput.value = vinInput.value.toUpperCase().replace(/\s+/g, '');
         });
-
-        // Redirect on submit
-        vinForm.addEventListener('submit', function(e) {
+    
+        // Redirect on submit (same tab, no validation)
+        vinForm.addEventListener('submit', function (e) {
             e.preventDefault();
-
+    
             const vin = vinInput.value.trim().toUpperCase().replace(/\s+/g, '');
-
-            if (vin.length !== 17) {
-                vinValidation.textContent = "VIN must be exactly 17 characters.";
-                vinValidation.className = 'vin-validation vin-invalid';
-                return;
-            }
-
-            const redirectURL = "windows-sticker.html";
-            window.open(redirectURL, "_blank");
+    
+            window.location.href = "windows-sticker.html?vin=" + encodeURIComponent(vin);
         });
     }
 
-    // ============================================
     // 4. SAMPLE REPORT TABS
     // ============================================
     const reportTabs = document.querySelectorAll('.report-tab');
