@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
             const vin = vinInput.value.trim().toUpperCase().replace(/\s+/g, '');
     
-            window.location.href = "windows-sticker.html?vin=" + encodeURIComponent(vin);
+            window.location.href = "report.html?vin=" + encodeURIComponent(vin);
         });
     }
 
